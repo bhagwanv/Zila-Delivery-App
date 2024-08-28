@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/white"
+                card_view:cardBackgroundColor="@color/white"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/view_margin_20"
+                        android:layout_marginTop="@dimen/text_margin_10"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:text="@string/uploaded_image"
+                            android:textColor="@color/black"
+                            android:textSize="20dp" />
+
+                        <ImageView
+                            android:id="@+id/iv_cross"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:src="@drawable/cross_button"
+                            card_view:tint="@color/black" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_image"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/grey_rectangle" />
+
+                    <TextView
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="Start KM"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/grey_oval"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <EditText
+                            android:id="@+id/et_startkm"
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:longClickable="false"
+                            android:background="@drawable/textboxshape"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:gravity="start"
+                            android:hint="@string/enter_here"
+                            android:inputType="number"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_milo_text"
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/enter_milo_meter_value"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/grey_oval"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <EditText
+                            android:id="@+id/et_milo"
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/textboxshape"
+                            android:gravity="start"
+                            android:maxLength="6"
+                            android:maxLines="1"
+                            android:hint="@string/enter_here"
+                            android:inputType="number"
+                            android:text="" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/submit"
+                        style="@style/SegoeUIBold"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="40dp"
+                        android:background="@drawable/orangerectangle"
+                        android:backgroundTint="@color/colorLightBlueHeader"
+                        android:gravity="center"
+                        android:text="Submit"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</layout>

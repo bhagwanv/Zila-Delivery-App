@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.views.returnorder.ReturnOrderListActivity">
+
+    <data>
+
+        <variable
+            name="returnOrderViewModel"
+            type="com.sk.ziladelivery.ui.views.viewmodels.ReturnOrderListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="9dp"
+            app:elevation="9dp"
+            app:tabBackground="@android:color/white" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerReturn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

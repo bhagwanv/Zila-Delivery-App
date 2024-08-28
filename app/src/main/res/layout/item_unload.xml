@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/RLUnloadItemLayout"
+            android:padding="@dimen/pading_bottom_15">
+
+
+            <CheckBox
+                android:id="@+id/item_check_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="@color/Black"
+                android:theme="@style/checkBoxStyle"
+                app:buttonTint="@color/colorLightBlueHeader" />
+
+            <TextView
+                android:id="@+id/tv_item_name"
+                style="@style/SegoeUIBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="3dp"
+                android:layout_toLeftOf="@+id/tv_qty"
+                android:maxLines="2"
+                android:layout_toRightOf="@+id/item_check_box"
+                android:padding="@dimen/text_margin_2"
+                android:text=""
+                android:visibility="gone"
+                android:textColor="#2a2b45"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tv_qty"
+                style="@style/SegoeUI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:padding="@dimen/text_margin_2"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/pading_bottom_5"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="@dimen/pading_bottom_5"
+            android:background="@drawable/ic_dot_line" />
+    </LinearLayout>
+</layout>

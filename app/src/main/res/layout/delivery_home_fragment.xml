@@ -1,0 +1,838 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/dashboard_back">
+
+
+                <LinearLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/dashboard_back"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/ll_last_mile_app"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_toRightOf="@+id/progress_bar"
+                            android:gravity="end"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_trip_start_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                style="@style/CommanstyleAB"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Trip Start Time"
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/activity_horizontal_margin"
+                            android:paddingTop="@dimen/activity_vertical_margin"
+                            android:paddingRight="@dimen/activity_horizontal_margin"
+                            android:paddingBottom="@dimen/activity_vertical_margin"
+                            android:weightSum="2">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <ProgressBar
+                                    android:id="@+id/progress_bar_travel"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="180dp"
+                                    android:layout_height="200dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circular_shape"
+                                    android:progressDrawable="@drawable/circular_progress_bar"
+                                    android:textAlignment="center" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_travel_time"
+                                        style="@style/SegoeUIBold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textColor="@color/black"
+                                        android:textSize="20dp" />
+
+                                    <TextView
+                                        style="@style/SegoeUIBold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:text="@string/travel_time"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textColor="@color/black"
+                                        android:textSize="10dp" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+                                <ProgressBar
+                                    android:id="@+id/progress_bar"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="140dp"
+                                    android:layout_height="180dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/circular_shape"
+                                    android:indeterminate="false"
+                                    android:progressDrawable="@drawable/circular_progress_bar"
+                                    android:progressTint="@color/new_red"
+                                    android:textAlignment="center" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_remaining_time"
+                                        style="@style/SegoeUIBold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:text=""
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textColor="@color/black"
+                                        android:textSize="20dp" />
+
+                                    <TextView
+                                        style="@style/SegoeUIBold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:text="@string/remaininng_time"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textColor="@color/black"
+                                        android:textSize="10dp" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/ll_distance_travel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/white_rectangle"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingStart="10dp"
+                                android:paddingTop="20dp"
+                                android:paddingEnd="10dp"
+                                android:paddingBottom="20dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="@string/distancetraveled"
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_distance_traveled"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_distance_left"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/white_rectangle"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:paddingStart="10dp"
+                                android:paddingTop="20dp"
+                                android:paddingEnd="10dp"
+                                android:paddingBottom="20dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="@string/distance_left"
+                                    android:textColor="@color/black"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_disleft"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_margin="10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/my_trip"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_trip_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:textSize="16dp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Total Customer"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp"
+                                    android:textStyle="normal" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_customer"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="@string/total_order"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp"
+                                    android:textStyle="normal" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_order"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="@string/total_amt"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp"
+                                    android:textStyle="normal" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_amt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/ic_dot_line" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/font_size_10">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:text="Check Route"
+                                android:textColor="@color/colorLightBlueHeader"
+                                android:textSize="@dimen/font_size_20"
+                                android:textStyle="bold" />
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/start_trip"
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_circle_grey_shape"
+                                    android:gravity="center"
+                                    android:padding="@dimen/view_margin_10"
+                                    android:text="@string/Start"
+                                    android:textColor="@color/colorLightBlueHeader"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/tvRearrange"
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_circle_rearange"
+                                    android:gravity="center"
+                                    android:padding="@dimen/view_margin_10"
+                                    android:text="Rearrange"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/inprogress_trip"
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_circle_grey_shape"
+                                    android:backgroundTint="#ffdfdf"
+                                    android:gravity="center"
+                                    android:padding="@dimen/view_margin_10"
+                                    android:text="@string/inprogress"
+                                    android:textColor="@color/red"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+
+                                <TextView
+                                    android:id="@+id/tv_add_meter_reading"
+                                    style="@style/SegoeUI"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_circle_grey_shape"
+                                    android:gravity="center"
+                                    android:padding="@dimen/view_margin_10"
+                                    android:text="Add Meter Reading"
+                                    android:textColor="@color/colorLightBlueHeader"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/trip_end"
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_circle_grey_shape"
+                                    android:backgroundTint="#e8f1e5"
+                                    android:gravity="center"
+                                    android:padding="@dimen/view_margin_10"
+                                    android:text="Trip End"
+                                    android:textColor="@color/green"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/trip_approval_pendding"
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="#e8f1e5"
+                                    android:gravity="center"
+                                    android:padding="@dimen/view_margin_10"
+                                    android:text=""
+                                    android:textColor="@color/red"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/ic_dot_line" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/ll_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/view_all_assginment"
+                                    android:textColor="@color/colorLightBlueHeader"
+                                    android:textSize="@dimen/pading_bottom_15" />
+
+                                <ImageView
+                                    android:id="@+id/iv_arrow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="10dp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center_vertical"
+                                    android:rotation="0"
+                                    app:srcCompat="@drawable/ic_right_arrow"
+                                    app:tint="@color/colorLightBlueHeader" />
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_assignment"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:background="@color/white"
+                                android:visibility="visible"
+                                tools:listitem="@layout/item_pedding_list" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/font_size_20"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/pading_bottom_10"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:padding="@dimen/pading_bottom_5"
+                            android:text="Trip Order Status Details"
+                            android:textColor="@color/darkh_gray"
+                            android:textSize="@dimen/font_size_20"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_margin_35"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/font_size_10"
+                            android:layout_marginRight="@dimen/pading_bottom_10"
+                            android:background="@drawable/ic_rounded_rectangle_blue"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <TextView
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/pading_bottom_10"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text="Shipped Order"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_shipped_order_count"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_total_shipped_amt"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_margin_35"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_margin_5"
+                            android:layout_marginRight="@dimen/pading_bottom_10"
+                            android:background="@drawable/ic_rounded_rectangle_light_green"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <TextView
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/pading_bottom_10"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text="@string/delivered_order"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_order_count_delivered"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_order_amt_delivered"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_margin_35"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_margin_5"
+                            android:layout_marginRight="@dimen/pading_bottom_10"
+                            android:background="@drawable/ic_rounded_rectangle_pink"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <TextView
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/pading_bottom_10"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text="@string/redispatch_order"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_order_count"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_order_amt"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_margin_35"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_margin_5"
+                            android:layout_marginRight="@dimen/pading_bottom_10"
+                            android:background="@drawable/ic_rounded_rectangle_light_pink"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <TextView
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/pading_bottom_10"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text="Re-Attempt"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_re_order_count"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_re_order_amt"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_margin_35"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_margin_5"
+                            android:layout_marginRight="@dimen/pading_bottom_10"
+                            android:background="@drawable/ic_rounded_rectangle_darkh_pink"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <TextView
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/pading_bottom_10"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text="@string/cancelled_order"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_order_count_cancelled"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_order_amt_cancelled"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:padding="@dimen/pading_bottom_5"
+                                android:text=""
+                                android:textColor="@color/black" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/tv_no_trip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:src="@drawable/data_not_found"
+                android:indeterminateTint="@color/colorAccent"
+                android:textColor="@color/new_red"
+                android:textSize="20dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

@@ -1,0 +1,280 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">SKDelivery</string>
+
+    <!--Navigation bar-->
+    <string name="my_assignment">मेरा असाइनमेंट</string>
+
+
+    <string name="order_currency">आर्डर मुद्रा</string>
+    <string name="return_orders">Return/Replace आर्डर</string>
+    <string name="history">इतिहास</string>
+    <string name="performance">प्रदर्शन</string>
+    <string name="language">भाषा बदलो</string>
+    <string name="english">इंग्लिश</string>
+    <string name="hindi">हिंदी</string>
+    <string name="rate_us">हमें रेटिंग दें</string>
+    <string name="setting">सेटिंग</string>
+    <string name="logout">लॉग आउट</string>
+    <string name="Assignment_Billing">असाइनमेंट बिलिंग</string>
+    <string name="Assignment_amount">असाइनमेंट राशि</string>
+    <string name="start_date">प्रारंभ दिनांक दर्ज करें</string>
+    <string name="end_date">अंतिम तिथि दर्ज करेंं</string>
+    <string name="correct_date">कृपया सही तिथि चुनें</string>
+    <string name="Login">लॉग इन </string>
+    <string name="click_here"><u>ClickHere</u>.</string>
+
+    <!--Home Fragment-->
+    <string name="rs">₹</string>
+    <string name="enter_check_date">कृपया चेक तिथि दर्ज करें</string>
+    <string name="plz_select_Bank_name">कृपया बैंक का नाम चुनें</string>
+    <string name="submitassignment">क्या आप यह असाइनमेंट सबमिट करना चाहते हैं?</string>
+
+    <string name="in_complete_task">कृपया अपना कार्य पूरा करे!!!</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="alert_yes">हाँ</string>
+    <string name="forgot_password_title">पासवर्ड भूल गए</string>
+    <string name="entermobilenumber">मोबाइल नंबर दर्ज करें</string>
+    <string name="forgot_password_result_title">पासवर्ड भूल गए अनुरोध को सफलतापूर्वक भेज दिया गया, आपको अपना पासवर्ड आपके मोबाइल नंबर पर प्राप्त होगा</string>
+    <string name="validMobilenumbe">कृपया मान्य मोबाइल नंबर दर्ज करें</string>
+    <string name="stop_assignment"> स्टाप असाइनमेंट </string>
+    <string name="assignment_id">असाइनमेंट आईडी :</string>
+    <string name="assignment_date">असाइनमेंट की तारीख:</string>
+
+    <string name="my_history">मेरा इतिहास </string>
+    <string name="my_task">मेरा टास्क</string>
+    <string name="next">आगे</string>
+    <string name="skip">छोड़ें</string>
+    <string name="valid_moboile_no">अपना मोबाइल नंबर दर्ज करें</string>
+    <string name="msg_sendyou_otp">हम आपको OTP भेजेंगे</string>
+    <string name="Verifying_your_number">अपना नंबर सत्यापित करे !</string>
+    <string name="We_have_sent_an_OTP">हमने आपके नंबर पर एक OTP भेजा है</string>
+    <string name="ChangeNumber">नम्बर बदलो</string>
+    <string name="ENETROTP">OTP दर्ज करें</string>
+    <string name="resendotp">OTP को फिर से भेजें</string>
+    <string name="enteotp">कृपया OTP दर्ज करें</string>
+    <string name="verified">सत्यापित</string>
+    <string name="internet_connection">कृपया इंटरनेट से कनेक्ट करें</string>
+    <string name="enter_correct_otp"> सही ओटीपी दर्ज करें</string>
+    <string name="Sign_here">यहाँ पर हस्ताक्षर करे</string>
+    <string name="save">जमा करें</string>
+    <string name="clear">मिटाना</string>
+    <string name="status">स्टेटस</string>
+
+
+    <!--Login Activity-->
+    <string name="mobile_number">मोबाइल नंबर</string>
+    <string name="hint_passwordr">पासवर्ड</string>
+    <string name="login">लॉग इन </string>
+    <string name="forget_passwordr">पासवर्ड भूल गए?</string>
+
+    <!--Order place fragment-->
+    <string name="cancel">रद्द करना</string>
+    <string name="Closing_Application">ऐप बंद करना</string>
+    <string name="Exit_APP">क्या आप ऐप  से बाहर निकलना चाहते हैं?</string>
+    <string name="ok">ठीक</string>
+    <string name="enter_total_amt">कृपया कुल राशि दर्ज करें</string>
+    <string name="total_amt">कुल राशि</string>
+
+    <string name="choose_status_and_comment">कृपया स्थिति और टिप्पणी चुनें</string>
+    <string name="enter_cheque_number">कृपया चेक नंबर दर्ज करें</string>
+
+    <string name="enter_reference_id">कृपया संदर्भ आईडी दर्ज करें</string>
+    <string name="enter_reference_mpos_id">Please enter Valid MPOS Reference Id</string>
+    <string name="enter_valid_rtgs_id">Please enter Valid RTGS/NEFT Reference Id</string>
+
+    <string name="total_submitted">कुल जमा</string>
+
+    <string name="payment_cancel">भुगतान रद्द!</string>
+    <string name="payment_pending">भुगतान लंबित!</string>
+    <string name="time_out">समय समाप्त!</string>
+    <string name="order_placed_done"> सफलतापूर्वक प्रस्तुत किया गया !!</string>
+    <string name="takephoto">फोटो लो</string>
+    <string name="addphoto">तस्वीर जोड़ो</string>
+    <string name="choosefrmlibrary">लाइब्रेरी से चुनें</string>
+    <string name="currupt_images">चित्र दूषित है, कृपया अन्य चित्र चुनें</string>
+    <string name="plz_upload_check_images">कृपया चेक फ़ोटो अपलोड करें</string>
+    <string name="plz_enter_chequeno">कृपया चेक नंबर दर्ज करें</string>
+
+    <string name="enter_cheque_amt">कृपया चेक राशि दर्ज करें</string>
+    <!--Assignment Accept-->
+    <string name="accept">स्वीकार </string>
+    <string name="reject">अस्वीकार</string>
+    <string name="Error">त्रुटि</string>
+    <string name="reject_assignment">असाइनमेंट निरस्त करें</string>
+    <string name="select_reson">कृपया अस्वीकृति कारण चुनें और सबमिट करें</string>
+    <string name="plz_select_reason">कृपया कारण चुनें</string>
+    <string name="no_data_error">कोई कार्य उपलब्ध नहीं है</string>
+    <string name="enter_mobile_number">मोबाइल नंबर दर्ज करें</string>
+    <string name="enter_password">पास वर्ड दर्ज करें</string>
+    <string name="enter_valid_password">मान्य पासवर्ड दर्ज करें</string>
+    <string name="enter_valid_mobile">वैध मोबाइल नंबर दर्ज करें</string>
+    <string name="network_error">नेटवर्क कनेक्शन नहीं है।</string>
+    <string name="select_coin">कृपया सिक्का चुनें</string>
+    <string name="errorString">डेटा मौजूद नहीं है</string>
+    <string name="currency_Submit">सफलतापूर्वक किया गया</string>
+    <string name="name">नाम</string>
+    <string name="mobilenumber">मोबाइल नंबर</string>
+    <string name="Emailid">ईमेल आईडी</string>
+    <string name="document">दस्तावेज़</string>
+    <string name="license">ड्राइविंग लाइसेंस / आधार कार्ड</string>
+    <string name="plz_enter_comment">Please Enter Comment</string>
+
+    <!--Splash screen-->
+    <string name="youAreNotUpdatedTitle">अपडेट उपलब्ध है</string>
+    <string name="youAreNotUpdatedMessage">शापकिराना एप्लिकेशन का एक नया संस्करण उपलब्ध है। कृपया संस्करण में अपडेट करें</string>
+    <string name="youAreNotUpdatedMessage1">\s now</string>
+    <string name="update">अपडेट</string>
+    <string name="improper_response_server">सर्वर से गलत प्रतिक्रिया</string>
+    <string name="search_assignment">असाइनमेंट खोजे</string>
+    <string name="no_task">कोई टास्क उपलब्ध नहीं है</string>
+    <string name="My_Profile">मेरी प्रोफाइल</string>
+    <string name="Search">खोजे</string>
+    <string name="OrderID">आर्डर आईडी:</string>
+    <string name="AssignmentID">असाइनमेंट आईडी </string>
+    <string name="Pending">अपूर्ण</string>
+    <string name="Partial">आंशिक</string>
+    <string name="no_assignment">कोई असाइनमेंट उपलब्ध नहीं है</string>
+    <string name="feature_comingsoon">यह सुविधा जल्द ही आ रही है</string>
+    <string name="Start_Date">आरंभ तिथि</string>
+    <string name="Start">आरंभ</string>
+    <string name="view_pdf">पीडीएफ देखें</string>
+    <string name="msg_marshmallow_permission_gps">GPS permission allows us to access location data. Please allow in App Settings for additional functionality.</string>
+
+    <string name="End_Date">अंतिम तिथि</string>
+    <string name="order_Canceled">रद्द किए गए आर्डर की संख्या :</string>
+    <string name="order_Delivered">डिलीवर आर्डर की संख्या :</string>
+    <string name="Assignment_Status">असाइनमेंट स्थिति :</string>
+    <string name="Assignment_Date">असाइनमेंट दिनांक :</string>
+    <string name="Order_Details">आर्डर विस्तार</string>
+    <string name="view_Details">विवरण देखें</string>
+
+    <string name="shopname">दुकान का नाम:</string>
+    <string name="orderstatus">आर्डर स्टेटस</string>
+    <string name="SelectStatus"> स्टेटस चुने</string>
+    <string name="comment">टिप्पणी</string>
+    <string name="Total">कुल</string>
+    <string name="Payment_option">भुगतान विकल्प</string>
+    <string name="prepaidonline_status">प्रीपेड ऑनलाइन</string>
+
+    <string name="online_payment">ऑनलाइन भुगतान</string>
+    <string name="cash_payment">नकद भुगतान</string>
+    <string name="ChequE_PAYMENT">चैक भुगतान</string>
+    <string name="moneytransfer_process">तत्काल में मनी ट्रांसफर प्रक्रिया</string>
+
+    <string name="rcv_amnt">प्राप्त राशि दर्ज करें</string>
+    <string name="chque_photo">चेक फोटो अनिवार्य है</string>
+    <string name="prepaid_amnt">प्रीपेड राशि</string>
+    <string name="amnt_rcv"> प्राप्त राशि</string>
+    <string name="enetr_amnt">राशि दर्ज करें</string>
+    <string name="no.">संख्या</string>
+    <string name="m_pos_amount">MPOS भुगतान</string>
+    <string name="rtgs_amount">RTGS भुगतान</string>
+
+    <string name="Reference_number">संदर्भ संख्या</string>
+    <string name="items">आइटम</string>
+    <string name="qty">मात्रा</string>
+    <string name="price">मूल्य</string>
+    <string name="oreder_no"> आर्डर संख्या</string>
+    <string name="item_no"> आइटम की संख्या:</string>
+    <string name="Direction">दिशा</string>
+    <string name="Call">कॉल</string>
+    <string name="Pay_Amount">राशि का भुगतान करें</string>
+    <string name="Paid_Amount">भुगतान की गयी राशि</string>
+    <string name="update_btn_txt">अपडेट</string>
+    <string name="payment_received_txt">भुगतान प्राप्त</string>
+    <string name="upi_pay">UPI के साथ भुगतान करें</string>
+
+    <string name="Deliver_popup"> क्या आप ऑर्डर डिलीवर करना चाहते हैं?</string>
+    <string name="bar_Code">बार कोड नंबर दर्ज करें</string>
+    <string name="submit">जमा करें</string>
+    <string name="Sign_Pad">हस्ताक्षर पैड </string>
+    <string name="enter_amntrcv">प्राप्त राशि दर्ज करें</string>
+    <string name="enter_amnt">राशी डालें</string>
+    <string name="Short_Item">शॉर्ट आइटम</string>
+    <string name="Order_List">आर्डर सूची</string>
+    <string name="hide">छिपाना</string>
+    <string name="enter_mphos">एम पॉस संदर्भ संख्या दर्ज करें</string>
+    <string name="enter_ref">संदर्भ संख्या दर्ज करें</string>
+    <string name="enter_rtgs">Enter RTGS/NEFT  Reference Number</string>
+
+
+    <!--CashManagement-->
+    <string name="settle_assignment">सेटल असाइनमेंट</string>
+    <string name="edit">एडिट</string>
+    <string name="collected_amnt">एकत्रित राशि</string>
+    <string name="action">कार्य</string>
+    <string name="mode_pay">भुगतान का प्रकार</string>
+    <string name="note">नोट</string>
+    <string name="coin">सिक्के</string>
+    <string name="ref_no">संदर्भ संख्या :</string>
+    <string name="total_cllect_history">कुल संग्रह इतिहास</string>
+    <string name="Cheque_amount"> चेक राशि</string>
+    <string name="select_assignment">चयन असाइनमेंट</string>
+    <string name="add_note">नोट लिखो</string>
+    <string name="first_save"> सबसे पहले डाटा को सेव करें</string>
+    <string name="check_summary">कृपया जमा करने से पहले पुष्टि करें </string>
+    <string name="cash_summary">कृपया जमा करने से पहले पुष्टि करें</string>
+    <string name="online_summary">कृपया जमा करने से पहले पुष्टि करें</string>
+    <string name="no">नहीं</string>
+    <string name="cash_0">नकद राशि 0 है</string>
+    <string name="Cheque_0">चेक राशि 0 है</string>
+    <string name="online_0">ऑनलाइन राशि 0 है</string>
+
+    <!--
+    alertdialog
+-->
+    <string name="warning">चेतावनी</string>
+    <string name="completetask">कृपया अपना Task पूरा करे!!!</string>
+    <string name="pressstartButton">कृपया Start Assignment दबाएं...</string>
+    <string name="assignment_billing">असाइनमेंट बिलिंग</string>
+    <string name="mpos_id_8">MPOS संदर्भ आईडी 8 अंकों से कम नहीं होनी चाहिए</string>
+    <string name="epaylater">Epay Later</string>
+
+    <string name="reject_assginment">Reject Assignment</string>
+    <string name="assginment_settle"> Assignment Settle</string>
+
+    <string name="crop__saving">Saving picture…</string>
+    <string name="crop__wait">कृपया प्रतीक्षा कीजिये…</string>
+    <string name="crop__pick_error">No image sources available</string>
+    <string name="error_invalid_quantity_required">Invalid quantity is required!</string>
+
+    <string name="crop__done">समाप्त</string>
+    <string name="crop__cancel" tools:ignore="ButtonCase">निरस्त करना</string>
+    <string name="no_return_order_available">कोई Return/Replace आर्डर उपलब्ध नहीं है</string>
+
+    <string name="completion_time">समापन समय :</string>
+    <string name="going_dis">दूरी:</string>
+    <string name="return_dis">वापसी दूरी:</string>
+    <string name="return_dur">वापसी समय:</string>
+    <string name="away_warehouse">वेयरहाउस से आप 200 मीटर दूर हैं, आप इसे स्वीकार नहीं कर सकते</string>
+    <string name="inprogress">InProgress</string>
+    <string name="distancetraveled">DistanceTraveled</string>
+    <string name="distance_left">Distance Left</string>
+    <string name="my_trip">MY Trip</string>
+    <string name="total_order">Total Order</string>
+    <string name="view_all_assginment">View all Assignment</string>
+    <string name="redispatch_order">Redispatch Order</string>
+    <string name="delivered_order">Delivered Order</string>
+    <string name="cancelled_order">Cancelled Order</string>
+    <string name="travel_time">Travel Time</string>
+    <string name="remaininng_time">Remaininng Time</string>
+    <string name="assginmentid">AssginmentID</string>
+    <string name="assignmentid">Assignment No</string>
+    <string name="successfully_trip_completed">SuccessFully Trip Completed</string>
+    <string name="complete_trip">Complete Trip</string>
+    <string name="unloading">Unloading</string>
+    <string name="redispatch">Redispatch</string>
+    <string name="do_you_want_to_see_entire_route">Do You Want to see Entire Route?</string>
+    <string name="date" />
+    <string name="redispatch_reason">Redispatch Reason</string>
+    <string name="next_available_date">Next Available Date</string>
+    <string name="my_dashboard">My DashBoard</string>
+    <string name="my_All_trip">My Trips</string>
+    <string name="enter_milo_meter_value">Enter KM You have Travelled</string>
+    <string name="enter_here">Enter here</string>
+    <string name="uploaded_image">MiloMeter Image</string>
+    <string name="remarks">Remarks</string>
+    <string name="search_skcode">दुकान के नाम से खोजें, SKcode</string>
+    <string name="change_password">Change Password</string>
+</resources>

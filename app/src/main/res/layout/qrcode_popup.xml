@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_qrcode"
+        android:layout_width="300dp"
+        android:layout_height="500dp"></ImageView>
+
+    <TextView
+        android:id="@+id/btn_verify"
+        style="@style/SegoeUISemiBold"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/orangerectangle"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="verify"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="orderListModel"
+            type="com.sk.ziladelivery.ui.views.viewmodels.OrderListModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            android:weightSum="1">
+
+
+            <TextView
+                style="@style/SegoeUISemiBold"
+                android:id="@+id/tv_serial_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".20"
+                android:gravity="left"
+                android:layout_marginLeft="10dp"
+                android:text="@{orderListModel.serialNO}"
+                android:textColor="@color/black" />
+
+            <TextView
+                style="@style/SegoeUISemiBold"
+                android:id="@+id/tv_product_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".53"
+                android:text="@{orderListModel.productName}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_mini" />
+
+            <TextView
+                style="@style/SegoeUISemiBold"
+                android:id="@+id/tv_quantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".20"
+                android:gravity="right"
+                android:text="@{orderListModel.quantity}"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_margin_1"
+            android:background="@color/grey" />
+
+    </LinearLayout>
+
+
+</layout>

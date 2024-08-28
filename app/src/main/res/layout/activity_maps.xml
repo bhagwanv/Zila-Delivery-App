@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!--<AutoCompleteTextView
+                android:id="@+id/googleplacesearch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:drawableLeft="@drawable/ic_back"
+                android:hint="Search for a location"
+                android:lines="1"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:singleLine="true">
+            </AutoCompleteTextView>-->
+
+
+            <RelativeLayout
+                android:id="@+id/maplayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_duraction"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="@dimen/font_size_10"
+                    android:layout_marginRight="@dimen/font_size_10"
+                    android:background="@color/white"
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight=".5"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/font_size_10"
+                            android:textStyle="bold"
+                            android:text="Time Duration" />
+
+                        <TextView
+                            android:id="@+id/tv_time_durection"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="@dimen/font_size_20"
+                            android:singleLine="true"
+                            android:textStyle="bold"
+                            android:text="0.00" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight=".5"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/font_size_10"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="Total Distance" />
+
+                        <TextView
+                            android:id="@+id/tv_distance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/font_size_20"
+                            android:textColor="@color/black"
+                            android:singleLine="true"
+                            android:textStyle="bold"
+                            android:text="0.00" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/ll_duraction">
+
+
+                    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:context="gomalon.io.com.gomalon.ui.activity.GoogleMapsActivity" />
+
+                    <ImageView
+                        android:id="@+id/iv_pin"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginBottom="20dp"
+                        android:src="@drawable/ic_map_pin"
+                        android:visibility="gone" />
+
+                    <!--<android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_margin="16dp"
+                        android:src="@drawable/ic_add_circle_outline_white_48dp" />-->
+
+                </FrameLayout>
+            </RelativeLayout>
+            <!-- <LinearLayout
+                 android:id="@+id/confirm_loc"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:layout_weight="0"
+                 android:layout_marginTop="10dp"
+                 android:layout_marginBottom="10dp"
+                 android:layout_below="@+id/maplayout"
+                 android:orientation="vertical">
+                 <Button
+                     android:id="@+id/fab_add"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:background="@drawable/orangerectangle"
+                     android:textColor="@color/white"
+                     android:padding="15dp"
+                     android:textSize="15dp"
+                     android:textAllCaps="false"
+                     android:text="Confirm Location"/>
+
+
+             </LinearLayout>-->
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

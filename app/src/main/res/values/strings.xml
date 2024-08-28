@@ -1,0 +1,349 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Navigation bar-->
+    <string name="my_assignment">My Assignment</string>
+    <string name="order_currency">Order Currency</string>
+    <string name="return_orders">Return/Replace Orders</string>
+    <string name="history">History</string>
+    <string name="performance">Performance</string>
+    <string name="reject_assginment">Reject Assignment</string>
+    <string name="assginment_settle"> Assignment Settle</string>
+    <string name="language">Change Language</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="setting">Setting</string>
+    <string name="logout">Log Out</string>
+    <string name="Assignment_Billing">Assignment Billing</string>
+    <string name="Assignment_amount">Assignment Amount</string>
+    <string name="Login">LogIn</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="alert_yes">YES</string>
+    <string name="forgot_password_title">Forgot Password</string>
+    <string name="entermobilenumber"> Enter Mobile Number</string>
+    <string name="forgot_password_result_title">Forget password request sent successfully, you will receive your password on your mobile number</string>
+    <string name="validMobilenumbe">Please enter Valid  Mobile Number</string>
+    <string name="start_date">enter start  date</string>
+    <string name="end_date">enter End  date</string>
+    <string name="correct_date">Please choose correct date</string>
+    <string name="error_invalid_quantity_required">Invalid quantity is required!</string>
+    <!--Home Fragment-->
+    <string name="rs">₹</string>
+    <string name="in_complete_task">कृपया अपना Task पूरा करे!!!</string>
+    <!--Login Activity-->
+    <string name="mobile_number">Mobile Number</string>
+    <string name="hint_passwordr">Password</string>
+    <string name="forget_passwordr">Forgot Password ?</string>
+    <string name="login">Log In</string>
+
+    <string name="enter_mobile_number">Enter mobile number</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_valid_password">Enter valid password</string>
+    <string name="enter_valid_mobile">Enter valid mobile number</string>
+    <string name="network_error">No network connection.</string>
+    <string name="select_coin">Please select coin</string>
+    <string name="errorString">Data not Exist</string>
+    <string name="no_data_error">No task available</string>
+    <string name="currency_Submit">Successfully done</string>
+    <string name="stop_assignment">Stop Assignment</string>
+    <string name="assignment_id">Assignment ID :</string>
+    <string name="assignment_date">Assignment Date: </string>
+    <string name="my_history">My History </string>
+    <string name="my_task">My Task</string>
+    <string name="english">English</string>
+    <string name="hindi">Hindi</string>
+    <string name="search_assignment">Search Assignment</string>
+    <string name="no_task">No Task Available</string>
+    <string name="My_Profile">My Profile</string>
+    <string name="Search">Search</string>
+    <string name="OrderID">Order ID:</string>
+    <string name="AssignmentID">Assignment ID</string>
+    <string name="Pending">Pending</string>
+    <string name="Partial">Partial</string>
+    <string name="no_assignment">No Assignment Available</string>
+    <string name="feature_comingsoon">This Feature is coming Soon</string>
+    <string name="Start_Date">Start Date</string>
+    <string name="Start">Start</string>
+    <string name="view_pdf">View PDF</string>
+    <string name="End_Date">End Date</string>
+    <string name="order_Canceled">No. of order Canceled :</string>
+    <string name="order_Delivered">No. of order Delivered :</string>
+    <string name="Assignment_Status">Assignment Status :</string>
+    <string name="Assignment_Date">Assignment Date :</string>
+    <string name="Order_Details">Order Details</string>
+    <string name="view_Details">View Details</string>
+    <string name="shopname">Shop Name:</string>
+    <string name="orderstatus">Order Status</string>
+    <string name="SelectStatus">Select Status</string>
+    <string name="comment">Comment</string>
+    <string name="Total">Total</string>
+    <string name="Payment_option">Payment Options</string>
+    <string name="prepaidonline_status">Prepaid Online</string>
+
+    <string name="online_payment">Online Payment</string>
+    <string name="cash_payment">Cash Payment</string>
+    <string name="epaylater">Epay Later</string>
+    <string name="ChequE_PAYMENT">Cheque Payment</string>
+    <string name="moneytransfer_process">The Money Transfer Process in Instant</string>
+    <string name="rcv_amnt">Enter Received Amount</string>
+    <string name="chque_photo">Cheque Photo is Mandatory</string>
+    <string name="prepaid_amnt">Prepaid Amount</string>
+    <string name="m_pos_amount">MPOS Payment</string>
+    <string name="rtgs_amount">RTGS Payment</string>
+    <string name="Reference_number">Reference number</string>
+    <string name="amnt_rcv">Amount Received</string>
+    <string name="enetr_amnt">Enter Amount</string>
+    <string name="no.">NO.</string>
+    <string name="items">Items</string>
+    <string name="qty">Qty</string>
+    <string name="price">Price</string>
+    <string name="oreder_no"> No. of order:</string>
+    <string name="item_no"> No. of Items:</string>
+    <string name="Direction">Direction</string>
+    <string name="Call">Call</string>
+    <string name="Pay_Amount">Pay Amount</string>
+    <string name="Paid_Amount">Paid Amount</string>
+    <string name="Deliver_popup">Do you want to Deliver order?</string>
+    <string name="bar_Code">Enter Bar Code Number</string>
+    <string name="submit">Submit</string>
+    <string name="Sign_Pad">Sign Pad</string>
+    <string name="Sign_here">Sign here</string>
+    <string name="save">Save</string>
+    <string name="clear">Clear</string>
+    <string name="status">Status</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="valid_moboile_no">Please enter your mobile number</string>
+    <string name="msg_sendyou_otp">We will send you an One Time Password</string>
+    <string name="Verifying_your_number">Verifying your number !</string>
+    <string name="We_have_sent_an_OTP">We have sent an OTP on your number</string>
+    <string name="ChangeNumber">Change Number</string>
+    <string name="ENETROTP">Enter OTP</string>
+    <string name="resendotp">Resend OTP</string>
+    <string name="enteotp">Please enter OTP</string>
+    <string name="verified">verified</string>
+    <string name="internet_connection">Please Connect to Internet</string>
+    <string name="enter_correct_otp"> Enter Correct OTP</string>
+    <string name="enter_amntrcv">Enter Amount To Received</string>
+    <string name="enter_amnt">Enter Amount</string>
+    <string name="Short_Item">Short Item</string>
+    <string name="Order_List">Order_List</string>
+    <string name="hide">Hide</string>
+    <string name="enter_mphos">Enter M Pos Reference Number</string>
+    <string name="enter_rtgs">Enter RTGS/NEFT  Reference Number</string>
+    <string name="enter_ref">Enter Reference Number</string>
+    <!--CashManagement-->
+    <string name="settle_assignment">Settle Assignment</string>
+    <string name="edit">Edit</string>
+    <string name="collected_amnt">Collected Amount</string>
+    <string name="action">Action</string>
+    <string name="mode_pay">Mode Of Payment</string>
+    <string name="note">Notes</string>
+    <string name="coin">Coins</string>
+    <string name="ref_no">Ref no.:</string>
+    <string name="total_cllect_history">Total Collection History</string>
+    <string name="Cheque_amount">Cheque Amount</string>
+
+    <string name="select_assignment">Select Assignment</string>
+    <string name="add_note">Add Note</string>
+    <string name="first_save"> First Save Data  </string>
+    <string name="check_summary">Please Confirm before Submit Final Cheque Summary  </string>
+    <string name="cash_summary">Please Confirm before Submit Final Cash  Summary   </string>
+    <string name="online_summary">Please Confirm before Submit Final Online Summary  </string>
+    <string name="no">NO</string>
+    <string name="cash_0">Cash Amount is 0</string>
+    <string name="Cheque_0">Cheque Amount is 0</string>
+    <string name="online_0">Online Amount is 0</string>
+    <string name="submitassignment">Do you Want to Submit this Assignment?</string>
+    <string name="click_here"><u>ClickHere</u>.</string>
+
+    <!-- Order details Spinner value-->
+    <string-array name="status">
+        <item>select</item>
+        <item>Delivered</item>
+        <item>Delivery Canceled</item>
+        <item>Delivery Redispatch</item>
+    </string-array>
+    <string-array name="Redispatch_status">
+        <item>select</item>
+        <item>Delivered</item>
+        <item>Delivery Canceled</item>
+    </string-array>
+    <string-array name="status_online">
+        <item>select</item>
+        <item>Delivered</item>
+        <item>Delivery Redispatch</item>
+    </string-array>
+
+    <string-array name="delivered_comment">
+        <item>select</item>
+        <item>Delivered</item>
+    </string-array>
+    <string-array name="comment">
+        <item>select</item>
+        <item>Delivered</item>
+        <item>Don\'t Want</item>
+        <item>Customer not available</item>
+        <item>fake Order</item>
+    </string-array>
+
+    <string-array name="comment_delivery_cancel">
+        <!--
+        <item>Late Delivery (OPS)</item>
+        <item>Late Delivery (Pur)</item>
+        <item>Damage Expiry (Ops)</item>
+        <item>Damage Expiry (Pur)</item>
+        <item>Price Issue (sales)</item>
+        <item>Fake Order (sales)</item>
+        <item>Partial Delivery (Pur)</item>
+        <item> Without Contacted</item>
+        <item> Line Item Cut Issue</item>
+        <item>Order Not Placed By Customer</item>
+        <item>No Reply</item>
+        <item>Shop Closed</item>
+        <item>Number Unreachable</item>
+        <item>By Mistake Punched by Customer</item>
+        <item>Stock Already Available Purchase Other Resources</item>
+        <item>Payment Not Available</item>
+        <item>Double Order Placed by Customer</item>
+        <item>Phone Switch off</item>
+        <item>Alternate Line Item Delivery</item>
+        <item>Delivery Boy Denied to Deliver at Customer Address</item>
+        <item>Delivery Person Distance Issue (Out of Area)</item>
+        <item>Fake Order by Sales Person</item>
+        <item>Fake Order by Customer</item>
+        <item>Force to Delivery Location/Address</item>
+        <item>Previous Order Pending</item>
+        <item>Due to Product Unavailability (Purchase)</item>
+        <item>Expiry Item</item>
+        <item>Red Zone Area</item>
+        <item>Shelf Life Issue</item>
+        <item>Material Physically Not Available</item>
+        <item>MRP Difference Issue</item>
+        <item>Physical Stock Damage / Leakage</item>
+        <item>Delivery Delay from Purchase</item>-->
+        <item>select</item>
+        <item>Wrong Item was sent</item>
+        <item>Item Damaged or Expired</item>
+        <item>Delivery Delay</item>
+        <item>Order Not Placed By Customer</item>
+        <item>Double Order Placed by Customer</item>
+        <item>MRP Issue</item>
+        <item>Item Unavailability</item>
+    </string-array>
+
+    <string-array name="comment_delivery_redispatch">
+        <item>select</item>
+        <item>Customer Not Available</item>
+        <item>Shop Closed</item>
+        <item>Shop Not Found</item>
+    </string-array>
+    <!-- rejected reason Spinner value-->
+    <string-array name="reason">
+        <item>Select Reason</item>
+        <item>Don\'t Want</item>
+        <item>Others</item>
+        <!-- <item>fake Order</item>-->
+    </string-array>
+    <!--Order place fragment-->
+    <string name="update_btn_txt">UPDATE</string>
+    <string name="msg_marshmallow_permission_gps">GPS permission allows us to access location data. Please allow in App Settings for additional functionality.</string>
+
+    <string name="payment_received_txt">Payment Received</string>
+    <string name="upi_pay">Pay with UPI</string>
+    <string name="cancel">Cancel</string>
+    <string name="Closing_Application">Closing Application</string>
+    <string name="Exit_APP">Do you want Exit APP?</string>
+    <string name="ok">OK</string>
+    <string name="enter_total_amt">Please enter total Amount</string>
+    <string name="total_amt"> Total Amount</string>
+    <string name="choose_status_and_comment">Please choose status and comment</string>
+    <string name="enter_cheque_number">Please enter cheque number</string>
+    <string name="enter_check_date">Please enter  Cheque date</string>
+    <string name="enter_cheque_amt">Please enter cheque Amount</string>
+    <string name="enter_reference_id">Please enter MPOS Reference Id</string>
+    <string name="enter_reference_mpos_id">Please enter Valid MPOS Reference Id</string>
+    <string name="enter_valid_rtgs_id">Please enter Valid RTGS/NEFT Reference Id</string>
+    <string name="mpos_id_8"> MPOS Reference Id Should not be less than 8 digit </string>
+    <string name="total_submitted">Total Submitted</string>
+    <string name="payment_cancel">Payment cancel!</string>
+    <string name="payment_pending">Payment Pending!</string>
+    <string name="time_out">Time out!</string>
+    <string name="order_placed_done"> Successfully Submited !!</string>
+    <string name="takephoto">Take Picture</string>
+    <string name="addphoto">Add Photo</string>
+    <string name="choosefrmlibrary">Choose From Library</string>
+    <string name="currupt_images">Image are corrupted, please choose other image</string>
+    <string name="plz_upload_check_images">Please upload  Cheque photo</string>
+    <string name="plz_enter_chequeno">Please Enter  Cheque Number</string>
+    <string name="plz_select_Bank_name">Please Select Bank Name</string>
+    <!--Assignment Accept-->
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="Error">Error</string>
+    <string name="reject_assignment">Reject Assignment</string>
+    <string name="select_reson">Please select rejection reason and submit</string>
+    <string name="plz_select_reason">Please select reason</string>
+    <string name="plz_enter_comment">Please Enter Comment</string>
+    <string name="name">Name</string>
+    <string name="mobilenumber">Mobile Number</string>
+    <string name="Emailid">Email ID</string>
+    <string name="document">Document</string>
+    <string name="license">Driving Licence/Aadhar Card</string>
+    <!--Splash screen-->
+    <string name="youAreNotUpdatedTitle">Update Available</string>
+    <string name="youAreNotUpdatedMessage">A new version of Direct Last Mile  application is available. Please update to version\s</string>
+    <string name="youAreNotUpdatedMessage1">\s now</string>
+    <string name="update">Update</string>
+    <string name="improper_response_server">improper response from the server</string>
+    <!--alertdialog-->
+    <string name="warning">Warning</string>
+    <string name="completetask">Please first complete your Task!!!</string>
+    <string name="pressstartButton">Please Click on start Button</string>
+    <string name="assignment_billing">Assignment Billing</string>
+
+
+    <string name="crop__saving">Saving picture…</string>
+    <string name="crop__wait">Please wait…</string>
+    <string name="crop__pick_error">No image sources available</string>
+
+    <string name="crop__done">DONE</string>
+    <string name="crop__cancel" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="no_return_order_available">No Order\'s Available</string>
+    <string name="completion_time">Completion Time :</string>
+    <string name="going_dis">Going Distance :</string>
+    <string name="return_dis">Return Distance :</string>
+    <string name="return_dur">Return Duration :</string>
+    <string name="away_warehouse">You are 200m away from Warehouse,you cant Accept it</string>
+    <string name="inprogress">InProgress</string>
+    <string name="distancetraveled">DistanceTraveled</string>
+    <string name="distance_left">Distance Left</string>
+    <string name="my_trip">MY Trip</string>
+    <string name="total_order">Total Order</string>
+    <string name="view_all_assginment">View all Assignment</string>
+    <string name="redispatch_order">Redispatch Order</string>
+    <string name="delivered_order">Delivered Order</string>
+    <string name="cancelled_order">Cancelled Order</string>
+    <string name="travel_time">Travel Time</string>
+    <string name="remaininng_time">Remaininng Time</string>
+    <string name="assginmentid">AssignmentID</string>
+    <string name="assignmentid">Assignment No</string>
+    <string name="successfully_trip_completed">SuccessFully Trip Completed</string>
+    <string name="complete_trip">Complete Trip</string>
+    <string name="unloading">Unloading</string>
+    <string name="redispatch">Redispatch</string>
+    <string name="do_you_want_to_see_entire_route">Do You Want to see Entire Route?</string>
+    <string name="date">Enter Date</string>
+    <string name="redispatch_reason">Redispatch Reason</string>
+    <string name="next_available_date">Next Available Date</string>
+    <string name="my_dashboard">My DashBoard</string>
+    <string name="my_All_trip">My Trips</string>
+    <string name="enter_milo_meter_value">Enter KM You have Travelled</string>
+    <string name="enter_here">Enter here</string>
+    <string name="uploaded_image">MiloMeter Image</string>
+    <string name="remarks">Remarks</string>
+    <string name="search_skcode">Search by Shop Name,SKcode</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="change_password">Change Password</string>
+
+</resources>

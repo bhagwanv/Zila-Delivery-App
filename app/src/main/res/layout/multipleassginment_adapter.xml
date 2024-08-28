@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="myAssignmentlistener"
+            type="com.sk.ziladelivery.listener.MultipleAssignmentInterface" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="4dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin_5">
+
+                    <TextView
+                        android:id="@+id/assign_id"
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/view_padding_10"
+                        android:layout_marginTop="@dimen/view_padding_10"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin_5">
+
+                    <TextView
+                        android:id="@+id/date"
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="@dimen/view_padding_10"
+                        android:layout_marginBottom="@dimen/pading_bottom_5"
+                        android:gravity="center"
+                        android:textColor="@color/dark_small_txt" />
+
+                    <TextView
+                        android:id="@+id/tv_orderno"
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="@dimen/view_padding_10"
+                        android:layout_marginBottom="@dimen/pading_bottom_5"
+                        android:gravity="center"
+                        android:textColor="@color/dark_small_txt" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_dtime_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="@dimen/view_padding_10"
+                        android:layout_marginTop="@dimen/view_padding_10"
+                        android:layout_marginRight="@dimen/view_padding_10"
+                        android:background="@color/divider_drak_color" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+
+                            android:layout_alignParentStart="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:orientation="horizontal"
+                                android:layout_alignParentStart="true">
+
+                                <TextView
+                                    style="@style/SegoeUIBold"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="start"
+                                    android:text="@string/completion_time"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_assgin_duration"
+                                    style="@style/SegoeUIBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="end"
+                                    android:text=""
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:layout_alignParentStart="true">
+
+                                <TextView
+                                    style="@style/SegoeUIBold"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="start"
+                                    android:text="@string/going_dis"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/black"
+                                    android:textSize="15dp" />
+
+                                <TextView
+                                    android:id="@+id/tv_assginment_distance"
+                                    style="@style/SegoeUIBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:gravity="end"
+                                    android:text=""
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:layout_alignParentStart="true">
+
+                                <TextView
+                                    style="@style/SegoeUIBold"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="start"
+                                    android:text="@string/return_dis"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/Black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_return_distance"
+                                    style="@style/SegoeUIBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end"
+                                    android:gravity="center"
+                                    android:text=""
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:layout_alignParentStart="true">
+
+                                <TextView
+                                    style="@style/SegoeUIBold"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="start"
+                                    android:gravity="start"
+                                    android:text="@string/return_dur"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_return_duration"
+                                    style="@style/SegoeUIBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="end"
+                                    android:text=""
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/gray"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="@dimen/view_padding_10"
+                    android:layout_marginTop="@dimen/view_padding_10"
+                    android:layout_marginRight="@dimen/view_padding_10"
+                    android:background="@color/divider_drak_color" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_order_list"
+                        android:layout_width="90dp"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/ic_orderlist">
+
+                        <TextView
+                            android:id="@+id/bt_order_list"
+                            style="@style/SegoeUIBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/Order_Details"
+                            android:gravity="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_direction"
+                        android:layout_width="90dp"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/ic_orderlist">
+
+                        <TextView
+                            style="@style/SegoeUIBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/Direction"
+                            android:gravity="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_start"
+                        android:layout_width="90dp"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/ic_reject_bt">
+
+                        <TextView
+                            android:id="@+id/bt_start"
+                            style="@style/SegoeUIBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/Start"
+                            android:gravity="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/reject_color"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tv_timer_layout"
+                        android:layout_width="90dp"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:layout_alignParentEnd="true">
+
+                        <TextView
+                            android:id="@+id/tv_timer_item"
+                            style="@style/SegoeUIBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/reject_color"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_serial_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:visibility="gone"
+                    android:weightSum="1">
+
+                    <TextView
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight=".20"
+                        android:gravity="left"
+                        android:text="SNo."
+                        android:textColor="@color/dark_small_txt"
+                        android:textSize="@dimen/text_size_small"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".53"
+                        android:text="Items"
+                        android:textColor="@color/dark_small_txt"
+                        android:textSize="@dimen/text_size_small"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".20"
+                        android:gravity="right"
+                        android:text="Quantity"
+                        android:textColor="@color/dark_small_txt"
+                        android:textSize="@dimen/text_size_small"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_order_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/view_margin_10"
+                    android:visibility="gone"
+                    tools:listitem="@layout/item_order_list" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</layout>

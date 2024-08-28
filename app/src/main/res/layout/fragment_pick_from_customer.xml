@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.views.fragment.PickFromCustomerFragment">
+
+    <data>
+
+        <variable
+            name="returnOrderViewModel"
+            type="com.sk.ziladelivery.ui.views.viewmodels.ReturnOrderListViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPickFromCustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvEmpty"
+            style="@style/SegoeUISemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/no_return_order_available"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+</layout>

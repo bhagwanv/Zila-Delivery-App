@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/SegoeUIBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Order Type"
+                android:visibility="visible"
+                android:layout_gravity="start"
+                android:textColor="@color/red"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tvorderType"
+                style="@style/SegoeUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:layout_marginStart="@dimen/font_size_10"
+                android:text="Order Type"
+                android:visibility="visible"
+                android:layout_gravity="start"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/pading_bottom_5">
+
+            <CheckBox
+                android:id="@+id/item_check_box"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="?android:attr/listChoiceIndicatorMultiple"
+                android:button="@null"
+                android:theme="@style/checkBoxStyle"
+                app:buttonTint="@color/colorLightBlueHeader" />
+
+            <TextView
+                android:id="@+id/tv_item_id"
+                style="@style/SegoeUIBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="3dp"
+                android:layout_toRightOf="@+id/item_check_box"
+                android:padding="@dimen/text_margin_2"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tv__order_status"
+                style="@style/SegoeUI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="3dp"
+                android:padding="@dimen/text_margin_2"
+                android:text=""
+                android:textColor="#7e84a3"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                style="@style/SegoeUIBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="3dp"
+                android:layout_toLeftOf="@+id/iv_down_item"
+                android:padding="@dimen/text_margin_2"
+                android:text=""
+                android:textColor="#2a2b45"
+                android:textSize="14dp"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/iv_down_item"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/font_size_10"
+                android:src="@drawable/ic_arrow_drop_od" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvOrderPaymentMode"
+            style="@style/SegoeUI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:padding="@dimen/text_margin_2"
+            android:text="Online Payment"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:textColor="@color/red"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvOrderStatusMessage"
+            style="@style/SegoeUI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:padding="@dimen/text_margin_2"
+            android:text=""
+            android:layout_gravity="center"
+            android:textColor="@color/red"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/pading_bottom_5"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="@dimen/pading_bottom_5"
+            android:background="@drawable/ic_dot_line" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_rv_item_detail_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/it_item_name"
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="2"
+                    android:padding="@dimen/text_margin_2"
+                    android:text="Item Name"
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+                <TextView
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight=".5"
+                    android:padding="@dimen/text_margin_2"
+                    android:text="QTY"
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+                <TextView
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight=".5"
+                    android:padding="@dimen/text_margin_2"
+                    android:text="Amount"
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_item_detail_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/child_item_info" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/pading_bottom_5"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="@dimen/pading_bottom_5"
+                android:background="@drawable/ic_dot_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="2"
+                    android:visibility="invisible"
+                    android:padding="@dimen/text_margin_2"
+                    android:text=""
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+                <TextView
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight=".5"
+                    android:visibility="invisible"
+                    android:padding="@dimen/text_margin_2"
+                    android:text=""
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+                <TextView
+                    style="@style/SegoeUIBold"
+                    android:id="@+id/tvTotalGrossAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_weight=".5"
+                    android:padding="@dimen/text_margin_2"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:visibility="invisible"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <Button
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/pading_bottom_5"
+                    android:background="@drawable/button_border_line_red"
+                    android:text="Cancel Order"
+                    android:id="@+id/btnCancelOrder"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:textColor="@color/red"
+                    android:visibility="gone"/>
+
+                <Button
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/pading_bottom_5"
+                    android:background="@drawable/button_border_line"
+                    android:text="Re-Attempt"
+                    android:visibility="visible"
+                    android:id="@+id/btnReAttempt"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:textColor="#0058ff" />
+
+               <!-- <Button
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_border_line"
+                    android:layout_margin="@dimen/pading_bottom_5"
+                    android:text="Re-Attempt"
+                    android:id="@+id/btnReDispatch"
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
+                    android:textColor="#0058ff" />-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

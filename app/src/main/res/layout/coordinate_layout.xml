@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:orientation="vertical"
+        android:weightSum="2"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/fragment_map_view">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_route"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/do_you_want_to_see_entire_route" />
+
+            <TextView
+                android:id="@+id/tv_clickhere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/click_here"
+                android:textColor="@color/colorLightBlueHeader">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".main.fragment.MapSkBeatFragment" />
+
+            <RelativeLayout
+                android:id="@+id/rl_voice_view"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_above="@+id/map"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="210dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/tv_voice_recoding"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/font_size_10"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_recoding" />
+
+
+                <TextView
+                    android:id="@+id/tv_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/font_size_10"
+                    android:layout_toLeftOf="@+id/tv_calling"
+                    android:layout_toRightOf="@+id/tv_voice_recoding"
+                    android:text=""
+                    android:textColor="#2a2b45"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/tv_calling"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/font_size_10"
+                    app:srcCompat="@drawable/ic_call" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

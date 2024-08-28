@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="currencySubmitListener"
+            type="com.sk.ziladelivery.listener.CurrencySubmitListener" />
+
+        <variable
+            name="currencyViewModel"
+            type="com.sk.ziladelivery.ui.views.viewmodels.CurrencyViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:context=".Activities.activity.MainActivity">
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@color/white"
+                android:elevation="@dimen/view_margin_20">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize">
+
+                    <LinearLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/titlebar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:id="@+id/back"
+                                android:layout_width="30dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentStart="true"
+                                android:foregroundGravity="left"
+                                android:padding="@dimen/view_margin_5"
+                                app:srcCompat="@drawable/ic_left_black" />
+
+                            <TextView
+                                android:id="@+id/toolbar_title"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/text_margin_50"
+                                android:layout_marginTop="@dimen/pading_bottom_10"
+                                android:gravity="center"
+                                android:text="Cash Payment"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                tools:ignore="RelativeOverlap" />
+
+                            <TextView
+                                android:id="@+id/cash_paidamnt"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="@dimen/pading_bottom_15"
+                                android:layout_marginRight="10dp"
+                                android:layout_toRightOf="@+id/toolbar_title"
+                                android:gravity="right"
+                                android:text=""
+                                android:textColor="@color/green"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                tools:ignore="RelativeOverlap" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/title_layout"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cmngsoon_txt"
+                style="@style/SegoeUISemiBold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/feature_comingsoon"
+                android:textColor="@color/colorAccent"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/currency_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/note"
+                            android:textColor="@color/Black" />
+
+                        <TextView
+                            android:id="@+id/note_qty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="10dp"
+                            android:gravity="right"
+                            android:text=""
+                            android:textColor="@color/Black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/coin"
+                            android:textColor="@color/Black" />
+
+                        <TextView
+                            android:id="@+id/coin_qty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="10dp"
+                            android:gravity="right"
+                            android:text=""
+                            android:textColor="@color/Black" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/grey"></View>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/total_amt"
+                            android:textColor="@color/green" />
+
+                        <TextView
+                            android:id="@+id/total_amnt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="10dp"
+                            android:gravity="right"
+                            android:text=""
+                            android:textColor="@color/green" />
+                    </LinearLayout>
+
+                    <TableRow
+                        android:id="@+id/tableRow2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="#fff"
+                        android:gravity="center"
+                        android:padding="@dimen/view_padding_5"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight=".3"
+                            android:gravity="center"
+                            android:text="Total"
+                            android:textColor="@color/colorOrange"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            style="@style/SegoeUISemiBold"
+                            android:layout_gravity="center"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="5dp"
+                            android:paddingBottom="10dp"
+                            android:text="1X."
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/total_qty"
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight=".4"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/total_amt"
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight=".3"
+                            android:gravity="left"
+                            android:text="0"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
+                    </TableRow>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        style="@style/SegoeUIBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/green"
+                        android:onClick="@{(v)->currencySubmitListener.currencySubmitBtnClicked()}"
+                        android:text="@string/submit"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bid"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/colorAccent"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

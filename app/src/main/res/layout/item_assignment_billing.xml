@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="orderAssignmentViewModel"
+            type="com.sk.ziladelivery.ui.views.viewmodels.OrderAssignmentViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/view_margin_5">
+
+                <LinearLayout
+                    android:id="@+id/order_id_ler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/view_margin_10"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/order_id_ler"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/view_padding_10"
+                            android:gravity="center_vertical"
+                            android:text="@{orderAssignmentViewModel.orderId}"
+                            android:textColor="@color/black"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            style="@style/SegoeUI"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/view_padding_10"
+                            android:gravity="center_vertical"
+                            android:text="@{orderAssignmentViewModel.date}"
+                            android:textColor="@color/gray"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/order_id_ler"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="@dimen/view_padding_10"
+                            android:text="@{orderAssignmentViewModel.totalAmount}"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/view_padding_10"
+                            android:layout_marginRight="@dimen/text_margin_10"
+                            android:gravity="center_vertical"
+                            android:text="@{orderAssignmentViewModel.itemCount}"
+                            android:textColor="@color/gray"
+                            android:textSize="15dp" />
+
+
+                        <!-- <TextView
+                             style="@style/SegoeUI"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="@dimen/view_margin_5"
+                             android:layout_marginRight="@dimen/view_padding_10"
+                             android:textColor="@color/gray"
+                             android:textSize="15dp" />-->
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profile_cust"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/order_id_ler"
+                    android:layout_marginTop="@dimen/view_margin_5"
+                    android:layout_marginBottom="@dimen/view_margin_5"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight=".3"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="@dimen/text_margin_10"
+                            app:srcCompat="@drawable/ic_shop_store_icon" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:id="@+id/ler_profile_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/view_margin_10"
+                            android:layout_marginTop="2dp"
+                            android:layout_toEndOf="@+id/profile_image_nav"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:maxLines="3"
+                                android:text="@{orderAssignmentViewModel.customerName}"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_16" />
+
+                            <TextView
+                                style="@style/SegoeUI"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@{orderAssignmentViewModel.shopName}"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/font_size_14"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.7"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/view_margin_5">
+
+                        <TextView
+                            android:id="@+id/tv_status"
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/view_margin_5"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/pading_bottom_10" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/nav_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/profile_cust"
+                    android:background="@color/gray" />
+
+                <LinearLayout
+                    android:id="@+id/location_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nav_view"
+                    android:layout_marginStart="@dimen/view_margin_10"
+                    android:layout_marginTop="@dimen/view_margin_5"
+                    android:layout_marginBottom="@dimen/view_margin_5"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/shop_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_shop_store_icon" />
+
+                        <TextView
+                            android:id="@+id/address"
+                            style="@style/SegoeUI"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_toRightOf="@+id/shop_icon"
+                            android:maxLines="4"
+                            android:text="@{orderAssignmentViewModel.address}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_size_14" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>

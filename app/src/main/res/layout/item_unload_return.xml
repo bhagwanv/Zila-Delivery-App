@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/RLUnloadItemLayout"
+            android:weightSum="5"
+            android:layout_marginTop="10dp"
+            android:padding="5dp">
+
+
+            <CheckBox
+                android:layout_weight="0.4"
+                android:id="@+id/item_check_box"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text=""
+                android:textColor="@color/Black"
+                android:theme="@style/checkBoxStyle"
+                app:buttonTint="@color/colorLightBlueHeader" />
+
+
+        <!--    <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4">
+
+               &lt;!&ndash; <RelativeLayout
+                    android:id="@+id/cbCheck"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/check_box_bg">
+
+                    <CheckBox
+                        android:id="@+id/cbItemCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        />
+                </RelativeLayout>&ndash;&gt;
+
+
+
+
+
+            </RelativeLayout>-->
+
+
+            <TextView
+                android:id="@+id/tv_item_name"
+                style="@style/SegoeUIBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:maxLines="2"
+                android:padding="@dimen/text_margin_2"
+                android:text="Itemname"
+                android:visibility="visible"
+                android:textColor="#2a2b45"
+                android:textSize="14dp"
+                android:layout_weight="1.9"/>
+
+            <TextView
+                android:id="@+id/tvBachCode"
+                style="@style/SegoeUIBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:maxLines="2"
+                android:padding="@dimen/text_margin_2"
+                android:text="Bachcode"
+                android:visibility="visible"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_weight="0.9"/>
+
+            <TextView
+                android:id="@+id/tv_qty"
+                style="@style/SegoeUI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:padding="@dimen/text_margin_2"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_weight="0.9"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etEditQuntity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_qty"
+                android:background="@drawable/rectangle"
+                android:layout_alignParentRight="true"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:textSize="14dp"
+                android:layout_marginStart="3dp"
+                android:maxLines="2"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvImageUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:visibility="gone"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/pading_bottom_5"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="@dimen/pading_bottom_5"
+            android:background="@drawable/ic_dot_line" />
+    </LinearLayout>
+</layout>

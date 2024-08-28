@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.sk.ziladelivery.data.model.ReturnOrderListModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/view_margin_5"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_margin_10"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_order_id"
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/view_padding_10"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/orange_dark"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        style="@style/SegoeUISemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/view_padding_10"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_order_type"
+                    style="@style/SegoeUISemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_margin_10"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="@dimen/view_margin_5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_shopname"
+                    style="@style/SegoeUISemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_16" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/SegoeUI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_14"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/nav_view"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/SegoeUI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_margin_10"
+                android:layout_marginTop="@dimen/view_margin_5"
+                android:layout_marginEnd="@dimen/text_margin_5"
+                android:layout_marginBottom="@dimen/view_margin_5"
+                android:justificationMode="inter_word"
+                android:maxLines="4"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_14" />
+
+            <View
+                android:id="@+id/nav_view2"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_margin_10"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    style="@style/SegoeUISemiBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/view_padding_10"
+                    android:layout_weight="1"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/li_call"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:background="@drawable/ic_circle_green"
+                    android:contentDescription="@string/app_name"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ic_call_shape" />
+
+                <ImageView
+                    android:id="@+id/li_direction"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/view_padding_5"
+                    android:layout_marginEnd="@dimen/view_margin_5"
+                    android:background="@drawable/ic_circle_green"
+                    android:contentDescription="@string/app_name"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ic_location_green" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/tv_detail"
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:background="@drawable/ic_circle_green"
+                    android:contentDescription="@string/app_name"
+                    app:srcCompat="@drawable/ic_arrow_right"
+                    app:tint="@color/green" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

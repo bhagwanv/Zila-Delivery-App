@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@color/white"
+                app:elevation="@dimen/view_margin_20">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize">
+
+                    <LinearLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_oder_id_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/iv_back"
+                                android:layout_width="40dp"
+                                android:layout_height="50dp"
+                                android:contentDescription="@string/app_name"
+                                android:foregroundGravity="left"
+                                android:padding="@dimen/view_margin_5"
+                                app:srcCompat="@drawable/ic_left_black" />
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="@dimen/font_size_10"
+                                android:layout_marginRight="@dimen/font_size_10"
+                                android:background="@drawable/stock_hkb"
+                                android:layout_weight="0.4"
+                                android:orientation="vertical">
+
+                                <EditText
+                                    android:id="@+id/et_search_cust"
+                                    style="@style/CommanstyleAB"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@null"
+                                    android:hint="Search Item Name"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="textCapWords"
+                                    android:maxLength="20"
+                                    android:maxLines="1"
+                                    android:padding="10dp"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_skip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_timmer"
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:maxLines="1"
+                                    android:text="00:00"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_layout"
+            android:layout_marginBottom="120dp"
+            android:orientation="vertical">
+
+          <!--  <CheckBox
+                android:id="@+id/checkboxAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/pading_bottom_15"
+                android:text="Check All"
+                android:textColor="@color/Black"
+                android:theme="@style/checkBoxStyle"
+                app:buttonTint="@color/colorLightBlueHeader"
+                android:visibility="gone"/>-->
+
+            <LinearLayout
+                android:id="@+id/ll_item_name_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/font_size_10"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/it_item_name"
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="1.6"
+                    android:gravity="center"
+                    android:padding="@dimen/text_margin_2"
+                    android:text="Item Name"
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tvBachCode"
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:padding="@dimen/text_margin_2"
+                    android:text="Batch Code"
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+                <TextView
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginRight="@dimen/font_size_10"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:padding="@dimen/text_margin_2"
+                    android:text="QTY"
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+                <TextView
+                    style="@style/SegoeUI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginRight="@dimen/font_size_10"
+                    android:layout_weight="0.8"
+                    android:gravity="end"
+                    android:padding="@dimen/text_margin_2"
+                    android:text="Edit QTY"
+                    android:textColor="#7e84a3"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_item_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    tools:listitem="@layout/item_unload" />
+
+
+                <TextView
+                    android:id="@+id/tv_not_data_found"
+                    style="@style/SegoeUI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="No Data Found"
+                    android:visibility="gone"
+                    android:textColor="@color/Black"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_item_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/font_size_10"
+            android:layout_above="@+id/rl_bottom_unloading_item"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_totol_item_count"
+                style="@style/SegoeUIBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:padding="@dimen/pading_bottom_5"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_qty_count"
+                style="@style/SegoeUIBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:padding="@dimen/pading_bottom_5"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_bottom_unloading_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#29000000" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pading_bottom_5"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/SegoeUIBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:ellipsize="end"
+                    android:padding="@dimen/pading_bottom_5"
+                    android:text="Total Payable "
+                    android:textColor="#7e84a3"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_total_payble_amount"
+                    style="@style/SegoeUIBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    android:padding="@dimen/pading_bottom_5"
+                    android:text=""
+                    android:textColor="#2a2b45"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btCompleetReturn"
+                style="@style/SegoeUIBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/font_size_10"
+                android:background="@drawable/button_bg_drawable"
+                android:clickable="false"
+                android:enabled="false"
+                android:paddingLeft="@dimen/font_size_20"
+                android:paddingTop="@dimen/pading_bottom_15"
+                android:paddingRight="@dimen/font_size_20"
+                android:paddingBottom="@dimen/pading_bottom_15"
+                android:text="complete Return"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

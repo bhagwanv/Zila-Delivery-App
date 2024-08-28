@@ -1,0 +1,26 @@
+buildscript {
+    ext.kotlin_version = '1.4.32'
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
+        classpath 'com.google.gms:google-services:4.4.1'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+    }
+}
+
+task clean(type: Delete) {
+
+    delete rootProject.buildDir
+}

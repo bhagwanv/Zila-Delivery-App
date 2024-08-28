@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+
+            <!-- adding VideoView to the layout -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                card_view:cardCornerRadius="16dp">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.exoplayer2.ui.PlayerView
+                        android:id="@+id/playerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ProgressBar
+                        android:id="@+id/progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <RelativeLayout
+                        android:paddingHorizontal="12dp"
+                        android:paddingTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent_opcity">
+
+                        <ImageView
+                            android:id="@+id/ivCross"
+                            android:layout_width="@dimen/text_margin_40"
+                            android:layout_height="@dimen/text_margin_40"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_cross_white"
+                            android:backgroundTint="@color/white" />
+
+                        <TextView
+                            style="@style/SegoeUIBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center"
+                            android:layout_toStartOf="@+id/ivCross"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:text="Video"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</layout>

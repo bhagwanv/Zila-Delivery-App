@@ -1,0 +1,143 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+
+                <LinearLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/titlebar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/drawer_menu"
+                            android:layout_width="30dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentStart="true"
+                            android:contentDescription="@string/app_name"
+                            android:foregroundGravity="left"
+                            android:padding="@dimen/view_margin_5"
+                            app:srcCompat="@drawable/ic_menu_three_dot" />
+
+                        <TextView
+                            android:id="@+id/toolbar_title"
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="175dp"
+                            android:text="Break"
+                            android:textColor="@color/green"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            tools:ignore="RelativeOverlap" />
+
+                        <LinearLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="120dp"
+                            android:background="@drawable/cirlcle_green"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:padding="5dp">
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="30"
+                                    android:textColor="@color/white"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    tools:ignore="RelativeOverlap" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="min"
+                                    android:textColor="@color/white"
+                                    android:textSize="10dp"
+                                    android:textStyle="bold"
+                                    tools:ignore="RelativeOverlap" />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/assignmentid"
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/text_margin_40"
+                            android:layout_marginTop="@dimen/pading_bottom_15"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            tools:ignore="RelativeOverlap" />
+
+                        <TextView
+                            android:id="@+id/start_timer"
+                            style="@style/SegoeUISemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/ic_circle_grey_shape"
+                            android:gravity="center"
+                            android:padding="@dimen/view_margin_10"
+                            android:text="@string/Start_Date"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/title_layout" />
+
+    </RelativeLayout>
+</layout>
+

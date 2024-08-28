@@ -1,0 +1,35 @@
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"deploymentTargetDropDown\">\r\n    <runningDeviceTargetSelectedWithDropDown>\r\n      <Target>\r\n        <type value=\"RUNNING_DEVICE_TARGET\" />\r\n        <deviceKey>\r\n          <Key>\r\n            <type value=\"SERIAL_NUMBER\" />\r\n            <value value=\"emulator-5554\" />\r\n          </Key>\r\n        </deviceKey>\r\n      </Target>\r\n    </runningDeviceTargetSelectedWithDropDown>\r\n    <timeTargetWasSelectedWithDropDown value=\"2023-01-13T06:18:45.532234300Z\" />\r\n    <runningDeviceTargetsSelectedWithDialog>\r\n      <Target>\r\n        <type value=\"RUNNING_DEVICE_TARGET\" />\r\n        <deviceKey>\r\n          <Key>\r\n            <type value=\"VIRTUAL_DEVICE_PATH\" />\r\n            <value value=\"C:\\Users\\SK\\.android\\avd\\Pixel_3_API_28.avd\" />\r\n          </Key>\r\n        </deviceKey>\r\n      </Target>\r\n    </runningDeviceTargetsSelectedWithDialog>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+--- a/.idea/deploymentTargetDropDown.xml	
++++ b/.idea/deploymentTargetDropDown.xml	
+@@ -1,18 +1,18 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="deploymentTargetDropDown">
+-    <runningDeviceTargetSelectedWithDropDown>
++    <targetSelectedWithDropDown>
+       <Target>
+-        <type value="RUNNING_DEVICE_TARGET" />
++        <type value="QUICK_BOOT_TARGET" />
+         <deviceKey>
+           <Key>
+-            <type value="SERIAL_NUMBER" />
+-            <value value="emulator-5554" />
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\SK\.android\avd\Pixel_6_API_31.avd" />
+           </Key>
+         </deviceKey>
+       </Target>
+-    </runningDeviceTargetSelectedWithDropDown>
+-    <timeTargetWasSelectedWithDropDown value="2023-01-13T06:18:45.532234300Z" />
++    </targetSelectedWithDropDown>
++    <timeTargetWasSelectedWithDropDown value="2023-01-17T13:16:51.675301200Z" />
+     <runningDeviceTargetsSelectedWithDialog>
+       <Target>
+         <type value="RUNNING_DEVICE_TARGET" />

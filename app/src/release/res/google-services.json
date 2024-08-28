@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "399909982649",
+    "project_id": "direct-last-mile",
+    "storage_bucket": "direct-last-mile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399909982649:android:f24f193312dfda3dfae668",
+        "android_client_info": {
+          "package_name": "com.sk.directlastmile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399909982649-agvldr0obe1ro637j8dsp4u9k7hva7i8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcoT1OFDtnbM24s55GEadr9RdIZGmKVZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399909982649-agvldr0obe1ro637j8dsp4u9k7hva7i8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399909982649:android:7264c354335dc7d0fae668",
+        "android_client_info": {
+          "package_name": "com.sk.directlastmile.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399909982649-agvldr0obe1ro637j8dsp4u9k7hva7i8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcoT1OFDtnbM24s55GEadr9RdIZGmKVZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399909982649-agvldr0obe1ro637j8dsp4u9k7hva7i8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

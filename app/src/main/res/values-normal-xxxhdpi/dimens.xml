@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- s4 -->
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- <dimen name="chcekout_grid_item_width">265dp</dimen> -->
+
+    <!-- Default screen margins, per the Android Design guidelines. values-normal-xhdpi -->
+    <!-- <dimen name="font_size_30">30dp</dimen>
+    <dimen name="font_size_26">26dp</dimen>
+    <dimen name="font_size_24">24dp</dimen>
+    <dimen name="font_size_22">22dp</dimen>
+    <dimen name="font_size_20">20dp</dimen>
+    <dimen name="font_size_18">18dp</dimen>
+    <dimen name="font_size_16">16dp</dimen>
+    <dimen name="font_size_14">14dp</dimen>
+    <dimen name="font_size_12">12dp</dimen>
+    <dimen name="font_size_10">10dp</dimen>-->
+
+    <dimen name="view_margin_35">35dp</dimen>
+    <dimen name="view_margin_20">20dp</dimen>
+    <dimen name="view_margin_10">10dp</dimen>
+    <dimen name="view_margin_5">5dp</dimen>
+    <dimen name="view_padding_50">50dp</dimen>
+    <dimen name="view_padding_20">20dp</dimen>
+    <dimen name="view_padding_15">15dp</dimen>
+    <dimen name="view_padding_10">10dp</dimen>
+    <dimen name="view_padding_5">5dp</dimen>
+    <dimen name="view_padding_2">2dp</dimen>
+
+    <!-- white border height -->
+
+    <!-- search button height -->
+
+    <!-- Set card logo and shipping address logo. -->
+
+
+    <!-- setting dialog height. -->
+
+
+    <!-- Text Size. -->
+    <dimen name="text_size_mini">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+
+
+    <!-- safe work screens -->
+
+</resources>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/font_size_30"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ivpaymentType"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/font_size_20">
+
+            </ImageView>
+
+
+            <TextView
+                android:id="@+id/tvTittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Thank You!"
+                android:textColor="#18A558"
+                android:textSize="24dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/tv_payment_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20sp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="13dp"
+                android:textStyle="bold"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="@dimen/font_size_20"
+                android:layout_marginRight="4dp"
+                android:background="@color/cardview_shadow_start_color"></View>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/font_size_20"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/payment_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"></TextView>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="6sp"
+                    android:padding="5dp"
+                    android:text="Payment Mode "
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="@null"
+                    android:paddingHorizontal="5dp"
+                    android:text="UPI"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold"></TextView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="6sp"
+                    android:padding="5dp"
+                    android:text="Payment Reference Number "
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/pay_Refrence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="@null"
+                    android:paddingHorizontal="5dp"
+                    android:text="ygfd7654"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold"></TextView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="6sp"
+                    android:padding="5dp"
+                    android:text="Payment Date and Time"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/payment_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="@null"
+                    android:paddingHorizontal="5dp"
+                    android:text="28 nov"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold"></TextView>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_close_dialog"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="@dimen/text_margin_40"
+                android:background="#E40A0A"
+                android:text="Close"
+                android:textColor="@color/white">
+
+            </Button>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</layout>

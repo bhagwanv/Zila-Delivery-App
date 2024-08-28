@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainListener"
+            type="com.sk.ziladelivery.listener.MainListener" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <include
+            android:id="@+id/appbar_main"
+            layout="@layout/appbar_main" />
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/Home"
+                    layout="@layout/navigation_top" />
+
+                <ScrollView
+                    android:id="@+id/scroll_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    android:scrollbars="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="@dimen/view_margin_20"
+                            android:layout_weight="0.4"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/my_task"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.myTaskClicked()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_task_list" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/my_All_trip"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/my_assignment"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.myAssignmentClicked()}"
+                                android:orientation="horizontal"
+                                android:visibility="gone"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_shopping_bag_2" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/my_assignment"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+
+                            <LinearLayout
+                                android:id="@+id/assignment_billing"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.AssignmentBilling()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_settings" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/Assignment_Billing"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp"
+                                    android:textStyle="normal" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/order_currency"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.orderCurrencyClicked()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_money_bag" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/order_currency"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/li_return_order"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_contract" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/return_orders"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/ivReturnCount"
+                                    android:background="@drawable/circle_red"
+                                    android:layout_width="5dp"
+                                    android:layout_height="5dp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/history"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.historyClicked()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_contract" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/history"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/language"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.ChangeLanguage()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_translate" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/language"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/reject_assignment"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:visibility="gone"
+                                android:onClick="@{(v)->mainListener.RejectAssginmentClicked()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_contract" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/reject_assginment"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+
+                            <LinearLayout
+                                android:id="@+id/assignment_settle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.AssginmentSettle()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    app:srcCompat="@drawable/ic_contract" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/assginment_settle"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/rate_us"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.rateUsClicked()}"
+                                android:orientation="horizontal"
+                                android:visibility="gone"
+                                android:padding="@dimen/pading_bottom_15">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_contract" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/my_trip"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/setting"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.settingClicked()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15"
+                                android:visibility="gone">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:adjustViewBounds="true"
+                                    android:contentDescription="@string/app_name"
+                                    app:srcCompat="@drawable/ic_settings" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="@string/setting"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:background="@color/divider_drak_color" />
+
+                            <LinearLayout
+                                android:id="@+id/changePassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:onClick="@{(v)->mainListener.changePassword()}"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/pading_bottom_15"
+                                android:visibility="gone">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    app:srcCompat="@drawable/ic_contract" />
+
+                                <TextView
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/view_margin_20"
+                                    android:text="Change Password"
+                                    android:textColor="@color/drak_text_color"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/divider_drak_color" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_drak_color" />
+
+                        <LinearLayout
+                            android:id="@+id/lin_logout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{(v)->mainListener.logOutClicked()}"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/logout"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="@string/logout"
+                                android:textColor="@color/orange_dark"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/logout_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="130dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="@dimen/view_margin_10"
+                                android:adjustViewBounds="true"
+                                android:contentDescription="@string/app_name"
+                                android:scaleType="fitXY"
+                                app:srcCompat="@drawable/ic_logout" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

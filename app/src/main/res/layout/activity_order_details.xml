@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@color/white"
+                app:elevation="@dimen/view_margin_20">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize">
+
+                    <LinearLayout
+                        android:id="@+id/layout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_oder_id_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/iv_back"
+                                android:layout_width="40dp"
+                                android:layout_height="50dp"
+                                android:contentDescription="@string/app_name"
+                                android:foregroundGravity="left"
+                                android:padding="@dimen/view_margin_5"
+                                app:srcCompat="@drawable/ic_left_black" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="0.4"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_orderno"
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:maxLines="2"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_skip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="10dp"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:id="@+id/tv_timmer"
+                                    style="@style/SegoeUISemiBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:maxLines="1"
+                                    android:text="Skip"
+                                    android:textColor="@color/colorLightBlueHeader"
+                                    android:textSize="18sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/title_layout"
+            android:layout_marginBottom="80dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/SegoeUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/font_size_10"
+                android:text="Select orders and take appropriate action"
+                android:textColor="#2a2b45"
+                android:textSize="14dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/font_size_10"
+                android:background="@color/darkh_bg">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/user_image"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:padding="@dimen/pading_bottom_5"
+                    android:src="@drawable/profile_round"
+                    app:civ_circle_background_color="#FFF"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/user_image"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_store_name"
+                        style="@style/SegoeUIBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="@dimen/text_margin_2"
+                        android:text=""
+                        android:textColor="#2a2b45"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/tv_store_addresh"
+                        style="@style/SegoeUI"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="@dimen/text_margin_2"
+                        android:text=""
+                        android:textColor="#7e84a3"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        style="@style/SegoeUI"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/pading_bottom_5"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="@dimen/text_margin_2"
+                        android:text="Delivered Amount"
+                        android:textColor="#7e84a3"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/tvCRMTAg"
+                        style="@style/SegoeUI"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/pading_bottom_5"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:padding="@dimen/text_margin_2"
+                        android:text=""
+                        android:textColor="@color/green"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/pading_bottom_5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_store_amount"
+                        style="@style/SegoeUIBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="end"
+                        android:padding="@dimen/text_margin_2"
+                        android:text=""
+                        android:textColor="#2a2b45"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/tv_store_sk_code"
+                        style="@style/SegoeUI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:padding="@dimen/text_margin_2"
+                        android:text=""
+                        android:textColor="#7e84a3"
+                        android:textSize="12dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_delivert_amount"
+                        style="@style/SegoeUIBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/pading_bottom_5"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:padding="@dimen/text_margin_2"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_item_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_order_detail_page" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_bottom_unloading_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#29000000" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pading_bottom_5"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SegoeUIBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:ellipsize="end"
+                    android:padding="@dimen/pading_bottom_5"
+                    android:text="Total Payable "
+                    android:textColor="#7e84a3"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_total_payble_amount"
+                    style="@style/SegoeUIBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    android:padding="@dimen/pading_bottom_5"
+                    android:text=""
+                    android:textColor="#2a2b45"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_unloaditem"
+                style="@style/SegoeUIBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/font_size_10"
+                android:background="@drawable/button_bg_drawable"
+                android:clickable="false"
+                android:enabled="false"
+                android:paddingLeft="@dimen/font_size_20"
+                android:paddingTop="@dimen/pading_bottom_15"
+                android:paddingRight="@dimen/font_size_20"
+                android:paddingBottom="@dimen/pading_bottom_15"
+                android:text="Unload Item"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

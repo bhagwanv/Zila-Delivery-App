@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+
+        <TextView
+            android:id="@+id/it_item_name"
+            style="@style/SegoeUIBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1.7"
+            android:gravity="start"
+            android:padding="@dimen/text_margin_2"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_qty"
+            style="@style/SegoeUIBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginRight="@dimen/font_size_10"
+            android:layout_weight=".5"
+            android:gravity="end"
+            android:padding="@dimen/text_margin_2"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_amount"
+            style="@style/SegoeUIBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/font_size_10"
+            android:layout_weight=".8"
+            android:gravity="end"
+            android:padding="@dimen/text_margin_2"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+
+    </LinearLayout>
+
+</layout>

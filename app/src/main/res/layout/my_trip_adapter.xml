@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="myTaskListener"
+            type="com.sk.ziladelivery.listener.MyTaskListener" />
+
+        <variable
+            name="myTaskInfo"
+            type="com.sk.ziladelivery.ui.views.viewmodels.MyTaskInfo" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rlmaindragview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_ware"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp">
+
+            <LinearLayout
+                android:id="@+id/llwarehouse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/CommanstyleAB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/font_size_10"
+                    android:text="Warehouse"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp">
+
+            <LinearLayout
+                android:id="@+id/ll_cardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.6"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_shopname"
+                            style="@style/SegoeUIBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{myTaskInfo.shopName}"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_skcode"
+                            style="@style/SegoeUI"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@{myTaskInfo.skCode}"
+                            android:textColor="@color/grey"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tvCrmTag"
+                            style="@style/SegoeUI"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@{myTaskInfo.CRMTags}"
+                            android:textColor="@color/green"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll_call"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.4"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_skip_customer"
+                            style="@style/SegoeUIBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/font_size_10"
+                            android:layout_marginRight="@dimen/font_size_20"
+                            android:text="Skipped"
+                            android:textColor="@color/red"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/tv_voice"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_recoding" />
+
+                            <ImageView
+                                android:id="@+id/tv_complete_status"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerInParent="true"
+                                android:visibility="gone"
+                                app:srcCompat="@drawable/ic_complted" />
+
+                            <ImageView
+                                android:id="@+id/imPlayIcon"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerInParent="true"
+                                android:visibility="gone"
+                                app:srcCompat="@drawable/ic_baseline_play_arrow_24"
+                                android:contentDescription="@string/app_name" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv_popup_menu"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/font_size_10"
+                            android:visibility="gone"
+                            app:srcCompat="@drawable/ic_menu_image" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/nav_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/light_grey" />
+
+                <LinearLayout
+                    android:id="@+id/ll_track"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="@drawable/ic_dot" />
+
+                            <View
+                                android:layout_width="5dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:background="@color/colorLightBlueHeader" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/ic_dot" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/ware_name"
+                                style="@style/SegoeUI"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Warehouse"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/ware_addss"
+                                style="@style/SegoeUI"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:maxLines="2"
+                                android:text="@{myTaskInfo.warehouseAddress}"
+                                android:textColor="#2a2b45"
+                                android:textSize="10dp" />
+
+                            <TextView
+                                style="@style/SegoeUI"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="ShopName"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/shopaddress"
+                                style="@style/SegoeUI"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:maxLines="2"
+                                android:text="@{myTaskInfo.address}"
+                                android:textColor="#2a2b45"
+                                android:textSize="10dp">
+
+                            </TextView>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/light_grey" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="50dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/order_time"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{myTaskInfo.completionTime}"
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                style="@style/SegoeUI"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Order Completion Time"
+                                android:textColor="@color/gray"
+                                android:textSize="10dp" />
+
+                            <TextView
+                                android:id="@+id/unloading_time"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="@{myTaskInfo.unLoadingTime}"
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                style="@style/SegoeUI"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Unloading Time"
+                                android:textColor="@color/gray"
+                                android:textSize="10dp">
+
+                            </TextView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnDelivered"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/font_size_10"
+                    android:background="@drawable/button_bg_blue"
+                    android:padding="@dimen/font_size_10"
+                    android:text="Delivered"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/btnReturn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/font_size_10"
+                    android:background="@drawable/button_bg_blue"
+                    android:padding="@dimen/font_size_10"
+                    android:text="Return"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>

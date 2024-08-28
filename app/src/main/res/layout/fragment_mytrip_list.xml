@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pendingTaskViewModel"
+            type="com.sk.ziladelivery.ui.views.viewmodels.PendingTaskViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_main_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/divider_drak_color"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/proLer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ProgressBar
+                        android:id="@+id/pro_related_item"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_pendding_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/view_margin_5"
+                    android:layout_marginTop="@dimen/view_margin_5"
+                    android:layout_marginEnd="@dimen/view_margin_5"
+                    tools:listitem="@layout/my_trip_adapter" />
+
+                <Button
+                    android:id="@+id/bt_create_trip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rv_pendding_task"
+                    android:layout_margin="@dimen/font_size_10"
+                    android:background="@drawable/button_bg_blue"
+                    android:padding="@dimen/font_size_10"
+                    android:text="Reached warehouse"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                   />
+
+                <TextView
+                    android:id="@+id/tv_my_task"
+                    style="@style/SegoeUISemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/no_assignment"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</layout>

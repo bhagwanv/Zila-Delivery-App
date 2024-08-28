@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#fe4e4e</color>
+    <color name="transparent">#D9F7F7F7</color>
+    <color name="orange_dark">#fe4e4e</color>
+    <color name="drak_text_color">#828282</color>
+    <color name="grey">#BFBFBF</color>
+    <color name="Black">#000</color>
+
+    <color name="divider_drak_color">#f5f5f5</color>
+    <color name="status_bar">#f5f5f5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="Darkgrey">#FF9e9b9b</color>
+    <color name="dark_small_txt">#828282</color>
+    <color name="colorOrange">#fe4e4e</color>
+
+    <color name="divider_color">#7f7f7f</color>
+    <color name="black_transparent">#40000000</color>
+    <color name="red">#FF0000</color>
+    <color name="new_red">#f24d16</color>
+    <color name="light_grey">#D3D3D3</color>
+    <color name="gray">#808080</color>
+    <color name="medium_sea_green">#38a561</color>
+    <color name="green">#38a561</color>
+    <color name="lite_green">#98BCA5</color>
+    <!--
+        <color name="green">#78c5ef</color>
+    -->
+    <color name="light_purple">#E5EFFC</color>
+    <color name="black">#000000</color>
+    <color name="accept_color">#38a561</color>
+    <color name="reject_color">#fe4e4e</color>
+    <color name="darkh_gray">#7e84a3</color>
+    <color name="darkh_bg">#f5f6fa</color>
+
+    <color name="dot_light_screen1">#FF6347</color>
+    <color name="dot_light_screen2">#FF6347</color>
+    <color name="dot_light_screen3">#FF6347</color>
+    <color name="dot_light_screen4">#FF6347</color>
+    <color name="dot_light_screen5">#FF6347</color>
+    <color name="colorLightBlueHeader">#3859cc</color>
+    <color name="dashboard_back">#eff0f2</color>
+    <color name="dashboard_divider">#C3BCBC</color>
+    <color name="blue_dialog">#0058ff</color>
+    <color name="transparent_opcity">#30000000</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen5</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/Darkgrey</item>
+        <item>@color/Darkgrey</item>
+        <item>@color/Darkgrey</item>
+        <item>@color/Darkgrey</item>
+        <item>@color/Darkgrey</item>
+    </array>
+
+</resources>

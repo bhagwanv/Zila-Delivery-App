@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tv_action_bar"
+            layout="@layout/action_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <RelativeLayout
+            android:id="@+id/rlOrderList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_action_bar">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="65dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_rearrange_view" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="@dimen/font_size_10"
+                android:layout_marginTop="@dimen/font_size_10"
+                android:layout_marginEnd="@dimen/font_size_10">
+
+                <Button
+                    android:id="@+id/bt_save"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/ic_green_shape"
+                    android:padding="@dimen/font_size_10"
+                    android:text="Save"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/bt_skip"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/orangerectangle"
+                    android:padding="@dimen/font_size_10"
+                    android:text="Skip"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_no_data_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Data Not Available"
+            android:visibility="gone"
+            android:textSize="@dimen/font_size_18"
+            android:textColor="@color/Black"/>
+
+
+    </RelativeLayout>
+
+</layout>

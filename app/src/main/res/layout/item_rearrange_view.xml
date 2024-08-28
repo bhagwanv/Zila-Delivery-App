@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/font_size_10">
+
+                <ImageView
+                    android:id="@+id/imageview"
+                    android:layout_width="@dimen/text_margin_40"
+                    android:layout_height="@dimen/text_margin_40"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="@dimen/font_size_10"
+                    android:src="@drawable/baseline_drag_indicator_24" />
+
+                <TextView
+                    android:id="@+id/Shop_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:padding="@dimen/pading_bottom_5"
+                    android:layout_toEndOf="@+id/imageview"
+                    android:text="Shop Name"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sk_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Shop_name"
+                    android:layout_toEndOf="@+id/imageview"
+                    android:text="Sk Code"
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/shipping_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sk_code"
+                    android:padding="3dp"
+                    android:layout_toEndOf="@+id/imageview"
+                    android:text="Shipping Address"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/order_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shipping_add"
+                    android:layout_marginTop="3dp"
+                    android:padding="3dp"
+                    android:layout_toEndOf="@+id/imageview"
+                    android:text="Order List"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>
+
+
+
+
+
+
+
+
+
+
+

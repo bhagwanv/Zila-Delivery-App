@@ -1,0 +1,225 @@
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/drawable-mdpi/background_item_purchase_order.xml" value="0.137" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/drawable/button_bg_blue.xml" value="0.137" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/drawable/ic_green_bt_gray.xml" value="0.1355" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/action_bar_layout.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_change_language.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_collect_payment.xml" value="0.16770833333333332" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_customer_rating.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_hdfc.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_main.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_maps.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_order_details.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_product_details.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_return_order_detail.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_return_order_list.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_scan_barcode.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_scan_code.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_transparent.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_unload_items.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/activity_welcome.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/appbar_main.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/arraya_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/assginment_settle_detail_fragment.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/assginment_settlehistory_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/assignment_detail_adapter.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/assignment_search.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/assignmentcashshowing.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bank_name_popup.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bottom_accept_assignment.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bottom_delivery_otp.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bottom_order_delivered.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bottom_otp_layout.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bottom_popup_view.xml" value="0.2" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bottom_remove_order_layout.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bottom_sheet_order_otp.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/bottom_skip_layout.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/cancel_reason.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/capture_photo_view.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/cash_collection_history.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/cash_history.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/chequemanagmentfragment.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/child_item_info.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/comment_popup.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/confirmation_popup.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/coordinate_layout.xml" value="0.2" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/currency_adapter.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/currency_header.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/cust_info_popup.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/customarray_adapter.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/custome_layout_dialog.xml" value="0.18333333333333332" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/data_placeholder_layout.xml" value="0.18333333333333332" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/delivery_charge_popup.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/delivery_home.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/delivery_home_fragment.xml" value="0.17" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/dialog_cancel_order.xml" value="0.2" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/dialog_confirmation.xml" value="0.17447916666666666" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/dialog_otp_verification.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/dialog_redispatch_order.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/entire_route_adapter.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/exp_cheque_header.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/forgot_password_popup.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/forgot_password_result.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_assignment.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_assignment_billing.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_barcode_reader.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_currency.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_dummy.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_history.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_map_view.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_multiple_assignment.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_my_task.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_mytrip_list.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_pendding.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_pick_from_customer.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_pick_from_warehouse.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_profile.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/fragment_single_trip_map_view.xml" value="0.2" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/history_adapter.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/history_detail.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/history_itemdetail.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/historyissuance_adapter.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/image_upload_popup.xml" value="0.12760416666666666" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_assignment_billing.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_collect_group.xml" value="0.16770833333333332" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_collect_payment.xml" value="0.16770833333333332" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_details_adapter.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_ebay_assinment.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_order_detail_page.xml" value="0.16770833333333332" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_order_list.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_pedding_list.xml" value="0.22" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_product_item.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_return_order_detail.xml" value="0.1796875" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_return_order_list.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_short_item.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/item_unload.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/items_assignment.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/layout_custom_dialog_stop.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/login_activity.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/map_bottomsheet.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/mpos_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/multi_mposadapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/multi_rtgs.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/multi_rtgsadapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/multipleassginment_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/multiplecheque_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/my_task_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/my_trip_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/my_trip_fragment.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/my_trip_order_adapter.xml" value="0.165625" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/navigation_top.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/online_pay_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/online_payment.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/order_place_frag.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/orderid_search.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/paidamt_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/placeorder_popup.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/progress_dialog.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/qrcode_popup.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/radio_button_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/reached_popup.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/reject_reson_popup.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/search_assignment_adapter.xml" value="0.1" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/search_by_popup.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/search_frag.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/search_toolbar_layout.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/settle_assginment_adapter.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/settle_assignment.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/settle_history_fragment.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/shop_image_upload_popup.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/start_trip_image_upload_popup.xml" value="0.12760416666666666" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/tab_bar_layout.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/toolbar_arrow_signpaid.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/trip_completed_popup.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/view_otp_genrate.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/view_otp_verify.xml" value="0.184375" />
+        <entry key="..\:/Bhagwan Code/Direct-LastMile/app/src/main/res/layout/view_welcome_screen.xml" value="0.184375" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2315" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/drawable/ic_left_black.xml" value="0.2315" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/activity_collect_payment.xml" value="0.246875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/activity_splash_screen.xml" value="0.3390625" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/bottom_delivery_otp.xml" value="0.31979166666666664" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/bottom_remove_order_layout.xml" value="0.246875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/cancel_reason.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/collect_child_item.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/coordinate_layout.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/delivery_home_fragment.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/fragment_map_view.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/fragment_multiple_assignment.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/fragment_single_trip_map_view.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/image_upload_popup.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/item_collect_group.xml" value="0.246875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/item_collect_payment.xml" value="0.246875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/item_order_detail_page.xml" value="0.2994791666666667" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/login_activity.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/map_bottomsheet.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/multipleassginment_adapter.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/my_trip_adapter.xml" value="0.3390625" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/my_trip_order_adapter.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/order_place_frag.xml" value="0.3390625" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/progress_dialog.xml" value="0.3546875" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/radio_button_adapter.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/start_trip_image_upload_popup.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/layout/trip_completed_popup.xml" value="0.2953125" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1135" />
+        <entry key="..\:/Users/SK/Documents/Direct-LastMile/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.231" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="NullableNotNullManager">
+    <option name="myDefaultNullable" value="androidx.annotation.Nullable" />
+    <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
+    <option name="myNullables">
+      <value>
+        <list size="15">
+          <item index="0" class="java.lang.String" itemvalue="org.jspecify.annotations.Nullable" />
+          <item index="1" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
+          <item index="2" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNullable" />
+          <item index="3" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
+          <item index="4" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
+          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.Nullable" />
+          <item index="6" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
+          <item index="7" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
+          <item index="8" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
+          <item index="9" class="java.lang.String" itemvalue="jakarta.annotation.Nullable" />
+          <item index="10" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
+          <item index="11" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
+          <item index="12" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.Nullable" />
+          <item index="13" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
+          <item index="14" class="java.lang.String" itemvalue="android.annotation.Nullable" />
+        </list>
+      </value>
+    </option>
+    <option name="myNotNulls">
+      <value>
+        <list size="14">
+          <item index="0" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNonNull" />
+          <item index="1" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.NonNull" />
+          <item index="2" class="java.lang.String" itemvalue="org.jspecify.annotations.NonNull" />
+          <item index="3" class="java.lang.String" itemvalue="jakarta.annotation.Nonnull" />
+          <item index="4" class="java.lang.String" itemvalue="androidx.annotation.NonNull" />
+          <item index="5" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
+          <item index="6" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
+          <item index="7" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
+          <item index="8" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
+          <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
+          <item index="10" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
+          <item index="11" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
+          <item index="12" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="android.annotation.NonNull" />
+        </list>
+      </value>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <xml-schema-version>XMLSchema_1_1</xml-schema-version>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
