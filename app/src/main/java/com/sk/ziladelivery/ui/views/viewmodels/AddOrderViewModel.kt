@@ -1,0 +1,33 @@
+package com.sk.ziladelivery.ui.views.viewmodels
+
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import com.sk.ziladelivery.data.apprepository.AppRepository
+import com.sk.ziladelivery.ui.views.fragment.CreateTripModel
+import com.sk.ziladelivery.utilities.Resource
+import kotlinx.coroutines.Dispatchers
+
+class AddOrderViewModel(private  val appRepository: AppRepository) : ViewModel() {
+
+    fun getOrder(zilaTripMasterId: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.getOrder(zilaTripMasterId)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun addOrder(zilaTripMasterId: Int,orderId:Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.addOrder(zilaTripMasterId,orderId)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+}
+
+

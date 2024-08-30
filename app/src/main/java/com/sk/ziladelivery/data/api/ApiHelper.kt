@@ -14,6 +14,7 @@ import com.sk.ziladelivery.data.model.ReDispatchOTPModel
 import com.sk.ziladelivery.data.model.RearrangModel
 import com.sk.ziladelivery.data.model.SendCloseKmApproval
 import com.sk.ziladelivery.data.model.StartAssignmentPostModel
+import com.sk.ziladelivery.ui.views.fragment.CreateTripModel
 import okhttp3.MultipartBody
 
 class ApiHelper(private val apiService: APIServices) {
@@ -33,6 +34,9 @@ class ApiHelper(private val apiService: APIServices) {
         apiService.getDashBoard(id, TripPlannerConfirmedMasterId)
 
     suspend fun getAllTripID(id: Int) = apiService.getTripIDAll(id)
+    suspend fun getOrder(zilaTripMasterId: Int) = apiService.GetZilaTrip(zilaTripMasterId)
+    suspend fun addOrder(zilaTripMasterId: Int,orderId: Int) = apiService.addOrder(zilaTripMasterId,orderId)
+    suspend fun createTrip(model: CreateTripModel) = apiService.createTrip(model)
     suspend fun getAcceptPenddingTask(acceptModel: AcceptModel?) =
         apiService.acceptMyPendingTaskNew(acceptModel)
 

@@ -5,15 +5,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class AllTripModel {
     @Expose
-    @SerializedName("TripPlannerConfirmedMasterId")
-    private long TripPlannerConfirmedMasterId;
-
+    @SerializedName("ZilaTripMasterId")
+    private int ZilaTripMasterId;
 
     @Expose
     @SerializedName("DboyId")
     private int DboyId;
-
-
 
     @Expose
     @SerializedName("OrderCount")
@@ -28,15 +25,25 @@ public class AllTripModel {
     @SerializedName("TripCurrentStatus")
     private String TripCurrentStatus;
 
+    @Expose
+    @SerializedName("IsFreezed")
+    private boolean IsFreezed;
 
-    public long getTripPlannerConfirmedMasterId() {
-        return TripPlannerConfirmedMasterId;
+    public boolean getIsFreezed() {
+        return IsFreezed;
     }
 
-    public void setTripPlannerConfirmedMasterId(long tripPlannerConfirmedMasterId) {
-        TripPlannerConfirmedMasterId = tripPlannerConfirmedMasterId;
+    public void setIsFreezed(boolean isFreezed) {
+        IsFreezed = isFreezed;
     }
 
+    public int getZilaTripMasterId() {
+        return ZilaTripMasterId;
+    }
+
+    public void setZilaTripMasterId(int zilaTripMasterId) {
+        ZilaTripMasterId = zilaTripMasterId;
+    }
 
     public int getDboyId() {
         return DboyId;
@@ -45,7 +52,6 @@ public class AllTripModel {
     public void setDboyId(int dboyId) {
         DboyId = dboyId;
     }
-
 
     public int getOrderCount() {
         return OrderCount;
@@ -63,7 +69,6 @@ public class AllTripModel {
         TotalAmount = totalAmount;
     }
 
-
     public String getTripCurrentStatus() {
         return TripCurrentStatus;
     }
@@ -71,5 +76,4 @@ public class AllTripModel {
     public void setTripCurrentStatus(String tripCurrentStatus) {
         TripCurrentStatus = tripCurrentStatus;
     }
-
 }

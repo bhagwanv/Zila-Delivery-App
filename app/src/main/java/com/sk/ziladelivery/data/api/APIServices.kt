@@ -5,6 +5,7 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.sk.ziladelivery.data.localdatabase.UserLatLngModel
 import com.sk.ziladelivery.data.model.*
+import com.sk.ziladelivery.ui.views.fragment.CreateTripModel
 import com.sk.ziladelivery.ui.views.fragment.unloadReturnItem.GenerateOTPForReturnOrder
 import com.sk.ziladelivery.ui.views.fragment.unloadReturnItem.PickedReturnOrderByDBoyRequestModel
 import com.sk.ziladelivery.ui.views.fragment.unloadReturnItem.ReturnOrderCreditNoteRequestModel
@@ -66,8 +67,18 @@ interface APIServices {
         @Query("TripPlannerConfirmedMasterId") TripPlannerConfirmedMasterId: Long
     ): DashBoardResponseModel
 
-    @GET("api/DeliveryApp/GetAllTrip")
+    @GET("api/ZilaDeliveryApp/GetAllTrip")
     suspend fun getTripIDAll(@Query("DboyId") DboyId: Int): JsonArray
+
+    @POST("api/ZilaDeliveryApp/CreateCustomTripV1")
+    suspend fun createTrip(@Body model: CreateTripModel?): JsonObject
+
+    @GET("api/ZilaDeliveryApp/GetZilaTrip")
+    suspend fun GetZilaTrip(@Query("zilaTripMasterId") zilaTripMasterId: Int): TripOrderList
+
+    @GET("api/ZilaDeliveryApp/AddOrder")
+    suspend fun addOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int): TripOrderList
+
 
     @PUT("/api/DeliveryIssuance/AssignmentAcceptNew")
     suspend fun acceptMyPendingTaskNew(@Body acceptModel: AcceptModel?): AssignmentAcceptModel

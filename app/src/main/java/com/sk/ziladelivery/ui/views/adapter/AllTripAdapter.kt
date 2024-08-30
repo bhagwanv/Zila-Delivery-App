@@ -47,6 +47,7 @@ class AllTripAdapter(
        val allTripModel = allTripList!![position]
         holder.mBinding.tvNoOrder.text="Orders : "+allTripModel.orderCount
         holder.mBinding.tvAmount.text="Amount : "+allTripModel.totalAmount
+        holder.mBinding.tvAssitId.text= ""+allTripModel.zilaTripMasterId
         if (allTripModel.tripCurrentStatus=="Delivering"){
             holder.mBinding.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.red));
             holder.mBinding.tvStatus.text= allTripModel.tripCurrentStatus

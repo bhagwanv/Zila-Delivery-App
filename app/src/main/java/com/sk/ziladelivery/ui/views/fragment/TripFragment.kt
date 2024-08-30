@@ -79,10 +79,54 @@ class TripFragment : Fragment(), LisnerAllTrip {
             }
             mBinding!!.swipeContainer.isRefreshing = false
         }
+
+        mBinding!!.btnCreateTrip.setOnClickListener {
+            if (!Utils.checkInternetConnection(requireActivity())) {
+                Utils.setToast(requireActivity(), getString(R.string.network_error))
+            } else {
+                createTrip()
+            }
+        }
+    }
+
+    private fun createTrip() {
+        val createTripModel = CreateTripModel(
+            10,
+            12,
+            1,
+            SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)
+        );
+        allTripViewModel?.createTrip(createTripModel)?.observe(requireActivity()) { resource ->
+            resource?.let {
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        ProgressDialog.getInstance().dismiss()
+                        it.data?.let { allTripModel ->
+                            fetchAllTripIDs()
+                            //handleAllTripResponse(allTripModel)
+                        }
+                    }
+
+                    Status.ERROR -> {
+                        ProgressDialog.getInstance().dismiss()
+                        if (it.message == "401") {
+                            handleUnauthorizedError()
+                        }
+                    }
+
+                    Status.LOADING -> {
+                        ProgressDialog.getInstance().show(requireActivity())
+                    }
+                }
+            }
+        }
+
     }
 
     private fun fetchAllTripIDs() {
-        allTripViewModel?.getAllTripID(SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID))?.observe(requireActivity()) { resource ->
+        allTripViewModel?.getAllTripID(
+            SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)
+        )?.observe(requireActivity()) { resource ->
             resource?.let {
                 when (it.status) {
                     Status.SUCCESS -> {
@@ -91,12 +135,14 @@ class TripFragment : Fragment(), LisnerAllTrip {
                             handleAllTripResponse(allTripModel)
                         }
                     }
+
                     Status.ERROR -> {
                         ProgressDialog.getInstance().dismiss()
                         if (it.message == "401") {
                             handleUnauthorizedError()
                         }
                     }
+
                     Status.LOADING -> {
                         ProgressDialog.getInstance().show(requireActivity())
                     }
@@ -111,6 +157,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
 
         if (allTripModelResponse.isNullOrEmpty()) {
             mBinding!!.tvNoTrip.visibility = View.VISIBLE
+            mBinding!!.btnCreateTrip.visibility = View.VISIBLE
             mBinding!!.rvAllTrip.visibility = View.GONE
         } else {
             val adapter = AllTripAdapter(requireActivity(), allTripModelResponse, this)
@@ -139,15 +186,21 @@ class TripFragment : Fragment(), LisnerAllTrip {
     }
 
     private fun requestAuthToken(grantType: String?, username: String?, password: String?) {
-        allTripViewModel?.getTokenData(grantType, username, password)?.observe(requireActivity()) { resource ->
-            resource?.let {
-                when (it.status) {
-                    Status.SUCCESS -> it.data?.let { tokenResponse -> handleTokenResponse(tokenResponse) }
-                    Status.ERROR -> Unit // Handle error scenario
-                    Status.LOADING -> Unit // Handle loading scenario
+        allTripViewModel?.getTokenData(grantType, username, password)
+            ?.observe(requireActivity()) { resource ->
+                resource?.let {
+                    when (it.status) {
+                        Status.SUCCESS -> it.data?.let { tokenResponse ->
+                            handleTokenResponse(
+                                tokenResponse
+                            )
+                        }
+
+                        Status.ERROR -> Unit // Handle error scenario
+                        Status.LOADING -> Unit // Handle loading scenario
+                    }
                 }
             }
-        }
     }
 
     private fun handleTokenResponse(tokenResponse: TokenResponse) {
@@ -200,7 +253,16 @@ class TripFragment : Fragment(), LisnerAllTrip {
     }
 
     override fun onButtonClick(allTripModel: AllTripModel) {
-        SharePrefs.getInstance(requireActivity()).putLong(SharePrefs.ALL_TRIP_SLECTED, allTripModel.tripPlannerConfirmedMasterId)
-        activity?.switchContentWithStack(DashBoardFragment())
+        if (allTripModel.isFreezed) {
+            SharePrefs.getInstance(requireActivity())
+                .putInt(SharePrefs.ALL_TRIP_SLECTED, allTripModel.zilaTripMasterId)
+            activity?.switchContentWithStack(DashBoardFragment())
+        } else {
+            val fragment = AddOrderFragment()
+            val args = Bundle()
+            args.putInt("zilaTripMasterId", allTripModel.zilaTripMasterId)
+            fragment.setArguments(args)
+            activity?.switchContentWithStack(fragment)
+        }
     }
 }
