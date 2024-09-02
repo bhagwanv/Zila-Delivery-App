@@ -255,7 +255,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
     override fun onButtonClick(allTripModel: AllTripModel) {
         if (allTripModel.isFreezed) {
             SharePrefs.getInstance(requireActivity())
-                .putInt(SharePrefs.ALL_TRIP_SLECTED, allTripModel.zilaTripMasterId)
+                .putLong(SharePrefs.ALL_TRIP_SLECTED, allTripModel.zilaTripMasterId.toLong())
             activity?.switchContentWithStack(DashBoardFragment())
         } else {
             val fragment = AddOrderFragment()

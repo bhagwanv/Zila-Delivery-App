@@ -74,10 +74,10 @@ interface APIServices {
     suspend fun createTrip(@Body model: CreateTripModel?): JsonObject
 
     @GET("api/ZilaDeliveryApp/GetZilaTrip")
-    suspend fun GetZilaTrip(@Query("zilaTripMasterId") zilaTripMasterId: Int): TripOrderList
+    suspend fun GetZilaTrip(@Query("zilaTripMasterId") zilaTripMasterId: Int): GetZilaTripResponse
 
-    @GET("api/ZilaDeliveryApp/AddOrder")
-    suspend fun addOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int): TripOrderList
+    @POST("api/ZilaDeliveryApp/AddOrder")
+    suspend fun addOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int): AddOrderResponse
 
 
     @PUT("/api/DeliveryIssuance/AssignmentAcceptNew")
