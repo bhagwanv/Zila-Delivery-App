@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -29,6 +30,7 @@ import com.sk.ziladelivery.data.model.CustomerInfo
 import com.sk.ziladelivery.data.model.CustomerOrderInfo
 import com.sk.ziladelivery.data.model.GetZilaTripResponse
 import com.sk.ziladelivery.databinding.AddOrderFragmentBinding
+import com.sk.ziladelivery.databinding.DialogConfirmationBinding
 import com.sk.ziladelivery.listener.LisnerAllOrder
 import com.sk.ziladelivery.listener.LisnerCustomerAllOrder
 import com.sk.ziladelivery.ui.views.adapter.AllCustomersAdapter
@@ -38,6 +40,7 @@ import com.sk.ziladelivery.utilities.ProgressDialog
 import com.sk.ziladelivery.utilities.Status
 import com.sk.ziladelivery.utilities.Utils
 import com.sk.ziladelivery.viewfactory.AddOrderFactory
+import java.util.ArrayList
 
 class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
     private var activity: MainActivity? = null
@@ -129,6 +132,41 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                                 if (res.status!!) {
                                     Toast.makeText(activity, "${res.message}", Toast.LENGTH_SHORT)
                                         .show()
+                                    getZilaTrip()
+                                } else {
+                                    Toast.makeText(activity, "${res.message}", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
+                            }
+                        }
+
+                        Status.ERROR -> {
+                            ProgressDialog.getInstance().dismiss()
+                            if (it.message == "401") {
+                                // handleUnauthorizedError()
+                            }
+                        }
+
+                        Status.LOADING -> {
+                            ProgressDialog.getInstance().show(requireActivity())
+                        }
+                    }
+                }
+            }
+    }
+
+    private fun removeOrder(orderId: Int) {
+        addOrderViewModel?.removeOrder(zilaTripMasterId!!, orderId)
+            ?.observe(requireActivity()) { resource ->
+                resource?.let {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            ProgressDialog.getInstance().dismiss()
+                            it.data?.let { res ->
+                                if (res.status!!) {
+                                    Toast.makeText(activity, "${res.message}", Toast.LENGTH_SHORT)
+                                        .show()
+                                    getZilaTrip()
                                 } else {
                                     Toast.makeText(activity, "${res.message}", Toast.LENGTH_SHORT)
                                         .show()
@@ -190,6 +228,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             mBinding!!.rvAllTrip.visibility = View.GONE
         } else {
             mBinding!!.tvNoTrip.visibility = View.GONE
+            mBinding!!.rvAllTrip.visibility = View.VISIBLE
             val adapter = AllCustomersAdapter(requireActivity(), orderList.CustomerList, this, this)
             mBinding!!.rvAllTrip.adapter = adapter
         }
@@ -239,13 +278,33 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
         }
     }
 
+    private fun confirmationDialog(
+        title: String,
+        orderId: Int
+    ) {
+        val dialogConfirmationBinding = DataBindingUtil.inflate<DialogConfirmationBinding>(
+            layoutInflater, R.layout.dialog_confirmation, null, false
+        )
+        val dialog = Dialog(requireActivity(), R.style.CustomDialog)
+        dialog.setContentView(dialogConfirmationBinding.root)
+        dialog.setCancelable(true)
+        dialogConfirmationBinding.tvTitleDesc.text =
+            "Do you want to $title this order?"
+        dialogConfirmationBinding.btNo.setOnClickListener { dialog.dismiss() }
+        dialogConfirmationBinding.btYes.setOnClickListener {
+            dialog.dismiss()
+            removeOrder(orderId)
+        }
+        dialog.show()
+    }
+
     override fun onButtonClick(allTripModel: CustomerInfo) {
         Log.d("TAG", "onButtonClick: uha pr 1111")
     }
 
     override fun onLisnerCustomerAllOrderClick(allTripModel: CustomerOrderInfo) {
         Log.d("TAG", "onButtonClick: uha pr 22222")
-
+        confirmationDialog("Remove", allTripModel.OrderId!!);
     }
 
 

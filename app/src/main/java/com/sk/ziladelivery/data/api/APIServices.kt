@@ -79,6 +79,8 @@ interface APIServices {
     @POST("api/ZilaDeliveryApp/AddOrder")
     suspend fun addOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int): AddOrderResponse
 
+    @POST("api/ZilaDeliveryApp/RemoveOrder")
+    suspend fun removeOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int): AddOrderResponse
 
     @PUT("/api/DeliveryIssuance/AssignmentAcceptNew")
     suspend fun acceptMyPendingTaskNew(@Body acceptModel: AcceptModel?): AssignmentAcceptModel

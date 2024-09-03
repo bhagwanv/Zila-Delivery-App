@@ -49,19 +49,9 @@
             android:layout_gravity="right|top"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="6dp"
-                android:layout_height="6dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/ic_dot"/>
-            <ImageView
-                android:layout_width="6dp"
-                android:layout_height="6dp"
-                android:layout_marginBottom="2dp"
-                android:src="@drawable/ic_dot"/>
-            <ImageView
-                android:layout_width="6dp"
-                android:layout_height="6dp"
-                android:src="@drawable/ic_dot"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_cross"/>
         </LinearLayout>
 
     </FrameLayout>

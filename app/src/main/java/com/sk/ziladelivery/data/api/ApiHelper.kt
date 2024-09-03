@@ -36,6 +36,7 @@ class ApiHelper(private val apiService: APIServices) {
     suspend fun getAllTripID(id: Int) = apiService.getTripIDAll(id)
     suspend fun getOrder(zilaTripMasterId: Int) = apiService.GetZilaTrip(zilaTripMasterId)
     suspend fun addOrder(zilaTripMasterId: Int,orderId: Int) = apiService.addOrder(zilaTripMasterId,orderId)
+    suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int) = apiService.removeOrder(zilaTripMasterId,orderId)
     suspend fun createTrip(model: CreateTripModel) = apiService.createTrip(model)
     suspend fun getAcceptPenddingTask(acceptModel: AcceptModel?) =
         apiService.acceptMyPendingTaskNew(acceptModel)

@@ -37,6 +37,7 @@ class AppRepository(private val apiHelper: ApiHelper) {
 
     suspend fun getOrder(zilaTripMasterId: Int) = apiHelper.getOrder(zilaTripMasterId)
     suspend fun addOrder(zilaTripMasterId: Int,orderId: Int) = apiHelper.addOrder(zilaTripMasterId,orderId)
+    suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int) = apiHelper.removeOrder(zilaTripMasterId,orderId)
     suspend fun createTrip(model: CreateTripModel) = apiHelper.createTrip(model)
     suspend fun acceptPenddingTask(acceptModel: AcceptModel?) =
         apiHelper.getAcceptPenddingTask(acceptModel)
