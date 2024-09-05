@@ -432,19 +432,6 @@
                                     android:textStyle="bold"
                                     android:visibility="gone" />
 
-                                <TextView
-                                    android:id="@+id/tvRearrange"
-                                    style="@style/SegoeUISemiBold"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/ic_circle_rearange"
-                                    android:gravity="center"
-                                    android:padding="@dimen/view_margin_10"
-                                    android:text="Rearrange"
-                                    android:textColor="@color/white"
-                                    android:textSize="12sp"
-                                    android:textStyle="bold"
-                                    android:visibility="gone" />
 
                                 <TextView
                                     android:id="@+id/inprogress_trip"

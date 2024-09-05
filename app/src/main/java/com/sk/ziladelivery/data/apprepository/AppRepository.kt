@@ -12,9 +12,9 @@ import com.sk.ziladelivery.data.model.OrderDetailsRequestModel
 import com.sk.ziladelivery.data.model.QRCodeResquestModel
 import com.sk.ziladelivery.data.model.ReDispatchModel
 import com.sk.ziladelivery.data.model.ReDispatchOTPModel
-import com.sk.ziladelivery.data.model.RearrangModel
 import com.sk.ziladelivery.data.model.SendCloseKmApproval
 import com.sk.ziladelivery.data.model.StartAssignmentPostModel
+import com.sk.ziladelivery.data.model.ZilaCreateTrip
 import com.sk.ziladelivery.ui.views.fragment.CreateTripModel
 import okhttp3.MultipartBody
 
@@ -30,17 +30,11 @@ class AppRepository(private val apiHelper: ApiHelper) {
 
     suspend fun getLogin(loginModel: LoginModel?) = apiHelper.getLogin(loginModel)
     suspend fun getforgetPassword(mobilNumber: String?) = apiHelper.getForgetpassword(mobilNumber)
-    suspend fun DashboardData(id: Int, TripPlannerConfirmedMasterId: Long) =
-        apiHelper.getDashboard(id, TripPlannerConfirmedMasterId)
+    suspend fun DashboardData(id: Int, ZilaTripMasterId: Long) =
+        apiHelper.getDashboard(id, ZilaTripMasterId)
 
     suspend fun getTripID(id: Int) = apiHelper.getAllTripID(id)
-
-    suspend fun getOrder(zilaTripMasterId: Int) = apiHelper.getOrder(zilaTripMasterId)
-    suspend fun addOrder(zilaTripMasterId: Int,orderId: Int) = apiHelper.addOrder(zilaTripMasterId,orderId)
-    suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int) = apiHelper.removeOrder(zilaTripMasterId,orderId)
-    suspend fun createTrip(model: CreateTripModel) = apiHelper.createTrip(model)
-    suspend fun acceptPenddingTask(acceptModel: AcceptModel?) =
-        apiHelper.getAcceptPenddingTask(acceptModel)
+    suspend fun acceptPenddingTask(acceptModel: AcceptModel?) = apiHelper.getAcceptPenddingTask(acceptModel)
 
     suspend fun RejectAssignment(acceptModel: AcceptModel?) =
         apiHelper.getRejectAssignment(acceptModel)
@@ -63,8 +57,6 @@ class AppRepository(private val apiHelper: ApiHelper) {
     suspend fun getQR(model: QRCodeResquestModel) = apiHelper.getQRCode(model)
     suspend fun getTransactionDetail(transction: String) = apiHelper.getQRCode(transction)
     suspend fun getCheckTransctionSatus(orderid: Int) = apiHelper.checkTransactionStatus(orderid)
-    suspend fun getRearangeList(tripPlannerConfirmMasterId: Int) =
-        apiHelper.getRearrange(tripPlannerConfirmMasterId)
 
     suspend fun getRearangeSkip(tripPlannerConfirmMasterId: Int) =
         apiHelper.getSkipRearrange(tripPlannerConfirmMasterId)
@@ -74,8 +66,6 @@ class AppRepository(private val apiHelper: ApiHelper) {
     suspend fun getOrderList(id: Int, returnOrder: Boolean) =
         apiHelper.getOrderList(id, returnOrder)
 
-    suspend fun getRearangeUpdateList(model: ArrayList<RearrangModel>) =
-        apiHelper.getRearrangeupdate(model)
 
     suspend fun unloadItemDetails(model: OrderDetailsRequestModel) =
         apiHelper.getUnloaditemDetails(model)
@@ -113,5 +103,15 @@ class AppRepository(private val apiHelper: ApiHelper) {
     suspend fun uploadVideo(body: MultipartBody.Part) = apiHelper.uploadVideo(body)
     suspend fun notifyDeliveryAction(model: NotifyDeliveryActionRequestModel) =
         apiHelper.notifyDeliveryAction(model)
+
+
+    /*ZIla*/
+
+    suspend fun getOrder(zilaTripMasterId: Int) = apiHelper.getOrder(zilaTripMasterId)
+    suspend fun addOrder(zilaTripMasterId: Int,orderId: Int) = apiHelper.addOrder(zilaTripMasterId,orderId)
+    suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int) = apiHelper.removeOrder(zilaTripMasterId,orderId)
+    suspend fun createTrip(model: CreateTripModel) = apiHelper.createTrip(model)
+    suspend fun ZilaCreateTrip(model: ZilaCreateTrip) = apiHelper.ZilaCreateTrip(model)
+
 
 }

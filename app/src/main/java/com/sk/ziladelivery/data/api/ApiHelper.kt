@@ -11,9 +11,9 @@ import com.sk.ziladelivery.data.model.OrderDetailsRequestModel
 import com.sk.ziladelivery.data.model.QRCodeResquestModel
 import com.sk.ziladelivery.data.model.ReDispatchModel
 import com.sk.ziladelivery.data.model.ReDispatchOTPModel
-import com.sk.ziladelivery.data.model.RearrangModel
 import com.sk.ziladelivery.data.model.SendCloseKmApproval
 import com.sk.ziladelivery.data.model.StartAssignmentPostModel
+import com.sk.ziladelivery.data.model.ZilaCreateTrip
 import com.sk.ziladelivery.ui.views.fragment.CreateTripModel
 import okhttp3.MultipartBody
 
@@ -30,14 +30,15 @@ class ApiHelper(private val apiService: APIServices) {
 
     suspend fun getLogin(loginModel: LoginModel?) = apiService.doLogin(loginModel)
     suspend fun getForgetpassword(mobilNumber: String?) = apiService.postforgetPassword(mobilNumber)
-    suspend fun getDashboard(id: Int, TripPlannerConfirmedMasterId: Long) =
-        apiService.getDashBoard(id, TripPlannerConfirmedMasterId)
+    suspend fun getDashboard(id: Int, ZilaTripMasterId: Long) =
+        apiService.getDashBoard(id, ZilaTripMasterId)
 
     suspend fun getAllTripID(id: Int) = apiService.getTripIDAll(id)
     suspend fun getOrder(zilaTripMasterId: Int) = apiService.GetZilaTrip(zilaTripMasterId)
     suspend fun addOrder(zilaTripMasterId: Int,orderId: Int) = apiService.addOrder(zilaTripMasterId,orderId)
     suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int) = apiService.removeOrder(zilaTripMasterId,orderId)
     suspend fun createTrip(model: CreateTripModel) = apiService.createTrip(model)
+    suspend fun ZilaCreateTrip(model: ZilaCreateTrip) = apiService.ZilaCreateTrip(model)
     suspend fun getAcceptPenddingTask(acceptModel: AcceptModel?) =
         apiService.acceptMyPendingTaskNew(acceptModel)
 
@@ -63,14 +64,11 @@ class ApiHelper(private val apiService: APIServices) {
     suspend fun getQRCode(model: QRCodeResquestModel) = apiService.GenerateOrderAmtQRCode(model)
     suspend fun getQRCode(Tnx: String) = apiService.getTransactionDetail(Tnx)
     suspend fun checkTransactionStatus(orderid: Int) = apiService.getCheckTransactionStatus(orderid)
-    suspend fun getRearrange(tripPlannerConfirmMasterId: Int) =
-        apiService.GetTripTouchPointToRearrange(tripPlannerConfirmMasterId)
+
 
     suspend fun getSkipRearrange(tripPlannerConfirmMasterId: Int) =
         apiService.SkipRearrange(tripPlannerConfirmMasterId)
 
-    suspend fun getRearrangeupdate(model: ArrayList<RearrangModel>) =
-        apiService.UpdateTripTouchPointToRearrange(model)
 
     suspend fun getOrderList(id: Int, returnOrder: Boolean) =
         apiService.getTripOrderForUpdateStatus(id, returnOrder)

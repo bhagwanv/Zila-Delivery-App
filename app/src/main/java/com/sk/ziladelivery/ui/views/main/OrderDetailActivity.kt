@@ -477,8 +477,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
 
 
     private fun dataFromIntent() {
-        tripPlannerConfirmedDetailId =
-            intent.getIntExtra(Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id, 0)
+        tripPlannerConfirmedDetailId = intent.getIntExtra(Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id, 0)
         isGeneralOrder = intent.getBooleanExtra("isGeneralOrder", false)
         time = intent.getStringExtra("time")
         notifyDeliveryCancelled = intent.getIntExtra("NotifyDeliveryCancelled", 0)

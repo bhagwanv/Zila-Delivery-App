@@ -5,10 +5,10 @@ import java.util.List;
 
 public class PaymentRequestModel {
 
-    @SerializedName("TripPlannerConfirmedDetailId")
+    @SerializedName("ZilaTripDetailId")
     private int TripPlannerConfirmedDetailId;
 
-    @SerializedName("TripPlannerConfirmedOrderId")
+    @SerializedName("ZilaTripOrderId")
     private int TripPlannerConfirmedOrderId ;
 
     @SerializedName("OrderIds")

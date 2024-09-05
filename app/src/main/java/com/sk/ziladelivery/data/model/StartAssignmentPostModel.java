@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class StartAssignmentPostModel
 {
-    @SerializedName("TripPlannerConfirmedMasterId")
-    public long TripPlannerConfirmedMasterId;
+    @SerializedName("ZilaTripMasterId")
+    public long ZilaTripMasterId;
 
     @SerializedName("CurrentLat")
     public double CurrentLat;
@@ -33,8 +33,8 @@ public class StartAssignmentPostModel
 
 
 
-    public StartAssignmentPostModel(long tripPlannerConfirmedMasterId, double currentLat, double currentLng,boolean IsClosingKmManualReading,int peopleID) {
-       this. TripPlannerConfirmedMasterId = tripPlannerConfirmedMasterId;
+    public StartAssignmentPostModel(long zilaTripMasterId, double currentLat, double currentLng,boolean IsClosingKmManualReading,int peopleID) {
+       this. ZilaTripMasterId = zilaTripMasterId;
         this. CurrentLat = currentLat;
         this. CurrentLng = currentLng;
         this. ClosingKm = ClosingKm;
@@ -43,14 +43,14 @@ public class StartAssignmentPostModel
         this.PeopleID=peopleID;
     }
 
-    public StartAssignmentPostModel(int tripPlannerConfirmedMasterId, Double currentLat, Double currentLng) {
-        this. TripPlannerConfirmedMasterId = tripPlannerConfirmedMasterId;
+    public StartAssignmentPostModel(int zilaTripMasterId, Double currentLat, Double currentLng) {
+        this. ZilaTripMasterId = zilaTripMasterId;
         this. CurrentLat = currentLat;
         this. CurrentLng = currentLng;
 
     }
-    public StartAssignmentPostModel(int tripPlannerConfirmedMasterId, Double currentLat, Double currentLng,String startImageURl,int startKm,int peopleID) {
-        this. TripPlannerConfirmedMasterId = tripPlannerConfirmedMasterId;
+    public StartAssignmentPostModel(int zilaTripMasterId, Double currentLat, Double currentLng,String startImageURl,int startKm,int peopleID) {
+        this. ZilaTripMasterId = zilaTripMasterId;
         this. CurrentLat = currentLat;
         this. CurrentLng = currentLng;
         this.StartKmUrl= startImageURl;

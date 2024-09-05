@@ -23,7 +23,6 @@ import com.sk.ziladelivery.databinding.MyTripFragmentBinding
 import com.sk.ziladelivery.databinding.ReachedPopupBinding
 import com.sk.ziladelivery.listener.SearchMyTripInterface
 import com.sk.ziladelivery.ui.views.adapter.AssignmentTabAdapter
-import com.sk.ziladelivery.ui.views.fragment.MySingleTripMapViewFragment
 import com.sk.ziladelivery.ui.views.fragment.MyTripListViewFragment
 import com.sk.ziladelivery.utilities.Constant
 import com.sk.ziladelivery.utilities.Utils
@@ -33,13 +32,12 @@ import java.util.concurrent.TimeUnit
 
 class MyTripActivity : AppCompatActivity() {
     private var mBinding: MyTripFragmentBinding? = null
-    private var mySingleTripMapViewFragment: MySingleTripMapViewFragment? = null
     private var tabLayout: TabLayout? = null
     private val mHandler = Handler()
     private var reachedDialog: Dialog? = null
     private val mFragmentList: MutableList<Fragment> = ArrayList()
     private val mFragmentTitleList: MutableList<String> = ArrayList()
-    private var TripPlannerConfirmedMasterId = 0
+    private var ZilaTripMasterId = 0
     private var TripPlannerConfirmedDetailId = 0
     private var millisUntilFinished: Long = 0
     private var isViewLoaded = false
@@ -59,7 +57,7 @@ class MyTripActivity : AppCompatActivity() {
 
     private fun getIntenValue() {
         if (intent.extras != null) {
-            TripPlannerConfirmedMasterId = intent.getIntExtra("TripPlannerConfirmedMasterId", 0)
+            ZilaTripMasterId = intent.getIntExtra("ZilaTripMasterId", 0)
             TripPlannerConfirmedDetailId = intent.getIntExtra(Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id, 0)
             CustomerTripStatus = intent.getIntExtra("CustomerTripStatus", 0)
             ORDER_ID = intent.getIntExtra("ORDER_ID", 0)
@@ -91,7 +89,7 @@ class MyTripActivity : AppCompatActivity() {
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        mySingleTripMapViewFragment!!.onActivityResult(requestCode, resultCode, data)
+       // mySingleTripMapViewFragment!!.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun initView() {
@@ -168,11 +166,10 @@ class MyTripActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
-        val adapter =
-            AssignmentTabAdapter(supportFragmentManager, mFragmentList, mFragmentTitleList)
-        mySingleTripMapViewFragment = MySingleTripMapViewFragment()
+        val adapter = AssignmentTabAdapter(supportFragmentManager, mFragmentList, mFragmentTitleList)
+        //mySingleTripMapViewFragment = MySingleTripMapViewFragment()
 
-        addFragment(mySingleTripMapViewFragment!!, "MapView")
+       // addFragment(mySingleTripMapViewFragment!!, "MapView")
         addFragment(MyTripListViewFragment(), "ListView")
 
         /*if (!isNotLastMileApp && !IsLocationEnabled) {
@@ -205,7 +202,7 @@ class MyTripActivity : AppCompatActivity() {
 
     private fun addFragment(fragment: Fragment, title: String) {
         val bundle = Bundle()
-        bundle.putInt("TripPlannerConfirmedMasterId", TripPlannerConfirmedMasterId)
+        bundle.putInt("ZilaTripMasterId", ZilaTripMasterId)
         bundle.putInt(Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id, TripPlannerConfirmedDetailId)
         bundle.putInt("CustomerTripStatus", CustomerTripStatus)
         bundle.putInt("ORDER_ID", ORDER_ID)
@@ -217,7 +214,7 @@ class MyTripActivity : AppCompatActivity() {
 
     fun setDefaultFragment(fragment: Fragment) {
         val bundle = Bundle()
-        bundle.putInt("TripPlannerConfirmedMasterId", TripPlannerConfirmedMasterId)
+        bundle.putInt("ZilaTripMasterId", ZilaTripMasterId)
         bundle.putInt(Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id, TripPlannerConfirmedDetailId)
         bundle.putInt("CustomerTripStatus", CustomerTripStatus)
         bundle.putInt("ORDER_ID", ORDER_ID)

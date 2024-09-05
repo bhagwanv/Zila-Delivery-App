@@ -13,10 +13,10 @@ import okhttp3.MultipartBody
 
 class DashBoardViewModel(private val appRepository: AppRepository) : ViewModel() {
 
-    fun getDashboardData(id: Int,TripPlannerConfirmedMasterId:Long) = liveData(Dispatchers.Main) {
+    fun getDashboardData(id: Int,ZilaTripMasterId:Long) = liveData(Dispatchers.Main) {
         emit(Resource.loading(data = null))
         try {
-            emit(Resource.success(data = appRepository.DashboardData(id,TripPlannerConfirmedMasterId)))
+            emit(Resource.success(data = appRepository.DashboardData(id,ZilaTripMasterId)))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }

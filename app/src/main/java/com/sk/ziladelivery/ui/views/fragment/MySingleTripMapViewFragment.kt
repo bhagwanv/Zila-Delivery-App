@@ -1541,7 +1541,7 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
 
                     val unloadinghr = Math.round((orderResponseModel!!.singleOrderMapviewInfoDC.unloadingTime / 60).toFloat())
                     val unloadingmin = Math.round((orderResponseModel!!.singleOrderMapviewInfoDC.unloadingTime % 60).toFloat())
-                    TripPlannerConfirmedDetailId = orderResponseModel!!.customerOrderinfoDc.tripPlannerConfirmedDetailId
+                    TripPlannerConfirmedDetailId = orderResponseModel!!.customerOrderinfoDc.zilaTripDetailId
                     TripPlannerConfirmedOrderId = orderResponseModel!!.customerOrderinfoDc.tripPlannerConfirmedOrderId
                     warehouseLat = orderResponseModel!!.singleOrderMapviewInfoDC.warehouesLat
                     warehouseLong = orderResponseModel!!.singleOrderMapviewInfoDC.warehouesLng

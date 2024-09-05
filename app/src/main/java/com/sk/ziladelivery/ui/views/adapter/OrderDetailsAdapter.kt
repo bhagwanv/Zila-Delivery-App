@@ -49,15 +49,6 @@ class OrderDetailsAdapter(
         holder.mBinding.rvItemDetailList.adapter = orderDetailsAdapter
         holder.mBinding.itemCheckBox.tag = 0
 
-        if (customerOrderInfoEntity.isETAOrderHide) {
-            holder.mBinding.btnReAttempt.visibility = View.VISIBLE
-            holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-            holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-        } else {
-            holder.mBinding.btnReAttempt.visibility = View.VISIBLE
-            holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-            holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-        }
 
         if (customerOrderInfoEntity.messageText.equals("", ignoreCase = true)) {
             holder.mBinding.tvOrderStatusMessage.visibility = View.GONE
@@ -76,24 +67,8 @@ class OrderDetailsAdapter(
         }
         holder.mBinding.itemCheckBox.isChecked = customerOrderInfoEntity.isBoolWorkingStatus
 
-        if (customerListDcs[position].orderReDispatchCount <= customerListDcs[position].reDispatchCount) {
-            holder.mBinding.btnReDispatch.visibility = View.GONE
-        } else {
-            holder.mBinding.btnReDispatch.visibility = View.VISIBLE
 
-            /*if (customerOrderInfoEntity.isETAOrderHide) {
-                holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-            } else {
-                holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-            }*/
 
-        }
-
-        if (customerListDcs[position].orderReDispatchCount <= customerListDcs[position].reAttemptCount) {
-            holder.mBinding.btnReAttempt.visibility = View.GONE
-        } else {
-            holder.mBinding.btnReAttempt.visibility = View.VISIBLE
-        }
 
         viewMoreItemDetails(holder)
         if (customerOrderInfoEntity.status == "Delivery Redispatch" || customerOrderInfoEntity.status == "Delivery Canceled" || customerOrderInfoEntity.status == "Delivered" || customerOrderInfoEntity.status == "ReAttempt") {
@@ -103,47 +78,19 @@ class OrderDetailsAdapter(
 
         } else if (customerOrderInfoEntity.workingStatus == 6) { //Order Cancel
             holder.mBinding.itemCheckBox.visibility = View.INVISIBLE
-            holder.mBinding.btnReDispatch.visibility = View.GONE
-            holder.mBinding.btnReAttempt.visibility = View.GONE
             holder.mBinding.ivDownItem.visibility = View.VISIBLE
 
         } else if (customerOrderInfoEntity.workingStatus == 7) { //Order Redispatch
             holder.mBinding.itemCheckBox.visibility = View.INVISIBLE
-            holder.mBinding.btnCancelOrder.visibility = View.INVISIBLE
-            holder.mBinding.btnReAttempt.visibility = View.INVISIBLE
-            holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-
 
         } else if (customerOrderInfoEntity.workingStatus == 8) { //Order ReAttemp
             holder.mBinding.itemCheckBox.visibility = View.INVISIBLE
-            holder.mBinding.btnCancelOrder.visibility = View.INVISIBLE
-            holder.mBinding.btnReAttempt.visibility = View.VISIBLE
-            holder.mBinding.ivDownItem.visibility = View.VISIBLE
-            holder.mBinding.btnReDispatch.visibility = View.INVISIBLE
-
-
-        } /*else if (customerOrderInfoEntity.workingStatus == 0) {
-            holder.mBinding.itemCheckBox.visibility = View.VISIBLE
-            holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-            holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-            holder.mBinding.btnReAttempt.visibility = View.VISIBLE
-
-            *//*if (customerOrderInfoEntity.isETAOrderHide) {
-                holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-                holder.mBinding.itemCheckBox.visibility = View.VISIBLE
-            } else {
-                holder.mBinding.itemCheckBox.visibility = View.VISIBLE
-                holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-            }*//*
             holder.mBinding.ivDownItem.visibility = View.VISIBLE
 
-        }*/ else {
-            //status ----> shipped or customerOrderInfoEntity.workingStatus == 0
 
+        } else {
             holder.mBinding.itemCheckBox.visibility = View.VISIBLE
             holder.mBinding.ivDownItem.visibility = View.VISIBLE
-            holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-            holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
 
             if (customerOrderInfoEntity.isScaleUpPaymentOverdue) {
                 holder.mBinding.itemCheckBox.visibility = View.INVISIBLE
@@ -153,49 +100,12 @@ class OrderDetailsAdapter(
                 holder.mBinding.itemCheckBox.visibility = View.VISIBLE
             }
 
-            if (customerListDcs[position].orderReDispatchCount <= customerListDcs[position].reDispatchCount) {
-                holder.mBinding.btnReDispatch.visibility = View.GONE
-            } else {
-                holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-                /*   if (customerOrderInfoEntity.isETAOrderHide) {
-                       holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-                   } else {
-                       holder.mBinding.btnReDispatch.visibility = View.VISIBLE
-                   }*/
-
-            }
-
-            if (customerListDcs[position].orderReDispatchCount <= customerListDcs[position].reAttemptCount) {
-                holder.mBinding.btnReAttempt.visibility = View.GONE
-            } else {
-                holder.mBinding.btnReAttempt.visibility = View.VISIBLE
-            }
         }
 
         if (customerOrderInfoEntity.isOnilnePayment && customerOrderInfoEntity.workingStatus == 0) {
             holder.mBinding.tvOrderPaymentMode.visibility = View.GONE
-            if (customerOrderInfoEntity.workingStatus == 7) {
-                holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-            } else {
-                holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-            }
-
-            /*if (customerOrderInfoEntity.isETAOrderHide) {
-                holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-                holder.mBinding.tvOrderPaymentMode.visibility = View.VISIBLE
-            } else {
-                holder.mBinding.tvOrderPaymentMode.visibility = View.GONE
-                if (customerOrderInfoEntity.workingStatus == 7) {
-                    holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-                } else {
-                    holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-                }
-            }*/
         }
 
-       /* if (!customerOrderInfoEntity.isDeliveryCancelledEnable) {
-            holder.mBinding.btnCancelOrder.visibility = View.VISIBLE
-        }*/
         holder.mBinding.ivDownItem.setOnClickListener {
             if (isShowDetailsList) {
                 holder.mBinding.llRvItemDetailList.visibility = View.VISIBLE
@@ -209,28 +119,6 @@ class OrderDetailsAdapter(
             orderDetailInterface.checkBoxClicked(
                 holder.mBinding.itemCheckBox.isChecked,
                 position
-            )
-        }
-        /*holder.mBinding.tvItemId.setOnClickListener {
-            holder.mBinding.itemCheckBox.isChecked = !holder.mBinding.itemCheckBox.isChecked
-            orderDetailInterface.checkBoxClicked(holder.mBinding.itemCheckBox.isChecked, position)
-        }*/
-        holder.mBinding.btnCancelOrder.setOnClickListener {
-            orderDetailInterface.onButtonClick(
-                "Cancel Order", position,
-                customerOrderInfoEntity.orderid, customerOrderInfoEntity
-            )
-        }
-        holder.mBinding.btnReDispatch.setOnClickListener {
-            orderDetailInterface.onButtonClick(
-                "Re Dispatch", position, customerOrderInfoEntity.orderid, customerOrderInfoEntity
-            )
-        }
-
-        holder.mBinding.btnReAttempt.setOnClickListener {
-            Log.e("TAG", "onBindViewHolder: " + customerOrderInfoEntity.toString())
-            orderDetailInterface.onButtonClick(
-                "Re Attempt", position, customerOrderInfoEntity.orderid, customerOrderInfoEntity
             )
         }
 

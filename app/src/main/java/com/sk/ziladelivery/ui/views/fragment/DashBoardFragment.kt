@@ -80,7 +80,6 @@ import com.sk.ziladelivery.ui.views.main.MainActivity.Companion.startBreak
 import com.sk.ziladelivery.ui.views.main.MainActivity.Companion.stopBreak
 import com.sk.ziladelivery.ui.views.main.MainActivity.Companion.tvStartTime
 import com.sk.ziladelivery.ui.views.main.MyTripActivity
-import com.sk.ziladelivery.ui.views.main.RearrangeActivity
 import com.sk.ziladelivery.ui.views.viewmodels.DashBoardViewModel
 import com.sk.ziladelivery.utilities.CommonMethods
 import com.sk.ziladelivery.utilities.Constant
@@ -99,6 +98,7 @@ import com.sk.ziladelivery.viewfactory.DashBoardViewFactory
 import com.squareup.picasso.Picasso
 import id.zelory.compressor.Compressor
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -127,7 +127,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
     private var isStartTripImageTaking = false
     private var customDialog: Dialog? = null
     private var popupDialog: Dialog? = null
-    private var tripPlannerConfirmedMasterId = 0
+    private var ZilaTripMasterId = 0
     private var tripPlannerConfirmedDetailId = 0
     private var tripId = 0
     private var breakTime = 0
@@ -149,8 +149,8 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
     private var handler: Handler? = Handler(Looper.getMainLooper())
     private var mServiceIntent: Intent? = null
     private var locationServiceForBeat: LocationServiceForBeat? = null
+    private var compressionDisposable: Disposable? = null
 
-    private var IsSKFixVehicle = false
 
 
     companion object {
@@ -192,12 +192,19 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        if (compressionDisposable != null) {
+            compressionDisposable!!.dispose()
+        }
+    }
+
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == EasyWayLocation.LOCATION_SETTING_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                currentTripStatus(tripPlannerConfirmedMasterId)
+                currentTripStatus(ZilaTripMasterId)
             } else {
                 ProgressDialog.getInstance().dismiss()
                 Utils.setToast(activity, "Please Turn On GPS")
@@ -288,21 +295,8 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
             }
         }
         mBinding!!.startTrip.setOnClickListener {
-            if (IsSKFixVehicle) {
-                checkGPSNetworkMethod()
-            } else {
-                if (Utils.getDoubleLat(activity) != 0.0 && Utils.getDoubleLag(activity) != 0.0) {
-                    val postModel = StartAssignmentPostModel(
-                        tripPlannerConfirmedMasterId,
-                        Utils.getDoubleLat(activity),
-                        Utils.getDoubleLag(activity),
-                        "",
-                        0,
-                        SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)
-                    )
-                    startTripApi(postModel)
-                }
-            }
+
+            checkGPSNetworkMethod()
         }
         mBinding!!.tripEnd.setOnClickListener {
             AlertDialog.Builder((getActivity())!!)
@@ -317,7 +311,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                         )
                     } else {
                         val postModel = StartAssignmentPostModel(
-                            tripPlannerConfirmedMasterId.toLong(),
+                            ZilaTripMasterId.toLong(),
                             Utils.getDoubleLat(activity),
                             Utils.getDoubleLag(activity),
                             true,
@@ -342,16 +336,6 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                     // customDialog.dismiss();
                 }.show()
         }
-        mBinding!!.tvRearrange.setOnClickListener {
-            startActivity(
-                Intent(
-                    activity,
-                    RearrangeActivity::class.java
-                ).putExtra("TripPlannerConfirmedMasterId", tripPlannerConfirmedMasterId)
-            )
-
-        }
-
 
         mBinding!!.tvAddMeterReading.setOnClickListener { checkAddMeterGPSNetworkMethod() }
         mBinding!!.swipeContainer.setOnRefreshListener {
@@ -383,7 +367,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                             ) != 0.0
                         ) {
                             val postModel = StartAssignmentPostModel(
-                                tripPlannerConfirmedMasterId,
+                                ZilaTripMasterId,
                                 Utils.getDoubleLat(activity),
                                 Utils.getDoubleLag(activity)
                             )
@@ -414,7 +398,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                             ) != 0.0
                         ) {
                             val postModel = StartAssignmentPostModel(
-                                tripPlannerConfirmedMasterId,
+                                ZilaTripMasterId,
                                 Utils.getDoubleLat(activity),
                                 Utils.getDoubleLag(activity)
                             )
@@ -619,10 +603,10 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
 
     }
 
-    private fun dashBoardDataApi(tripPlannerConfirmedMasterId: Long) {
+    private fun dashBoardDataApi(ZilaTripMasterId: Long) {
         dashBoardViewModel!!.getDashboardData(
             SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID),
-            tripPlannerConfirmedMasterId
+            ZilaTripMasterId
         ).observe(viewLifecycleOwner) {
             it?.let { resource ->
                 when (resource.status) {
@@ -675,7 +659,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
         popupDialog!!.setCancelable(false)
         activityTransparentBinding.cvStop.setOnClickListener {
             val postModel = StartAssignmentPostModel(
-                tripPlannerConfirmedMasterId,
+                ZilaTripMasterId,
                 Utils.getDoubleLat(activity),
                 Utils.getDoubleLag(activity)
             )
@@ -692,11 +676,8 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                 if (jsonObject != null) {
                     val CustomerTripStatus = jsonObject.getInt("CustomerTripStatus")
                     val intent = Intent(activity, MyTripActivity::class.java)
-                    intent.putExtra("TripPlannerConfirmedMasterId", tripPlannerConfirmedMasterId)
-                    intent.putExtra(
-                        Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id,
-                        tripPlannerConfirmedDetailId
-                    )
+                    intent.putExtra("ZilaTripMasterId", ZilaTripMasterId)
+                    intent.putExtra(Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id, tripPlannerConfirmedDetailId)
                     intent.putExtra("ORDER_ID", jsonObject.getInt("OrderId"))
                     intent.putExtra("CustomerTripStatus", CustomerTripStatus)
                     intent.putExtra("time", time)
@@ -930,18 +911,6 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                 View.GONE,
                 View.GONE,
             )
-
-            TripStartEnum.REARRANGE -> ViewHideShow(
-                View.GONE,
-                View.GONE,
-                View.GONE,
-                View.GONE,
-                View.GONE,
-                "",
-                View.GONE,
-                View.VISIBLE,
-            )
-
             else -> {}
         }
     }
@@ -963,7 +932,6 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
         mBinding!!.tripApprovalPendding.visibility = ApprovalPendding
         mBinding!!.tripApprovalPendding.text = status
         startBreak!!.visibility = startBrak
-        mBinding!!.tvRearrange.visibility = rearrange
     }
 
     private fun assignmentAcceptBottomBar(ewayBillList: ArrayList<AssignmentEwayBillModel>) {
@@ -1162,12 +1130,12 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                     )
             }
             tripId = dashBoardResponseModel.tripdashboarddc.mytrip.tripid
-            tripPlannerConfirmedMasterId =
+            ZilaTripMasterId =
                 dashBoardResponseModel.tripdashboarddc.tripplannerconfirmedmasterid
             tripPlannerConfirmedDetailId =
                 dashBoardResponseModel.tripdashboarddc.tripPlannerConfirmedDetailId
             SharePrefs.getInstance(activity)
-                .putInt(SharePrefs.TripPlannerConfirmedMasterId, tripPlannerConfirmedMasterId)
+                .putInt(SharePrefs.TripPlannerConfirmedMasterId, ZilaTripMasterId)
             time = dashBoardResponseModel.tripdashboarddc.tripplannerdistance.starttime
             breakTime = dashBoardResponseModel.tripdashboarddc.breakTimeInSec
             assignmentList = dashBoardResponseModel.tripdashboarddc.assignmentlist
@@ -1189,13 +1157,6 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
             }
             tripStartStatus(dashBoardResponseModel.tripdashboarddc.tripWorkingStatus)
             setActionBarConfiguration()
-            IsSKFixVehicle = dashBoardResponseModel.tripdashboarddc.isSKFixVehicle
-
-            if (IsSKFixVehicle) {
-                mBinding!!.llLastMileApp.visibility = View.VISIBLE
-            } else {
-                mBinding!!.llLastMileApp.visibility = View.GONE
-            }
             val adapter = PendingTaskAdapter((getActivity())!!, assignmentList, this)
             mBinding!!.rvAssignment.adapter = adapter
         } else {
@@ -1368,8 +1329,8 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
         startActivityForResult(pictureIntent, REQUEST_IMAGE_START_TRIP)
     }
 
-    private fun currentTripStatus(TripPlannerConfirmedMasterId: Int) {
-        dashBoardViewModel!!.GetTripCurrentStatusAPI(TripPlannerConfirmedMasterId)
+    private fun currentTripStatus(ZilaTripMasterId: Int) {
+        dashBoardViewModel!!.GetTripCurrentStatusAPI(ZilaTripMasterId)
             .observe(requireActivity()) {
                 it?.let { resource ->
                     when (resource.status) {
@@ -1395,10 +1356,13 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
     }
 
     private fun uploadStartTripFilePth() {
-        val fileToUpload = File(imageStartTripFilePath!!)
-        if (fileToUpload == null && imageStartTripFilePath.isNullOrEmpty())
+        val fileToUpload = imageStartTripFilePath?.let { File(it) }
+
+        if (fileToUpload == null || imageStartTripFilePath.isNullOrEmpty()) {
             return
-        Compressor(requireActivity())
+        }
+
+        compressionDisposable = Compressor(requireActivity())
             .setQuality(90)
             .setCompressFormat(Bitmap.CompressFormat.JPEG)
             .compressToFileAsFlowable(fileToUpload)
@@ -1406,12 +1370,12 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ file: File ->
                 uploadImagePath(file)
-            }) { throwable: Throwable ->
+            }, { throwable: Throwable ->
                 throwable.printStackTrace()
-                Utils.setToast(requireActivity(), "" + throwable.message)
-
-            }
+                Utils.setToast(requireActivity(), "Image compression failed: ${throwable.message}")
+            })
     }
+
 
     private fun uploadImagePath(file: File) {
         val requestFile = RequestBody.create("image/jpeg".toMediaTypeOrNull(), file)
@@ -1549,7 +1513,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                                 ) != 0.0
                             ) {
                                 val postModel = StartAssignmentPostModel(
-                                    tripPlannerConfirmedMasterId,
+                                    ZilaTripMasterId,
                                     Utils.getDoubleLat(activity),
                                     Utils.getDoubleLag(activity),
                                     response,
@@ -1592,7 +1556,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                 .getString(SharePrefs.BASEURL) + response
         ).into(image)
         startKm.setText(startKM.toString() + "")
-        postMiloMeterData(tripPlannerConfirmedMasterId)
+        postMiloMeterData(ZilaTripMasterId)
 
         imageUploadPopupBinding.ivCross.setOnClickListener { customDialog!!.dismiss() }
         miloMeter.addTextChangedListener(object : TextWatcher {
@@ -1638,7 +1602,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
 
                                 sendCloseKmApproval(
                                     SendCloseKmApproval(
-                                        tripPlannerConfirmedMasterId,
+                                        ZilaTripMasterId,
                                         milovalue.toInt(),
                                         response,
                                         SharePrefs.getInstance(activity)
@@ -1861,7 +1825,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
         val client = LocationServices.getSettingsClient((getActivity())!!)
         val task = client.checkLocationSettings(builder.build())
         task.addOnSuccessListener {
-            currentTripStatus(tripPlannerConfirmedMasterId)
+            currentTripStatus(ZilaTripMasterId)
         }
         task.addOnFailureListener { e: Exception? ->
             if (e is ResolvableApiException) {

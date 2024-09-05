@@ -22,8 +22,8 @@ android {
         applicationId "com.sk.ziladelivery"
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 40
-        versionName "1.33"
+        versionCode 1
+        versionName "1.28"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

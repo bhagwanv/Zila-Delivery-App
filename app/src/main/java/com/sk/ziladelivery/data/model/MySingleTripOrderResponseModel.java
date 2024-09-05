@@ -98,8 +98,8 @@ public  class MySingleTripOrderResponseModel {
     }
     public  class CustomerOrderinfoDc {
         @Expose
-        @SerializedName("TripPlannerConfirmedDetailId")
-        private int TripPlannerConfirmedDetailId;
+        @SerializedName("ZilaTripDetailId")
+        private int ZilaTripDetailId;
         @Expose
         @SerializedName("TripPlannerConfirmedOrderId")
         private int TripPlannerConfirmedOrderId;
@@ -209,12 +209,12 @@ public  class MySingleTripOrderResponseModel {
         public void setTripPlannerConfirmedOrderId(int tripPlannerConfirmedOrderId) {
             TripPlannerConfirmedOrderId = tripPlannerConfirmedOrderId;
         }
-        public int getTripPlannerConfirmedDetailId() {
-            return TripPlannerConfirmedDetailId;
+        public int getZilaTripDetailId() {
+            return ZilaTripDetailId;
         }
 
-        public void setTripPlannerConfirmedDetailId(int tripPlannerConfirmedDetailId) {
-            TripPlannerConfirmedDetailId = tripPlannerConfirmedDetailId;
+        public void setZilaTripDetailId(int tripPlannerConfirmedDetailId) {
+            ZilaTripDetailId = tripPlannerConfirmedDetailId;
         }
 
         public int getSequenceNo() {

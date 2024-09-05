@@ -78,8 +78,8 @@ public class DashBoardResponseModel {
         @SerializedName("StartKm")
         private double StartKm;
         @Expose
-        @SerializedName("TripPlannerConfirmedMasterId")
-        private int tripplannerconfirmedmasterid;
+        @SerializedName("ZilaTripMasterId")
+        private int ZilaTripMasterId;
 
         @Expose
         @SerializedName("TripWorkingStatus")
@@ -198,11 +198,11 @@ public class DashBoardResponseModel {
         }
 
         public int getTripplannerconfirmedmasterid() {
-            return tripplannerconfirmedmasterid;
+            return ZilaTripMasterId;
         }
 
         public void setTripplannerconfirmedmasterid(int tripplannerconfirmedmasterid) {
-            this.tripplannerconfirmedmasterid = tripplannerconfirmedmasterid;
+            this.ZilaTripMasterId = tripplannerconfirmedmasterid;
         }
     }
 

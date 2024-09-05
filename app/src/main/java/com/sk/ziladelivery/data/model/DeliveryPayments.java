@@ -28,37 +28,10 @@ public class DeliveryPayments {
     @SerializedName("IsVAN_RTGSNEFT")
     private boolean vanRTGS;
 
-
-
-    public DeliveryPayments(String transId, long amount, String paymentFrom, String chequeImageUrl, String chequeBankName, String paymentDate) {
-        TransId = transId;
-        this.amount = amount;
-        PaymentFrom = paymentFrom;
-        ChequeImageUrl = chequeImageUrl;
-        ChequeBankName = chequeBankName;
-        PaymentDate = paymentDate;
-    }
-
     private boolean isVeryfied;
-
-
 
     private boolean flag;
 
-   /* public DeliveryPayments(String paymentFrom) {
-        PaymentFrom = paymentFrom;
-    }*/
-
-   /* public DeliveryPayments(int orderId, String transId, int amount, String paymentFrom, String chequeImageUrl, String chequeBankName, String paymentDate,boolean flag) {
-        this. OrderId = orderId;
-        this. TransId = transId;
-        this.amount = amount;
-        this. PaymentFrom = paymentFrom;
-        this. ChequeImageUrl = chequeImageUrl;
-        this.ChequeBankName = chequeBankName;
-        this. PaymentDate = paymentDate;
-        this. flag = flag;
-    }*/
 
     public DeliveryPayments(int orderId, String transId, double amount, String paymentFrom, String chequeImageUrl, String chequeBankName, String paymentDate, boolean vanRTGS) {
         this. OrderId = orderId;

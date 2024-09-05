@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class MyTripOrderResponseModel {
     @Expose
-    @SerializedName("orderList")
+    @SerializedName("ZorderList")
     var orderlist: ArrayList<OrderlistEntity>? = null
 
     @Expose
@@ -52,7 +52,7 @@ class MyTripOrderResponseModel {
     @SerializedName("Skcode")
     var skcode: String? = null
 
-    @SerializedName("TripPlannerConfirmedDetailId")
+    @SerializedName("ZilaTripDetailId")
     var tripPlannerConfirmedDetailId = 0
 
     @Expose

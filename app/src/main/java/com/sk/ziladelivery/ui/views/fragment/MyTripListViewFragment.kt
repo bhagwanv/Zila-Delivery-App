@@ -64,7 +64,7 @@ import java.util.concurrent.TimeUnit
 class MyTripListViewFragment : Fragment(), orderdetailClick, MyPopupViewListener, SearchMyTripInterface, Listener {
     val MY_PERMISSIONS_REQUEST_LOCATION = 99
     private var myTripViewModel: MyTripViewModel? = null
-    private var TripPlannerConfirmedMasterId = 0
+    private var ZilaTripMasterId = 0
     private var TripPlannerConfirmedDetailId = 0
     private var TripPlannerConfirmedDetailIdDashbord = 0
     private var TripPlannerConfDetailId = 0
@@ -123,7 +123,7 @@ class MyTripListViewFragment : Fragment(), orderdetailClick, MyPopupViewListener
                 DataBindingUtil.inflate(inflater, R.layout.fragment_mytrip_list, container, false)
         }
         val bundle = this.arguments
-        TripPlannerConfirmedMasterId = bundle!!.getInt("TripPlannerConfirmedMasterId")
+        ZilaTripMasterId = bundle!!.getInt("ZilaTripMasterId")
         TripPlannerConfirmedDetailIdDashbord = bundle.getInt(Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id)
         CustomerTripStatus = bundle.getInt("CustomerTripStatus")
         initView()
@@ -193,7 +193,7 @@ class MyTripListViewFragment : Fragment(), orderdetailClick, MyPopupViewListener
                 )
             }
         }
-        myTripViewModel!!.GetMyTripOrderModel(TripPlannerConfirmedMasterId)
+        myTripViewModel!!.GetMyTripOrderModel(ZilaTripMasterId)
         myTripViewModel!!.getmySinngleTripOrderResponseData()
             .observe(requireActivity()) { apiResponse: ApiResponse? ->
                 apiResponse?.let {
@@ -208,7 +208,7 @@ class MyTripListViewFragment : Fragment(), orderdetailClick, MyPopupViewListener
             }
         }
         myTripViewModel!!.GetMySingleTripMapOrderModel(
-            TripPlannerConfirmedMasterId,
+            ZilaTripMasterId,
             gpsTracker!!.latitude,
             gpsTracker!!.longitude
         )
@@ -465,8 +465,7 @@ class MyTripListViewFragment : Fragment(), orderdetailClick, MyPopupViewListener
                     orderCount = orderResponseModel.customerOrderinfoDc.orderCount
                     warehouseLat = orderResponseModel.singleOrderMapviewInfoDC.warehouesLat
                     warehouseLong = orderResponseModel.singleOrderMapviewInfoDC.warehouesLng
-                    TripPlannerConfDetailId =
-                        orderResponseModel.customerOrderinfoDc.tripPlannerConfirmedDetailId
+                    TripPlannerConfDetailId = orderResponseModel.customerOrderinfoDc.zilaTripDetailId
                     if (orderCount == 0) {
                         mBinding!!.btCreateTrip.visibility = View.VISIBLE
                     } else {
@@ -711,9 +710,7 @@ class MyTripListViewFragment : Fragment(), orderdetailClick, MyPopupViewListener
                 mBinding!!.proRelatedItem.visibility = View.GONE
                 try {
                     val array = JSONArray(response.toString())
-                    OrderList = Gson().fromJson(
-                        array.toString(),
-                        object : TypeToken<ArrayList<MyTripOrderResponseModel?>>() {}.type
+                    OrderList = Gson().fromJson(array.toString(), object : TypeToken<ArrayList<MyTripOrderResponseModel?>>() {}.type
                     )
                     myListViewAdapter!!.updateList(OrderList!!)
                 } catch (e: Exception) {

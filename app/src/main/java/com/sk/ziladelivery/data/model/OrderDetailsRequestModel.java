@@ -8,7 +8,7 @@ import java.util.List;
 public class OrderDetailsRequestModel {
 
     @Expose
-    @SerializedName("tripPlannerConfirmedDetailId")
+    @SerializedName("zilaTripDetailId")
     private int tripPlannerConfirmedDetailId;
 
     @Expose

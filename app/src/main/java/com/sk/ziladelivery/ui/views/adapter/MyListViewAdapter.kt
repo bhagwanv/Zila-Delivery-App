@@ -26,9 +26,7 @@ class MyListViewAdapter(
     private val context: Activity,
     private var orderList: ArrayList<MyTripOrderResponseModel?>,
     private val myPopupViewListener: MyPopupViewListener,
-    private val TripPlannerConfirmedDetailIdDashbord: Int,
-
-    ) :
+    private val TripPlannerConfirmedDetailIdDashbord: Int, ) :
     RecyclerView.Adapter<MyListViewAdapter.ViewHolder>() {
 
 
@@ -129,16 +127,11 @@ class MyListViewAdapter(
             }
         }
 
-        /*  if (orderList[i]!!.customerTripStatus == 0) {
-              holder.mBinding.btnDelivered.text = "Delivered"
-          } else {
-              holder.mBinding.btnDelivered.text = "Continue"
-          }*/
 
         if (TripPlannerConfirmedDetailIdDashbord == orderList[i]!!.tripPlannerConfirmedDetailId) {
-            if (orderList[i]!!.isAnyTripRunning) {
+            /*if (orderList[i]!!.isAnyTripRunning) {
                 holder.mBinding.ivPopupMenu.visibility = View.VISIBLE
-            }
+            }*/
             if (!orderList[i]!!.isVisible) {
                 var isDelivered = false
                 if (orderList[i]!!.orderlist != null) {
@@ -151,32 +144,27 @@ class MyListViewAdapter(
                             break
                         }
                     }
-                    if (isDelivered) {
+                   /* if (isDelivered) {
                         holder.mBinding.ivPopupMenu.visibility = View.GONE
                     } else {
                         holder.mBinding.ivPopupMenu.visibility = View.VISIBLE
-                    }
+                    }*/
                 }
             } else {
-                holder.mBinding.ivPopupMenu.visibility = View.GONE
+               // holder.mBinding.ivPopupMenu.visibility = View.GONE
             }
         } else {
-            holder.mBinding.ivPopupMenu.visibility = View.GONE
+            //holder.mBinding.ivPopupMenu.visibility = View.GONE
         }
-        if (orderList[i]!!.isNotLastMileTrip && !orderList[i]!!.isAnyTripRunning && !orderList[i]!!.isLocationEnabled && (orderList[i]!!.tripTypeEnum == 1 || orderList[i]!!.tripTypeEnum == 2)) {
-            holder.mBinding.ivPopupMenu.visibility = View.VISIBLE
+        if (orderList[i]!!.isAnyTripRunning) {
+           // holder.mBinding.ivPopupMenu.visibility = View.VISIBLE
             holder.mBinding.btnDelivered.visibility = View.VISIBLE
         } else {
-      //      holder.mBinding.btnDelivered.text = "Continue"
-            if (!orderList[i]!!.isNotLastMileTrip && !orderList[i]!!.isLocationEnabled && (orderList[i]!!.tripTypeEnum == 0 || orderList[i]!!.tripTypeEnum == 3)) {
-                holder.mBinding.btnDelivered.visibility = View.GONE
-                holder.mBinding.btnReturn.visibility = View.GONE
-            } else {
-                holder.mBinding.btnDelivered.text = "Continue"
-            }
+            holder.mBinding.btnDelivered.text = "Continue"
+      //
         }
         if (orderList[i]!!.isProcess) {
-            holder.mBinding.ivPopupMenu.visibility = View.GONE
+           // holder.mBinding.ivPopupMenu.visibility = View.GONE
             holder.mBinding.btnDelivered.visibility = View.GONE
         }
 
@@ -204,12 +192,12 @@ class MyListViewAdapter(
             )
         }
 
-        holder.mBinding.ivPopupMenu.setOnClickListener {
+      /*  holder.mBinding.ivPopupMenu.setOnClickListener {
             myPopupViewListener.callPopupClicked(
                 holder.adapterPosition,
                 orderList[holder.adapterPosition], orderList[i]!!.orderlist
             )
-        }
+        }*/
         holder.mBinding.btnDelivered.setOnClickListener {
             if (orderList[i]!!.customerTripStatus == Constant.UNLOADING) {
                 unloading(orderList[i]!!.tripPlannerConfirmedDetailId)

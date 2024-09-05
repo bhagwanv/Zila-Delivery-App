@@ -173,7 +173,7 @@
                                 android:contentDescription="@string/app_name" />
                         </RelativeLayout>
 
-                        <ImageView
+                       <!-- <ImageView
                             android:id="@+id/iv_popup_menu"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
@@ -182,7 +182,7 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/font_size_10"
                             android:visibility="gone"
-                            app:srcCompat="@drawable/ic_menu_image" />
+                            app:srcCompat="@drawable/ic_menu_image" />-->
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </LinearLayout>
 

@@ -133,6 +133,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
                         ProgressDialog.getInstance().dismiss()
                         it.data?.let { allTripModel ->
                             handleAllTripResponse(allTripModel)
+                            mBinding!!.rvAllTrip.adapter!!.notifyDataSetChanged();
                         }
                     }
 
@@ -254,8 +255,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
 
     override fun onButtonClick(allTripModel: AllTripModel) {
         if (allTripModel.isFreezed) {
-            SharePrefs.getInstance(requireActivity())
-                .putLong(SharePrefs.ALL_TRIP_SLECTED, allTripModel.zilaTripMasterId.toLong())
+            SharePrefs.getInstance(requireActivity()).putLong(SharePrefs.ALL_TRIP_SLECTED, allTripModel.zilaTripMasterId.toLong())
             activity?.switchContentWithStack(DashBoardFragment())
         } else {
             val fragment = AddOrderFragment()
