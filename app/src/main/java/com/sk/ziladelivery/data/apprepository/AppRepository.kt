@@ -52,7 +52,6 @@ class AppRepository(private val apiHelper: ApiHelper) {
     suspend fun uploadMiloMeterRading(body: MultipartBody.Part) =
         apiHelper.getMiloMeterReading(body)
 
-    suspend fun uploadTripHistory(id: Int) = apiHelper.getTripHistroy(id)
 
     suspend fun getQR(model: QRCodeResquestModel) = apiHelper.getQRCode(model)
     suspend fun getTransactionDetail(transction: String) = apiHelper.getQRCode(transction)
@@ -108,10 +107,11 @@ class AppRepository(private val apiHelper: ApiHelper) {
     /*ZIla*/
 
     suspend fun getOrder(zilaTripMasterId: Int) = apiHelper.getOrder(zilaTripMasterId)
-    suspend fun addOrder(zilaTripMasterId: Int,orderId: Int) = apiHelper.addOrder(zilaTripMasterId,orderId)
-    suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int) = apiHelper.removeOrder(zilaTripMasterId,orderId)
+    suspend fun addOrder(zilaTripMasterId: Int,orderId: Int,pepopleID:Int) = apiHelper.addOrder(zilaTripMasterId,orderId,pepopleID)
+    suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int,pepopleID:Int) = apiHelper.removeOrder(zilaTripMasterId,orderId,pepopleID)
     suspend fun createTrip(model: CreateTripModel) = apiHelper.createTrip(model)
     suspend fun ZilaCreateTrip(model: ZilaCreateTrip) = apiHelper.ZilaCreateTrip(model)
+    suspend fun getInvoice(invoiceNumber: String) = apiHelper.getInvoice(invoiceNumber)
 
 
 }

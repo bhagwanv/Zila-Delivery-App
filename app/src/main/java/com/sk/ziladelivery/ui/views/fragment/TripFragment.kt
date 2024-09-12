@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -24,6 +25,7 @@ import com.sk.ziladelivery.R
 import com.sk.ziladelivery.data.api.ApiHelper
 import com.sk.ziladelivery.data.api.RestClient
 import com.sk.ziladelivery.data.model.AllTripModel
+import com.sk.ziladelivery.data.model.StartAssignmentPostModel
 import com.sk.ziladelivery.data.model.TokenResponse
 import com.sk.ziladelivery.databinding.FragmentTripBinding
 import com.sk.ziladelivery.listener.LisnerAllTrip
@@ -39,7 +41,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
     private var activity: MainActivity? = null
     private var mBinding: FragmentTripBinding? = null
     private var allTripViewModel: AllTripViewModel? = null
-    private var allTripModelResponse: MutableList<AllTripModel>? = null
+    private var allTripModelResponse: MutableList<AllTripModel> = mutableListOf()  // Initialize with empty list
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -81,11 +83,22 @@ class TripFragment : Fragment(), LisnerAllTrip {
         }
 
         mBinding!!.btnCreateTrip.setOnClickListener {
-            if (!Utils.checkInternetConnection(requireActivity())) {
-                Utils.setToast(requireActivity(), getString(R.string.network_error))
-            } else {
-                createTrip()
-            }
+            AlertDialog.Builder((getActivity())!!)
+                .setTitle("Alert")
+                .setMessage("Are you sure you want to Create the trip ?")
+                .setPositiveButton(android.R.string.yes) { dialog, whichButton ->
+                    if (!Utils.checkInternetConnection(requireActivity())) {
+                        Utils.setToast(requireActivity(), getString(R.string.network_error))
+                    } else {
+                        createTrip()
+                    }
+                }
+                .setNegativeButton(
+                    android.R.string.no
+                ) { dialogInterface, i ->
+                    dialogInterface.dismiss()
+                }.show()
+
         }
     }
 
@@ -95,7 +108,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
             12,
             1,
             SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)
-        );
+        )
         allTripViewModel?.createTrip(createTripModel)?.observe(requireActivity()) { resource ->
             resource?.let {
                 when (it.status) {
@@ -103,7 +116,6 @@ class TripFragment : Fragment(), LisnerAllTrip {
                         ProgressDialog.getInstance().dismiss()
                         it.data?.let { allTripModel ->
                             fetchAllTripIDs()
-                            //handleAllTripResponse(allTripModel)
                         }
                     }
 
@@ -120,7 +132,6 @@ class TripFragment : Fragment(), LisnerAllTrip {
                 }
             }
         }
-
     }
 
     private fun fetchAllTripIDs() {
@@ -133,7 +144,6 @@ class TripFragment : Fragment(), LisnerAllTrip {
                         ProgressDialog.getInstance().dismiss()
                         it.data?.let { allTripModel ->
                             handleAllTripResponse(allTripModel)
-                            mBinding!!.rvAllTrip.adapter!!.notifyDataSetChanged();
                         }
                     }
 
@@ -161,8 +171,16 @@ class TripFragment : Fragment(), LisnerAllTrip {
             mBinding!!.btnCreateTrip.visibility = View.VISIBLE
             mBinding!!.rvAllTrip.visibility = View.GONE
         } else {
-            val adapter = AllTripAdapter(requireActivity(), allTripModelResponse, this)
-            mBinding!!.rvAllTrip.adapter = adapter
+            mBinding!!.tvNoTrip.visibility = View.GONE
+            mBinding!!.btnCreateTrip.visibility = View.GONE
+            mBinding!!.rvAllTrip.visibility = View.VISIBLE
+
+            if (mBinding!!.rvAllTrip.adapter == null) {
+                val adapter = AllTripAdapter(requireActivity(), allTripModelResponse, this)
+                mBinding!!.rvAllTrip.adapter = adapter
+            } else {
+                (mBinding!!.rvAllTrip.adapter as AllTripAdapter).updateData(allTripModelResponse)
+            }
         }
     }
 
@@ -192,13 +210,11 @@ class TripFragment : Fragment(), LisnerAllTrip {
                 resource?.let {
                     when (it.status) {
                         Status.SUCCESS -> it.data?.let { tokenResponse ->
-                            handleTokenResponse(
-                                tokenResponse
-                            )
+                            handleTokenResponse(tokenResponse)
                         }
 
-                        Status.ERROR -> Unit // Handle error scenario
-                        Status.LOADING -> Unit // Handle loading scenario
+                        Status.ERROR -> Unit
+                        Status.LOADING -> Unit
                     }
                 }
             }
@@ -255,14 +271,17 @@ class TripFragment : Fragment(), LisnerAllTrip {
 
     override fun onButtonClick(allTripModel: AllTripModel) {
         if (allTripModel.isFreezed) {
-            SharePrefs.getInstance(requireActivity()).putLong(SharePrefs.ALL_TRIP_SLECTED, allTripModel.zilaTripMasterId.toLong())
+            SharePrefs.getInstance(requireActivity())
+                .putLong(SharePrefs.ALL_TRIP_SLECTED, allTripModel.zilaTripMasterId.toLong())
             activity?.switchContentWithStack(DashBoardFragment())
         } else {
-            val fragment = AddOrderFragment()
-            val args = Bundle()
-            args.putInt("zilaTripMasterId", allTripModel.zilaTripMasterId)
-            fragment.setArguments(args)
-            activity?.switchContentWithStack(fragment)
+            val fragment = AddOrderFragment().apply {
+                arguments = Bundle().apply {
+                    putInt("zilaTripMasterId", allTripModel.zilaTripMasterId)
+                }
+            }
+            activity?.switchContentWithStack(fragment);
         }
     }
 }
+

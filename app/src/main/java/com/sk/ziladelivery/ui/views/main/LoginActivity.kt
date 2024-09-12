@@ -200,8 +200,7 @@ class LoginActivity : AppCompatActivity() {
                 val username = regApk.userName
                 SharePrefs.getInstance(applicationContext)
                     .putString(SharePrefs.TOKEN_NAME, username)
-                SharePrefs.getInstance(applicationContext)
-                    .putString(SharePrefs.TOKEN_PASSWORD, Password)
+                SharePrefs.getInstance(applicationContext).putString(SharePrefs.TOKEN_PASSWORD, Password)
                 if (!Utils.checkInternetConnection(applicationContext)) {
                     Toast.makeText(
                         applicationContext,

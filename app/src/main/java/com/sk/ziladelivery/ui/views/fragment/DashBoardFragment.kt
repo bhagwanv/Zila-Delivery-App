@@ -177,8 +177,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
 
     override fun onResume() {
         super.onResume()
-        LocalBroadcastManager.getInstance((activity)!!)
-            .registerReceiver(mMessageReceiver, IntentFilter("LocationFound"))
+        LocalBroadcastManager.getInstance((activity)!!).registerReceiver(mMessageReceiver, IntentFilter("LocationFound"))
     }
 
     override fun onPause() {
@@ -317,9 +316,6 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                             true,
                             SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)
                         )
-                        uploadTripHistoryApi(
-                            SharePrefs.getInstance(activity).getInt(SharePrefs.TripPlannerVehicleId)
-                        )
 
                         tripEndApi(postModel)
                         SharePrefs.setMapRouteSharedPreference(
@@ -416,25 +412,6 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
             activity?.switchContent(TripFragment())
         }
 
-    }
-
-    private fun uploadTripHistoryApi(int: Int) {
-        dashBoardViewModel!!.postTripHistory(int).observe(requireActivity()) {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-
-                    Status.ERROR -> {
-                        //Utils.setToast(requireActivity(), it.message)
-                    }
-
-                    Status.LOADING -> {
-
-                    }
-                }
-            }
-        }
     }
 
     private fun tripEndApi(postModel: StartAssignmentPostModel) {

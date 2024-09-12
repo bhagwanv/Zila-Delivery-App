@@ -142,15 +142,5 @@ class DashBoardViewModel(private val appRepository: AppRepository) : ViewModel()
             }
         }
 
-    fun postTripHistory(TripPlannerVehicleId : Int) =
-        liveData(Dispatchers.Main) {
-            emit(Resource.loading(data = null))
-            try {
-                emit(Resource.success(data = appRepository.uploadTripHistory(TripPlannerVehicleId)))
-            } catch (exception: Exception) {
-                emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
-            }
-        }
-
 
 }

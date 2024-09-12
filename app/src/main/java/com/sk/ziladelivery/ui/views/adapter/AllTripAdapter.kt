@@ -13,54 +13,56 @@ import com.sk.ziladelivery.listener.LisnerAllTrip
 
 class AllTripAdapter(
     private val context: Context,
-    private val allTripList: List<AllTripModel>?,
-    allTripLinser: LisnerAllTrip
+    private var allTripList: MutableList<AllTripModel>,  // Change to MutableList
+    private val allTripListener: LisnerAllTrip           // Use val instead of var where possible
 ) : RecyclerView.Adapter<AllTripAdapter.ViewHolder>() {
-    private var layoutInflater: LayoutInflater? = null
-    private var lisnerAllTrip: LisnerAllTrip? = null
 
-    init {
-        this.lisnerAllTrip = allTripLinser
+    private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
+
+    // Update the dataset
+    fun updateData(newData: List<AllTripModel>) {
+        allTripList.clear()            // Clear old data
+        allTripList.addAll(newData)    // Add new data
+        notifyDataSetChanged()         // Notify adapter about the data change
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): AllTripAdapter.ViewHolder {
-        if (layoutInflater == null) {
-            layoutInflater = LayoutInflater.from(viewGroup.context)
-        }
-        return ViewHolder(
-            DataBindingUtil.inflate<ItemAlltripListBinding>(
-                (layoutInflater)!!, R.layout.item_alltrip_list, viewGroup, false
-            )
+    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
+        val binding: ItemAlltripListBinding = DataBindingUtil.inflate(
+            layoutInflater, R.layout.item_alltrip_list, viewGroup, false
         )
+        return ViewHolder(binding)
     }
 
-    inner class ViewHolder(var mBinding: ItemAlltripListBinding) :
+    inner class ViewHolder(val mBinding: ItemAlltripListBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
 
+        fun bind(allTripModel: AllTripModel) {
+            mBinding.tvNoOrder.text = "Orders: ${allTripModel.orderCount}"
+            mBinding.tvAmount.text = "Amount: ${allTripModel.totalAmount}"
+            mBinding.tvAssitId.text = "${allTripModel.zilaTripMasterId}"
+
+            if (allTripModel.tripCurrentStatus == "Delivering") {
+                mBinding.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.red))
+            } else {
+                mBinding.tvStatus.setTextColor(
+                    ContextCompat.getColor(context, R.color.colorLightBlueHeader)
+                )
+            }
+            mBinding.tvStatus.text = allTripModel.tripCurrentStatus
+
+            // Set click listener for the root layout
+            mBinding.rlMain.setOnClickListener {
+                allTripListener.onButtonClick(allTripModel)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
-        return allTripList?.size ?: 0
+        return allTripList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       val allTripModel = allTripList!![position]
-        holder.mBinding.tvNoOrder.text="Orders : "+allTripModel.orderCount
-        holder.mBinding.tvAmount.text="Amount : "+allTripModel.totalAmount
-        holder.mBinding.tvAssitId.text= ""+allTripModel.zilaTripMasterId
-        if (allTripModel.tripCurrentStatus=="Delivering"){
-            holder.mBinding.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.red));
-            holder.mBinding.tvStatus.text= allTripModel.tripCurrentStatus
-        }else{
-            holder.mBinding.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.colorLightBlueHeader));
-            holder.mBinding.tvStatus.text= allTripModel.tripCurrentStatus
-        }
-
-
-        holder.mBinding.rlMain.setOnClickListener {
-
-            lisnerAllTrip!!.onButtonClick(allTripModel)
-        }
-
+        val allTripModel = allTripList[position]
+        holder.bind(allTripModel)  // Bind data to ViewHolder
     }
 }

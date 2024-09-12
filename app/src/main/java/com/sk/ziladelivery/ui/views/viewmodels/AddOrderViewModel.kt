@@ -20,19 +20,19 @@ class AddOrderViewModel(private  val appRepository: AppRepository) : ViewModel()
         }
     }
 
-    fun addOrder(zilaTripMasterId: Int,orderId:Int) = liveData(Dispatchers.IO) {
+    fun addOrder(zilaTripMasterId: Int,orderId:Int,pepopleID:Int) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            emit(Resource.success(data = appRepository.addOrder(zilaTripMasterId,orderId)))
+            emit(Resource.success(data = appRepository.addOrder(zilaTripMasterId,orderId,pepopleID)))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
     }
 
-    fun removeOrder(zilaTripMasterId: Int,orderId:Int) = liveData(Dispatchers.IO) {
+    fun removeOrder(zilaTripMasterId: Int,orderId:Int,pepopleID:Int) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
-            emit(Resource.success(data = appRepository.removeOrder(zilaTripMasterId,orderId)))
+            emit(Resource.success(data = appRepository.removeOrder(zilaTripMasterId,orderId,pepopleID)))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
@@ -42,6 +42,15 @@ class AddOrderViewModel(private  val appRepository: AppRepository) : ViewModel()
         emit(Resource.loading(data = null))
         try {
             emit(Resource.success(data = appRepository.ZilaCreateTrip(model)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun getInvoice(invoiceNumber: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.getInvoice(invoiceNumber)))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }

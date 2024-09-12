@@ -223,8 +223,9 @@ class MyTripListViewFragment : Fragment(), orderdetailClick, MyPopupViewListener
                 distance = startPoint.distanceTo(endPoint).toDouble()
 
                 if (distance <= 200) {
+
                     myTripViewModel!!.getOderCountObserver(
-                        TripPlannerConfDetailId,
+                        TripPlannerConfirmedDetailIdDashbord,
                         customerLatLng!!.latitude,
                         customerLatLng!!.longitude
                     )

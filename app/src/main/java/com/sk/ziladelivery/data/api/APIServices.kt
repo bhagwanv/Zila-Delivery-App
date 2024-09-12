@@ -15,7 +15,7 @@ import retrofit2.http.*
 
 
 /**
- * Created by User on 03-11-2018.
+ * Created by User on 03-09-2024.
  */
 interface APIServices {
     @POST("/api/DBSignup/NewDeliveryV2")
@@ -71,7 +71,7 @@ interface APIServices {
     suspend fun getTripIDAll(@Query("DboyId") DboyId: Int): JsonArray
 
     @POST("api/ZilaDeliveryApp/CreateCustomTripV1")
-    suspend fun createTrip(@Body model: CreateTripModel?): JsonObject
+    suspend fun createTrip(@Body model: CreateTripModel?): Int
 
     @POST("api/ZilaDeliveryApp/ZilaCreateTrip")
     suspend fun ZilaCreateTrip(@Body model: ZilaCreateTrip?): FinalizedTripResponceModel
@@ -79,11 +79,14 @@ interface APIServices {
     @GET("api/ZilaDeliveryApp/GetZilaTrip")
     suspend fun GetZilaTrip(@Query("zilaTripMasterId") zilaTripMasterId: Int): GetZilaTripResponse
 
+    @GET("api/ConsumerApp/GetOrderIdByInvoice")
+    suspend fun GetOrderIdByInvoice(@Query("InvoiceNo") InvoiceNo: String): Int
+
     @POST("api/ZilaDeliveryApp/AddOrder")
-    suspend fun addOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int): AddOrderResponse
+    suspend fun addOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int,@Query("dboyId") dboyId: Int): AddOrderResponse
 
     @POST("api/ZilaDeliveryApp/RemoveOrder")
-    suspend fun removeOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int): AddOrderResponse
+    suspend fun removeOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int,@Query("dboyId") dboyId: Int): AddOrderResponse
 
     @PUT("/api/DeliveryIssuance/AssignmentAcceptNew")
     suspend fun acceptMyPendingTaskNew(@Body acceptModel: AcceptModel?): AssignmentAcceptModel
@@ -103,7 +106,7 @@ interface APIServices {
     @POST("api/DeliveryApp/TripOnBreakstart")
     suspend fun stopBreak(@Body model: StartAssignmentPostModel?): JsonObject
 
-    @POST("api/DeliveryApp/EndAssignment")
+    @POST("api/ZilaDeliveryApp/ZilaEndAssignment")
     suspend fun postEndTrip(@Body model: StartAssignmentPostModel?): JsonObject
 
     @GET("api/ZilaDeliveryApp/ZilaCheckTripOrderCurrentStatus")
@@ -113,10 +116,10 @@ interface APIServices {
     @GET("api/ZilaDeliveryApp/ZilaCheckTripOrderCurrentStatus")
     fun getCheckStripStatus(@Query("ZilaTripMasterId") ZilaTripMasterId: Int): Observable<JsonElement?>?
 
-    @GET("api/DeliveryApp/EnterMilometerLimit")
-    suspend fun milometerLimit(@Query("tripPlannerConfirmedMasterId") TripPlannerConfirmOrderId: Int): JsonObject
+    @GET("api/ZilaDeliveryApp/ZilaEnterMilometerLimit")
+    suspend fun milometerLimit(@Query("zilaTripMasterId") TripPlannerConfirmOrderId: Int): JsonObject
 
-    @POST("api/DeliveryApp/SendCloseKmApprovalRequest")
+    @POST("api/ZilaDeliveryApp/ZilaSendCloseKmApprovalRequest")
     suspend fun sendCloseKmApprovalRequest(@Body sendCloseKmApproval: SendCloseKmApproval?): Boolean
 
     @Multipart
@@ -131,8 +134,6 @@ interface APIServices {
     @POST("api/DeliveryApp/MilometerDocumentImageUpload")
     fun miloMeterImageUpload(@Part image: MultipartBody.Part): Observable<String>
 
-    @GET("/api/VehicleHistory/MoveHistory/{tripPlannerVehicleId}")
-    suspend fun moveTripHistory(@Path("tripPlannerVehicleId") tripPlannerVehicleId: Int): JsonObject
 
     @GET("UPI/TransactionDetail")
     suspend fun getTransactionDetail(@Query("UPITxnID") CustomerId: String): JsonObject
@@ -429,12 +430,12 @@ interface APIServices {
     ): Observable<JsonElement?>?
 
 
-    @POST("api/DeliveryApp/DeliverdConfirmOtpNew")
+    @POST("api/ZilaDeliveryApp/DeliverdConfirmOtpNew")
     fun getDeliverdConfirmOtp(@Body model: OrderConfirmModel?): Observable<JsonElement?>?
 
 
 
-    @GET("api/DeliveryApp/TripGetDboyRatingOrder")
+    @GET("api/ZilaDeliveryApp/ZilaTripGetDboyRatingOrder")
     fun getRattingData(@Query("id") id: Int): Observable<CustomerRattingModel?>?
 
     @POST("/api/RetailerApp/AddRating")
@@ -463,9 +464,9 @@ interface APIServices {
     @POST("api/DeliveryApp/AllRedispatReattemptConfirmOtp")
     fun confirmOtpRedispatchReattemptAll(@Body model: ReDispatchOTPModelforMyTrip?): Observable<JsonElement?>?
 
-    @GET("api/DeliveryApp/CompleteTripStatusChange")
+    @GET("api/ZilaDeliveryApp/ZilaCompleteTripStatusChange")
     fun getCompleteTripStatusChange(
-        @Query("TripplannerConfirmdetailedId") TripPlannerConfirmOrderId: Int,
+        @Query("ZilaTripdetailedId") TripPlannerConfirmOrderId: Int,
         @Query("lat") lat: Double,
         @Query("lng") lag: Double
     ): Observable<JsonElement?>?

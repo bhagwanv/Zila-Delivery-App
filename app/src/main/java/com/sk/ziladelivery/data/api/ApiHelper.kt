@@ -35,8 +35,9 @@ class ApiHelper(private val apiService: APIServices) {
 
     suspend fun getAllTripID(id: Int) = apiService.getTripIDAll(id)
     suspend fun getOrder(zilaTripMasterId: Int) = apiService.GetZilaTrip(zilaTripMasterId)
-    suspend fun addOrder(zilaTripMasterId: Int,orderId: Int) = apiService.addOrder(zilaTripMasterId,orderId)
-    suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int) = apiService.removeOrder(zilaTripMasterId,orderId)
+    suspend fun getInvoice(invoiceNumber: String) = apiService.GetOrderIdByInvoice(invoiceNumber)
+    suspend fun addOrder(zilaTripMasterId: Int,orderId: Int,pepopleID:Int) = apiService.addOrder(zilaTripMasterId,orderId,pepopleID)
+    suspend fun removeOrder(zilaTripMasterId: Int,orderId: Int,pepopleID:Int) = apiService.removeOrder(zilaTripMasterId,orderId,pepopleID)
     suspend fun createTrip(model: CreateTripModel) = apiService.createTrip(model)
     suspend fun ZilaCreateTrip(model: ZilaCreateTrip) = apiService.ZilaCreateTrip(model)
     suspend fun getAcceptPenddingTask(acceptModel: AcceptModel?) =
@@ -60,7 +61,6 @@ class ApiHelper(private val apiService: APIServices) {
     suspend fun getMiloMeterReading(body: MultipartBody.Part) =
         apiService.miloMeterImageUploadNew(body)
 
-    suspend fun getTripHistroy(id: Int) = apiService.moveTripHistory(id)
     suspend fun getQRCode(model: QRCodeResquestModel) = apiService.GenerateOrderAmtQRCode(model)
     suspend fun getQRCode(Tnx: String) = apiService.getTransactionDetail(Tnx)
     suspend fun checkTransactionStatus(orderid: Int) = apiService.getCheckTransactionStatus(orderid)

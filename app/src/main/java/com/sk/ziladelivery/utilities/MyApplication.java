@@ -43,51 +43,7 @@ public class MyApplication extends Application {
     }
 
 
-    public void startAnalyticSession() {
-        if (SharePrefs.getInstance(this).isLoggedIn()) {
-            // firebase
-            mFirebaseAnalytics.setUserId(SharePrefs.getInstance(getApplicationContext()).getString(SharePrefs.SK_CODE));
-            mFirebaseAnalytics.setUserProperty("SkCode", SharePrefs.getInstance(getApplicationContext()).getString(SharePrefs.SK_CODE));
-            mFirebaseAnalytics.setUserProperty("warehouse", "" + SharePrefs.getInstance(getApplicationContext()).getInt(SharePrefs.WAREHOUSE_ID));
-        }
-    }
 
-    public void updateAnalyticAuth(String eventName, String method, String number) {
-        Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.METHOD, method);
-        bundle.putString("number", number);
-        mFirebaseAnalytics.logEvent(eventName, bundle);
-    }
-
-    public void updateAnalytics(String eventName) {
-        eventName = eventName.replace(" ", "");
-        eventName = eventName.replace("&", "_");
-        eventName = eventName.replace(",", "_");
-        Bundle bundle = new Bundle();
-        bundle.putString("SkCode", SharePrefs.getInstance(getApplicationContext()).getString(SharePrefs.SK_CODE));
-        bundle.putInt("warehouse", SharePrefs.getInstance(getApplicationContext()).getInt(SharePrefs.WAREHOUSE_ID));
-        mFirebaseAnalytics.logEvent(eventName, bundle);
-    }
-
-    public void updateAnalytics(String eventName, AnalyticPost analyticPost) {
-        eventName = eventName.replace(" ", "_");
-        Bundle bundle = new Bundle();
-        bundle.putInt("sectionId", analyticPost.sectionId);
-        bundle.putString("sectionSubType", analyticPost.sectionSubType);
-        bundle.putString("sectionName", analyticPost.sectionName);
-        bundle.putString("url", analyticPost.url);
-        bundle.putString("baseCatId", analyticPost.baseCatId);
-        bundle.putInt("categoryId", analyticPost.categoryId);
-        bundle.putInt("subCatId", analyticPost.subCatId);
-        bundle.putInt("subSubCatId", analyticPost.subSubCatId);
-        bundle.putString("categoryName", analyticPost.categoryName);
-        bundle.putString("source", analyticPost.source);
-        // user data
-        bundle.putString("SkCode", SharePrefs.getInstance(getApplicationContext()).getString(SharePrefs.SK_CODE));
-        bundle.putInt("warehouse", SharePrefs.getInstance(getApplicationContext()).getInt(SharePrefs.WAREHOUSE_ID));
-        // event
-        mFirebaseAnalytics.logEvent(eventName, bundle);
-    }
 
 
     public static synchronized MyApplication getInstance() {

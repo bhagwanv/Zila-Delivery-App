@@ -170,6 +170,11 @@
             android:name=".ui.views.main.QRCodeActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.views.main.ScanOrderActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.sk.ziladelivery.ui.views.VideoRecorderExample"
             android:exported="true" />

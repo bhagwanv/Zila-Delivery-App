@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class SendCloseKmApproval {
 
-    @SerializedName("tripPlannerConfirmMasterId")
+    @SerializedName("zilaTripMasterId")
     private int tripPlannerConfirmMasterId;
 
     @SerializedName("closeKm")

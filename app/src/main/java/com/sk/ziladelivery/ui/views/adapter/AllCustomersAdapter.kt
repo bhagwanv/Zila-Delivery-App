@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sk.ziladelivery.R
+import com.sk.ziladelivery.data.model.AllTripModel
 import com.sk.ziladelivery.data.model.CustomerList
 import com.sk.ziladelivery.databinding.ItemAllOrderListBinding
 import com.sk.ziladelivery.listener.LisnerAllOrder
@@ -14,15 +15,18 @@ import com.sk.ziladelivery.listener.LisnerCustomerAllOrder
 
 class AllCustomersAdapter(
     private val context: Context,
-    private val allTripList: List<CustomerList>?,
-    allTripLinser: LisnerAllOrder,
+    private var allTripList: MutableList<CustomerList>,
+    private val lisnerAllTrip: LisnerAllOrder,
     private val onChildClickListener: LisnerCustomerAllOrder
 ) : RecyclerView.Adapter<AllCustomersAdapter.ViewHolder>() {
-    private var layoutInflater: LayoutInflater? = null
-    private var lisnerAllTrip: LisnerAllOrder? = null
 
-    init {
-        this.lisnerAllTrip = allTripLinser
+    private var layoutInflater: LayoutInflater? = null
+
+    // Function to update data in the adapter
+    fun updateData(newData: List<CustomerList>) {
+        allTripList.clear()            // Clear old data
+        allTripList.addAll(newData)    // Add new data
+        notifyDataSetChanged()         // Notify adapter about the data change
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): AllCustomersAdapter.ViewHolder {
@@ -30,33 +34,41 @@ class AllCustomersAdapter(
             layoutInflater = LayoutInflater.from(viewGroup.context)
         }
         return ViewHolder(
-            DataBindingUtil.inflate<ItemAllOrderListBinding>(
-                (layoutInflater)!!, R.layout.item_all_order_list, viewGroup, false
+            DataBindingUtil.inflate(
+                layoutInflater!!, R.layout.item_all_order_list, viewGroup, false
             )
         )
     }
 
+    // ViewHolder class
     inner class ViewHolder(var mBinding: ItemAllOrderListBinding) :
-        RecyclerView.ViewHolder(mBinding.root) {
-    }
+        RecyclerView.ViewHolder(mBinding.root)
 
     override fun getItemCount(): Int {
-        return allTripList?.size ?: 0
+        return allTripList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       val allTripModel = allTripList!![position]
-        holder.mBinding.tvSkCode.text="SK Code: ${allTripModel.customerInfo!!.Skcode!!}"
-        holder.mBinding.tvShopName.text="Shop Name: "+allTripModel.customerInfo!!.ShopName
-        holder.mBinding.tvBillingAddress.text= "Billing Address: "+allTripModel.customerInfo!!.BillingAddress
-        holder.mBinding.tvTotalAmount.text= "Total Ammount: "+allTripModel.customerInfo!!.GrossAmount
-       // Set up the child RecyclerView
-        holder.mBinding.rvChildItems.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        holder.mBinding.rvChildItems.adapter = CustomersOrdersAdapter(allTripModel.customerOrderInfo, onChildClickListener!!)
+        val customerList = allTripList[position]
 
+        // Bind data with null safety
+        val customerInfo = customerList.customerInfo
+        holder.mBinding.tvSkCode.text = "SK Code: ${customerInfo?.Skcode ?: "N/A"}"
+        holder.mBinding.tvShopName.text = "Shop Name: ${customerInfo?.ShopName ?: "N/A"}"
+        holder.mBinding.tvBillingAddress.text = "Billing Address: ${customerInfo?.BillingAddress ?: "N/A"}"
+        holder.mBinding.tvTotalAmount.text = "Total Amount: ${customerInfo?.GrossAmount ?: "N/A"}"
+
+        // Set up the child RecyclerView with horizontal layout
+        holder.mBinding.rvChildItems.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        val customerOrders = customerList.customerOrderInfo ?: listOf()  // Handle potential null
+        holder.mBinding.rvChildItems.adapter = CustomersOrdersAdapter(customerOrders, onChildClickListener)
+
+        // Handle main row click
         holder.mBinding.rlMain.setOnClickListener {
-            lisnerAllTrip!!.onButtonClick(allTripModel.customerInfo!!)
+            customerInfo?.let {
+                lisnerAllTrip.onButtonClick(it)
+            }
         }
-
     }
 }

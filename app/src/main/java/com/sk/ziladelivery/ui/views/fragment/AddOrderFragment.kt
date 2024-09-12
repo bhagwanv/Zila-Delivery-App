@@ -1,16 +1,20 @@
 package com.sk.ziladelivery.ui.views.fragment
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -31,6 +35,7 @@ import com.sk.ziladelivery.listener.LisnerAllOrder
 import com.sk.ziladelivery.listener.LisnerCustomerAllOrder
 import com.sk.ziladelivery.ui.views.adapter.AllCustomersAdapter
 import com.sk.ziladelivery.ui.views.main.MainActivity
+import com.sk.ziladelivery.ui.views.main.ScanOrderActivity
 import com.sk.ziladelivery.ui.views.viewmodels.AddOrderViewModel
 import com.sk.ziladelivery.utilities.DateUtils
 import com.sk.ziladelivery.utilities.ProgressDialog
@@ -45,6 +50,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
     private lateinit var addOrderViewModel: AddOrderViewModel
     private var zilaTripMasterId: Int? = null
     private var customDialog: Dialog? = null
+    private lateinit var scanOrderActivityLauncher: ActivityResultLauncher<Intent>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -63,6 +69,18 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
 
     private fun initView() {
         addOrderViewModel = ViewModelProvider(this, AddOrderFactory(ApiHelper(RestClient.getInstance().service)))[AddOrderViewModel::class.java]
+
+        scanOrderActivityLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                var invoiceNUmber = data?.getStringExtra("SCANNED_CODE")
+                Log.e("scannedCode", "scannedCode: $invoiceNUmber")
+                getInvoice(invoiceNUmber)
+
+            }
+        }
 
         if (Utils.checkInternetConnection(requireActivity())) {
             getZilaTrip()
@@ -135,41 +153,47 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
     }
 
     private fun showAddOrderPopup() {
-        val mView = layoutInflater.inflate(R.layout.add_order_popup, null)
-        customDialog = Dialog(requireActivity(), R.style.CustomDialog).apply {
-            setContentView(mView)
-        }
+        val intent = Intent(activity, ScanOrderActivity::class.java)
+       scanOrderActivityLauncher.launch(intent)
+    }
 
-        mView.findViewById<LinearLayout>(R.id.okBtn).setOnClickListener {
-            val orderId = mView.findViewById<EditText>(R.id.etOrderID).text.toString().toIntOrNull()
-            orderId?.let {
-                customDialog?.dismiss()
-                addOrder(it)
-            } ?: run {
-                // Handle invalid order ID case if needed
+    private fun getInvoice(invoiceNUmber: String?) {
+        invoiceNUmber?.let {
+            addOrderViewModel.getInvoice(it).observe(viewLifecycleOwner) { resource ->
+                resource?.let {
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            ProgressDialog.getInstance().dismiss()
+                            it.data?.let { orderIDList ->
+                                addOrder(orderIDList)
+                            }
+                        }
+                        Status.ERROR -> {
+                            ProgressDialog.getInstance().dismiss()
+                        }
+                        Status.LOADING -> {
+                            ProgressDialog.getInstance().show(requireActivity())
+                        }
+                    }
+                }
             }
         }
-
-        mView.findViewById<LinearLayout>(R.id.cancelBtn).setOnClickListener {
-            customDialog?.dismiss()
-        }
-        customDialog?.show()
     }
 
     private fun addOrder(orderId: Int) {
         zilaTripMasterId?.let {
-            addOrderViewModel.addOrder(it, orderId).observe(viewLifecycleOwner) { resource ->
+            addOrderViewModel.addOrder(it, orderId,SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)).observe(viewLifecycleOwner) { resource ->
                 resource?.let {
                     when (it.status) {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
-                            Utils.setToast(activity, it.data?.message)
                             getZilaTrip()
-
                         }
+
                         Status.ERROR -> {
                             ProgressDialog.getInstance().dismiss()
                         }
+
                         Status.LOADING -> {
                             ProgressDialog.getInstance().show(requireActivity())
                         }
@@ -178,15 +202,15 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             }
         }
     }
+
 
     private fun removeOrder(orderId: Int) {
         zilaTripMasterId?.let {
-            addOrderViewModel.removeOrder(it, orderId).observe(viewLifecycleOwner) { resource ->
+            addOrderViewModel.removeOrder(it, orderId,SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)).observe(viewLifecycleOwner) { resource ->
                 resource?.let {
                     when (it.status) {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
-                            Utils.setToast(activity, it.data?.message)
                             getZilaTrip()
                         }
                         Status.ERROR -> {
@@ -200,6 +224,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             }
         }
     }
+
 
     private fun getZilaTrip() {
         zilaTripMasterId?.let {
@@ -224,6 +249,9 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
         }
     }
 
+
+
+
     private fun handleOrdersList(orderList: GetZilaTripResponse) {
         binding?.apply {
             if (orderList.CustomerList.isNullOrEmpty()) {
@@ -234,13 +262,18 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                 tvNoTrip.visibility = View.GONE
                 rvAllTrip.visibility = View.VISIBLE
                 btnFinalized.visibility = View.VISIBLE
-                rvAllTrip.adapter =
-                    AllCustomersAdapter(requireActivity(), orderList.CustomerList, this@AddOrderFragment, this@AddOrderFragment)
-                rvAllTrip.adapter!!.notifyDataSetChanged()
+
+                val adapter = rvAllTrip.adapter as? AllCustomersAdapter
+                if (adapter == null) {
+                    rvAllTrip.adapter = AllCustomersAdapter(requireActivity(), orderList.CustomerList, this@AddOrderFragment, this@AddOrderFragment)
+                } else {
+                    adapter.updateData(orderList.CustomerList)  // Update adapter data
+                }
             }
             btnAddOrder.visibility = View.VISIBLE
         }
     }
+
     private fun setupActionBar() {
         activity?.let { activity ->
             val drawer = activity.findViewById<DrawerLayout>(R.id.container)

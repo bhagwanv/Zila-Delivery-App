@@ -151,8 +151,7 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
     private fun getQRCodeData(qrCodeData: JsonObject) {
         val qrCodeModel: QRCodeModel = Gson().fromJson(qrCodeData.toString(), QRCodeModel::class.java)
         if (qrCodeModel.status!!) {
-            Picasso.get().load(qrCodeModel.qRCodeurl)
-                .into(mBinding!!.ivScanQrCode, object : Callback {
+            Picasso.get().load(qrCodeModel.qRCodeurl).into(mBinding!!.ivScanQrCode, object : Callback {
                     override fun onSuccess() {
                         if (mBinding!!.progressBar != null) {
                             mBinding!!.progressBar.visibility = View.GONE

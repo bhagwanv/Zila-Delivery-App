@@ -60,7 +60,7 @@
                     android:layout_margin="@dimen/font_size_30"
                     android:background="@drawable/button_bg_blue"
                     android:padding="@dimen/font_size_20"
-                    android:text="Create Order"
+                    android:text="ADD Order"
                     android:textColor="@color/white"
                     android:visibility="visible" />
 
