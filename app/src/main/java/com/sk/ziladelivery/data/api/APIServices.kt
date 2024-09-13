@@ -6,6 +6,7 @@ import com.google.gson.JsonObject
 import com.sk.ziladelivery.data.localdatabase.UserLatLngModel
 import com.sk.ziladelivery.data.model.*
 import com.sk.ziladelivery.ui.views.fragment.CreateTripModel
+import com.sk.ziladelivery.data.model.CreateTripResModel
 import com.sk.ziladelivery.ui.views.fragment.unloadReturnItem.GenerateOTPForReturnOrder
 import com.sk.ziladelivery.ui.views.fragment.unloadReturnItem.PickedReturnOrderByDBoyRequestModel
 import com.sk.ziladelivery.ui.views.fragment.unloadReturnItem.ReturnOrderCreditNoteRequestModel
@@ -71,7 +72,7 @@ interface APIServices {
     suspend fun getTripIDAll(@Query("DboyId") DboyId: Int): JsonArray
 
     @POST("api/ZilaDeliveryApp/CreateCustomTripV1")
-    suspend fun createTrip(@Body model: CreateTripModel?): Int
+    suspend fun createTrip(@Body model: CreateTripModel?): CreateTripResModel
 
     @POST("api/ZilaDeliveryApp/ZilaCreateTrip")
     suspend fun ZilaCreateTrip(@Body model: ZilaCreateTrip?): FinalizedTripResponceModel
@@ -80,7 +81,7 @@ interface APIServices {
     suspend fun GetZilaTrip(@Query("zilaTripMasterId") zilaTripMasterId: Int): GetZilaTripResponse
 
     @GET("api/ConsumerApp/GetOrderIdByInvoice")
-    suspend fun GetOrderIdByInvoice(@Query("InvoiceNo") InvoiceNo: String): Int
+    suspend fun GetOrderIdByInvoice(@Query("InvoiceNo") InvoiceNo: String): GetOrderIdByInvoiceResModel
 
     @POST("api/ZilaDeliveryApp/AddOrder")
     suspend fun addOrder(@Query("zilaTripMasterId") zilaTripMasterId: Int,@Query("orderId") orderId: Int,@Query("dboyId") dboyId: Int): AddOrderResponse

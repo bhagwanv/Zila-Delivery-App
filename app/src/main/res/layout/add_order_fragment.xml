@@ -21,7 +21,9 @@
                 android:background="@color/white"
                 android:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_alltrip_list" />
+                tools:listitem="@layout/item_alltrip_list"
+                android:paddingBottom="65dp"
+                />
 
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/tv_no_trip"
@@ -36,7 +38,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/font_size_30">
+                android:layout_marginBottom="10dp">
 
                 <Button
                     android:id="@+id/btnFinalized"

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -115,7 +116,12 @@ class TripFragment : Fragment(), LisnerAllTrip {
                     Status.SUCCESS -> {
                         ProgressDialog.getInstance().dismiss()
                         it.data?.let { allTripModel ->
-                            fetchAllTripIDs()
+                            if(it.data.Status){
+                                fetchAllTripIDs()
+                            }else{
+                                Utils.setToast(activity,allTripModel.Message)
+                            }
+
                         }
                     }
 

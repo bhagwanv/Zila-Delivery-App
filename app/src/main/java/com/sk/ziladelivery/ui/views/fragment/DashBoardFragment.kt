@@ -294,8 +294,18 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
             }
         }
         mBinding!!.startTrip.setOnClickListener {
+            /*checkGPSNetworkMethod()*/
 
-            checkGPSNetworkMethod()
+            val postModel = StartAssignmentPostModel(
+                                     ZilaTripMasterId,
+                                     Utils.getDoubleLat(activity),
+                                     Utils.getDoubleLag(activity),
+                                     "",
+                                     0,
+                                     SharePrefs.getInstance(activity)
+                                         .getInt(SharePrefs.PEOPLE_ID)
+                                 )
+                                 startTripApi(postModel)
         }
         mBinding!!.tripEnd.setOnClickListener {
             AlertDialog.Builder((getActivity())!!)
@@ -1489,6 +1499,9 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                                     activity
                                 ) != 0.0
                             ) {
+
+
+                                Log.e("TAG", "startTripImageUploadPopup: ", );
                                 val postModel = StartAssignmentPostModel(
                                     ZilaTripMasterId,
                                     Utils.getDoubleLat(activity),

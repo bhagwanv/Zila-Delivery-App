@@ -134,6 +134,8 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
                             if (it.data?.Status == true){
+                                SharePrefs.getInstance(requireActivity())
+                                    .putLong(SharePrefs.ALL_TRIP_SLECTED, zilaTripMasterId!!.toLong())
                                 Utils.setToast(activity, it.data?.Message)
                                 activity?.switchContentWithStack(DashBoardFragment())
                             }else{
@@ -165,7 +167,13 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
                             it.data?.let { orderIDList ->
-                                addOrder(orderIDList)
+                                if(orderIDList.Status){
+                                    addOrder(orderIDList.Data)
+                                    Utils.setToast(activity,orderIDList.Message)
+                                }else{
+                                    Utils.setToast(activity,orderIDList.Message)
+                                }
+
                             }
                         }
                         Status.ERROR -> {
