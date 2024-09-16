@@ -1,6 +1,7 @@
 package com.sk.ziladelivery.ui.views.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -36,7 +37,7 @@ class AllTripAdapter(
     inner class ViewHolder(val mBinding: ItemAlltripListBinding) :
         RecyclerView.ViewHolder(mBinding.root) {
 
-        fun bind(allTripModel: AllTripModel) {
+        fun bind(allTripModel: AllTripModel, position: Int) {
             mBinding.tvNoOrder.text = "Orders: ${allTripModel.orderCount}"
             mBinding.tvAmount.text = "Amount: ${allTripModel.totalAmount}"
             mBinding.tvAssitId.text = "${allTripModel.zilaTripMasterId}"
@@ -51,6 +52,18 @@ class AllTripAdapter(
             mBinding.tvStatus.text = allTripModel.tripCurrentStatus
 
             // Set click listener for the root layout
+
+            if(allTripModel.isFreezed){
+                allTripListener.onButtonClick(allTripModel)
+            }else{
+                if(position==0){
+                    allTripListener.onButtonClick(allTripModel)
+                }
+            }
+
+
+
+
             mBinding.rlMain.setOnClickListener {
                 allTripListener.onButtonClick(allTripModel)
             }
@@ -63,6 +76,6 @@ class AllTripAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val allTripModel = allTripList[position]
-        holder.bind(allTripModel)  // Bind data to ViewHolder
+        holder.bind(allTripModel,position)  // Bind data to ViewHolder
     }
 }

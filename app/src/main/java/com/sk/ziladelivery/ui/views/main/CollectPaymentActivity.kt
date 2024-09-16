@@ -666,6 +666,7 @@ class CollectPaymentActivity : AppCompatActivity(), CollectPaymentInterface, Vie
             }
         })
         bottomSkipLayoutBinding.btnResendOtp.setOnClickListener {
+            bottomBar!!.cancel()
             collectPaymentViewModel!!.getDeliveryOTPObserver(
                 TripPlannerConfirmedDetailId,
                 "Delivered",

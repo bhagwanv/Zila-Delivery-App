@@ -1,10 +1,10 @@
 package com.sk.ziladelivery.ui.views.fragment
 
+
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +26,6 @@ import com.sk.ziladelivery.R
 import com.sk.ziladelivery.data.api.ApiHelper
 import com.sk.ziladelivery.data.api.RestClient
 import com.sk.ziladelivery.data.model.AllTripModel
-import com.sk.ziladelivery.data.model.StartAssignmentPostModel
 import com.sk.ziladelivery.data.model.TokenResponse
 import com.sk.ziladelivery.databinding.FragmentTripBinding
 import com.sk.ziladelivery.listener.LisnerAllTrip
@@ -36,6 +35,7 @@ import com.sk.ziladelivery.ui.views.main.MainActivity
 import com.sk.ziladelivery.ui.views.viewmodels.AllTripViewModel
 import com.sk.ziladelivery.utilities.*
 import com.sk.ziladelivery.viewfactory.AllTripFactory
+
 
 class TripFragment : Fragment(), LisnerAllTrip {
 
@@ -48,6 +48,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
         super.onAttach(context)
         activity = context as MainActivity
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,27 +70,27 @@ class TripFragment : Fragment(), LisnerAllTrip {
         )[AllTripViewModel::class.java]
 
         if (!Utils.checkInternetConnection(requireActivity())) {
-            Utils.setToast(requireActivity(), getString(R.string.network_error))
+            Utils.setToast(requireActivity(), getString(com.sk.ziladelivery.R.string.network_error))
         } else {
             fetchAllTripIDs()
         }
 
         mBinding!!.swipeContainer.setOnRefreshListener {
             if (!Utils.checkInternetConnection(requireActivity())) {
-                Utils.setToast(requireActivity(), getString(R.string.network_error))
+                Utils.setToast(requireActivity(), getString(com.sk.ziladelivery.R.string.network_error))
             } else {
                 fetchAllTripIDs()
             }
             mBinding!!.swipeContainer.isRefreshing = false
         }
-
+        createTrip()
         mBinding!!.btnCreateTrip.setOnClickListener {
             AlertDialog.Builder((getActivity())!!)
                 .setTitle("Alert")
                 .setMessage("Are you sure you want to Create the trip ?")
                 .setPositiveButton(android.R.string.yes) { dialog, whichButton ->
                     if (!Utils.checkInternetConnection(requireActivity())) {
-                        Utils.setToast(requireActivity(), getString(R.string.network_error))
+                        Utils.setToast(requireActivity(), getString(com.sk.ziladelivery.R.string.network_error))
                     } else {
                         createTrip()
                     }
@@ -172,6 +173,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
         val typeToken = object : TypeToken<MutableList<AllTripModel>>() {}.type
         allTripModelResponse = Gson().fromJson(allTripModel, typeToken)
 
+
         if (allTripModelResponse.isNullOrEmpty()) {
             mBinding!!.tvNoTrip.visibility = View.VISIBLE
             mBinding!!.btnCreateTrip.visibility = View.VISIBLE
@@ -179,7 +181,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
         } else {
             mBinding!!.tvNoTrip.visibility = View.GONE
             mBinding!!.btnCreateTrip.visibility = View.GONE
-            mBinding!!.rvAllTrip.visibility = View.VISIBLE
+            mBinding!!.rvAllTrip.visibility = View.INVISIBLE
 
             if (mBinding!!.rvAllTrip.adapter == null) {
                 val adapter = AllTripAdapter(requireActivity(), allTripModelResponse, this)
@@ -233,15 +235,15 @@ class TripFragment : Fragment(), LisnerAllTrip {
     }
 
     private fun setupActionBar() {
-        val drawer = requireActivity().findViewById<DrawerLayout>(R.id.container)
-        val toolbar = requireActivity().findViewById<Toolbar>(R.id.toolbar)
-        val layout = requireActivity().findViewById<RelativeLayout>(R.id.titlebar)
-        val linearLayout = requireActivity().findViewById<LinearLayout>(R.id.ll_oder_id_view)
-        val titleTextView = requireActivity().findViewById<TextView>(R.id.toolbar_title)
-        val startTimerButton = requireActivity().findViewById<TextView>(R.id.start_timer)
-        val assignmentIdTextView = requireActivity().findViewById<TextView>(R.id.assignmentid)
-        val timerTextView = requireActivity().findViewById<TextView>(R.id.tv_timmer)
-        val historyTextView = requireActivity().findViewById<TextView>(R.id.tv_history)
+        val drawer = requireActivity().findViewById<DrawerLayout>(com.sk.ziladelivery.R.id.container)
+        val toolbar = requireActivity().findViewById<Toolbar>(com.sk.ziladelivery.R.id.toolbar)
+        val layout = requireActivity().findViewById<RelativeLayout>(com.sk.ziladelivery.R.id.titlebar)
+        val linearLayout = requireActivity().findViewById<LinearLayout>(com.sk.ziladelivery.R.id.ll_oder_id_view)
+        val titleTextView = requireActivity().findViewById<TextView>(com.sk.ziladelivery.R.id.toolbar_title)
+        val startTimerButton = requireActivity().findViewById<TextView>(com.sk.ziladelivery.R.id.start_timer)
+        val assignmentIdTextView = requireActivity().findViewById<TextView>(com.sk.ziladelivery.R.id.assignmentid)
+        val timerTextView = requireActivity().findViewById<TextView>(com.sk.ziladelivery.R.id.tv_timmer)
+        val historyTextView = requireActivity().findViewById<TextView>(com.sk.ziladelivery.R.id.tv_history)
 
         layout.visibility = View.VISIBLE
         linearLayout.visibility = View.GONE
@@ -260,9 +262,9 @@ class TripFragment : Fragment(), LisnerAllTrip {
         }
 
         MainActivity.myTripView?.apply {
-            setTextColor(ContextCompat.getColor(requireContext(), R.color.Black))
+            setTextColor(ContextCompat.getColor(requireContext(), com.sk.ziladelivery.R.color.Black))
             setBackgroundResource(0)
-            setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.font_size_18))
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(com.sk.ziladelivery.R.dimen.font_size_18))
         }
 
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
@@ -280,6 +282,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
             SharePrefs.getInstance(requireActivity())
                 .putLong(SharePrefs.ALL_TRIP_SLECTED, allTripModel.zilaTripMasterId.toLong())
             activity?.switchContentWithStack(DashBoardFragment())
+
         } else {
             val fragment = AddOrderFragment().apply {
                 arguments = Bundle().apply {
@@ -287,7 +290,11 @@ class TripFragment : Fragment(), LisnerAllTrip {
                 }
             }
             activity?.switchContentWithStack(fragment);
+
         }
     }
+
+
+
 }
 

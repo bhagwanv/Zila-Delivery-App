@@ -419,7 +419,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
         }
         myTripView!!.setOnClickListener {
             stop()
-            activity?.switchContent(TripFragment())
+            activity?.switchContent(AddOrderFragment())
         }
 
     }

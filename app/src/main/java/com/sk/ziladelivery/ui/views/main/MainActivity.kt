@@ -35,6 +35,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.sk.ziladelivery.databinding.ActivityMainBinding
 import com.sk.ziladelivery.ui.views.fragment.*
 import com.sk.ziladelivery.utilities.*
+import com.sk.ziladelivery.utilities.Utils.activity
 import io.reactivex.schedulers.Schedulers
 import java.lang.Exception
 
@@ -56,6 +57,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
     private var doubleBackToExitPressedOnce = false
     private var dashBoardFragment: DashBoardFragment? = null
     private var tripFragment: TripFragment? = null
+    private var addOrderFragment: AddOrderFragment? = null
+    var activityFlag = this.javaClass.simpleName
+
+
 
     companion object{
         @JvmField
@@ -90,6 +95,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
         notificationEvent
         createViews()
     }
+
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -159,8 +165,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
     private fun listeners() {
         mBinding!!.mainListener = object : MainListener {
             override fun myTaskClicked() {
-
-                switchContentWithStack(TripFragment())
+                switchContent(AddOrderFragment())
                 closeDrawer()
             }
 
@@ -298,11 +303,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
         toggle!!.syncState()
         configureDrawerMenuItem()
         dashBoardFragment = DashBoardFragment()
-        tripFragment = TripFragment()
+        addOrderFragment = AddOrderFragment()
         if (SharePrefs.getInstance(applicationContext).getLong(SharePrefs.ALL_TRIP_SLECTED)>0) {
             setDefaultFragment(dashBoardFragment!!)
         }else{
-            setDefaultFragment(tripFragment!!)
+            setDefaultFragment(addOrderFragment!!)
         }
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         // setView
@@ -391,7 +396,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
 
     fun checkBackStackStatus() {
         if (supportFragmentManager.backStackEntryCount > 1) {
-            supportFragmentManager.popBackStack(TripFragment().javaClass.simpleName, 0)
+            supportFragmentManager.popBackStack(AddOrderFragment().javaClass.simpleName, 0)
         }
     }
 
@@ -438,6 +443,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
             super.onBackPressed()
         }
     }
+
+
 
     private fun logout() {
         sharedPreferences!!.edit().clear().apply()

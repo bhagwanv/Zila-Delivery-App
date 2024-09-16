@@ -1141,6 +1141,8 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
                ProgressDialog.getInstance().show(getActivity())
             }
             Status.SUCCESS -> {
+                ProgressDialog.getInstance().dismiss();
+                ProgressDialog.getInstance().dismiss();
                 assert(apiResponse.data != null)
                 SingleTriprenderSuccessResponse(apiResponse.data)
             }
@@ -1520,43 +1522,51 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
                 try {
                     val jsonObject = JSONObject(response.toString())
                     orderResponseModel = Gson().fromJson(jsonObject.toString(), MySingleTripOrderResponseModel::class.java)
-                    if (orderResponseModel!!.customerOrderinfoDc.customerId != 0) {
-                        mBinding!!.coordinateLayout.tvVoiceRecoding.visibility = View.VISIBLE
-                    }
-                    orderCount = orderResponseModel!!.customerOrderinfoDc.orderCount
+                    if(orderResponseModel!=null){
+                        if(orderResponseModel!!.customerOrderinfoDc!=null){
+                            if (orderResponseModel!!.customerOrderinfoDc.customerId != 0) {
+                                mBinding!!.coordinateLayout.tvVoiceRecoding.visibility = View.VISIBLE
+                            }
+                            orderCount = orderResponseModel!!.customerOrderinfoDc.orderCount
 
-                    if (orderResponseModel!!.customerOrderinfoDc.isReturnOrder){
-                        mBinding!!.bottomLayout.llCompleteReturnTrip.visibility = View.VISIBLE
-                    }else{
-                        mBinding!!.bottomLayout.llCompleteReturnTrip.visibility = View.GONE
-                    }
-                    if (orderResponseModel!!.customerOrderinfoDc.isGeneralOrder){
-                        mBinding!!.bottomLayout.llContinue.visibility = View.VISIBLE
-                    }else{
-                        mBinding!!.bottomLayout.llContinue.visibility = View.GONE
+                            if (orderResponseModel!!.customerOrderinfoDc.isReturnOrder){
+                                mBinding!!.bottomLayout.llCompleteReturnTrip.visibility = View.VISIBLE
+                            }else{
+                                mBinding!!.bottomLayout.llCompleteReturnTrip.visibility = View.GONE
+                            }
+                            if (orderResponseModel!!.customerOrderinfoDc.isGeneralOrder){
+                                mBinding!!.bottomLayout.llContinue.visibility = View.VISIBLE
+                            }else{
+                                mBinding!!.bottomLayout.llContinue.visibility = View.GONE
+                            }
+
+                            isReturnOrder = orderResponseModel!!.customerOrderinfoDc.isReturnOrder
+                            isGeneralOrder = orderResponseModel!!.customerOrderinfoDc.isGeneralOrder
+
+                            val unloadinghr = Math.round((orderResponseModel!!.singleOrderMapviewInfoDC.unloadingTime / 60).toFloat())
+                            val unloadingmin = Math.round((orderResponseModel!!.singleOrderMapviewInfoDC.unloadingTime % 60).toFloat())
+                            TripPlannerConfirmedDetailId = orderResponseModel!!.customerOrderinfoDc.zilaTripDetailId
+                            TripPlannerConfirmedOrderId = orderResponseModel!!.customerOrderinfoDc.tripPlannerConfirmedOrderId
+                            warehouseLat = orderResponseModel!!.singleOrderMapviewInfoDC.warehouesLat
+                            warehouseLong = orderResponseModel!!.singleOrderMapviewInfoDC.warehouesLng
+                            voiceNoteString = orderResponseModel!!.customerOrderinfoDc.voiceNote
+                            isTakeShopImage = orderResponseModel!!.customerOrderinfoDc.isTakeShopImage
+                            mBinding!!.bottomLayout.tvShopName.text = orderResponseModel!!.customerOrderinfoDc.shopName
+                            mBinding!!.bottomLayout.tvShopSkcode.text = orderResponseModel!!.customerOrderinfoDc.skcode
+                            if (!com.sk.ziladelivery.utilities.TextUtils.isNullOrEmpty(orderResponseModel!!.getCustomerOrderinfoDc().shippingAddress)) {
+                                mBinding!!.bottomLayout.tvAddresh.text = "Address: " + orderResponseModel!!.getCustomerOrderinfoDc().shippingAddress
+                            } else {
+                                mBinding!!.bottomLayout.tvAddresh.visibility = View.INVISIBLE
+                            }
+                            mBinding!!.bottomLayout.unloadingTime.text = unloadinghr.toString() + "h: " + unloadingmin + "m"
+                            val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+                            mapFragment!!.getMapAsync(this)
+                        }else{
+
+                        }
+
                     }
 
-                    isReturnOrder = orderResponseModel!!.customerOrderinfoDc.isReturnOrder
-                    isGeneralOrder = orderResponseModel!!.customerOrderinfoDc.isGeneralOrder
-
-                    val unloadinghr = Math.round((orderResponseModel!!.singleOrderMapviewInfoDC.unloadingTime / 60).toFloat())
-                    val unloadingmin = Math.round((orderResponseModel!!.singleOrderMapviewInfoDC.unloadingTime % 60).toFloat())
-                    TripPlannerConfirmedDetailId = orderResponseModel!!.customerOrderinfoDc.zilaTripDetailId
-                    TripPlannerConfirmedOrderId = orderResponseModel!!.customerOrderinfoDc.tripPlannerConfirmedOrderId
-                    warehouseLat = orderResponseModel!!.singleOrderMapviewInfoDC.warehouesLat
-                    warehouseLong = orderResponseModel!!.singleOrderMapviewInfoDC.warehouesLng
-                    voiceNoteString = orderResponseModel!!.customerOrderinfoDc.voiceNote
-                    isTakeShopImage = orderResponseModel!!.customerOrderinfoDc.isTakeShopImage
-                    mBinding!!.bottomLayout.tvShopName.text = orderResponseModel!!.customerOrderinfoDc.shopName
-                    mBinding!!.bottomLayout.tvShopSkcode.text = orderResponseModel!!.customerOrderinfoDc.skcode
-                    if (!com.sk.ziladelivery.utilities.TextUtils.isNullOrEmpty(orderResponseModel!!.getCustomerOrderinfoDc().shippingAddress)) {
-                        mBinding!!.bottomLayout.tvAddresh.text = "Address: " + orderResponseModel!!.getCustomerOrderinfoDc().shippingAddress
-                    } else {
-                        mBinding!!.bottomLayout.tvAddresh.visibility = View.INVISIBLE
-                    }
-                    mBinding!!.bottomLayout.unloadingTime.text = unloadinghr.toString() + "h: " + unloadingmin + "m"
-                    val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-                    mapFragment!!.getMapAsync(this)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
