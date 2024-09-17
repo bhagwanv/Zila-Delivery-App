@@ -73,6 +73,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
         var stopBreak: TextView? = null
         @JvmField
         var myTripView: TextView? = null
+        @JvmField
+        var tvTripIDView: TextView? = null
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,6 +87,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
         stopBreak = mBinding!!.appbarMain.stopBreak
         tvStartTime = mBinding!!.appbarMain.startTimer
         myTripView = mBinding!!.appbarMain.toolbarTitle
+        tvTripIDView = mBinding!!.appbarMain.tvTripID
+
         myTripView!!.setTextColor(ContextCompat.getColor(this, R.color.Black));
         permission()
         handleAcceptAssignMessage()
@@ -122,7 +128,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
                 imm.hideSoftInputFromWindow(mBinding!!.appbarMain.drawerMenu.windowToken, 0)
             }
             R.id.profile -> {
-                switchContentWithStack(ProfileFragment())
+               // switchContentWithStack(ProfileFragment())
+                addFragment(ProfileFragment(), true, null)
                 closeDrawer()
             }
             R.id.li_return_order -> {
@@ -165,12 +172,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
     private fun listeners() {
         mBinding!!.mainListener = object : MainListener {
             override fun myTaskClicked() {
-                switchContent(AddOrderFragment())
+
+               // switchContent(AddOrderFragment())
+                addFragment(AddOrderFragment(), false, null)
+
                 closeDrawer()
+
             }
 
             override fun myAssignmentClicked() {
                 try {
+
                     if (!Utils.checkInternetConnection(
                             applicationContext
                         )
@@ -180,7 +192,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
                             resources.getString(R.string.network_error)
                         )
                     } else {
-                        switchContentWithStack(MyAssignmentFragment())
+                        //switchContentWithStack(MyAssignmentFragment())
+
+                        addFragment(MyAssignmentFragment(), true, null)
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -198,16 +212,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
                 if (!Utils.checkInternetConnection(applicationContext)) {
                     Utils.setToast(applicationContext, resources.getString(R.string.network_error))
                 } else {
-                    switchContentWithStack(SettleAssignmentFragment())
+                    //switchContentWithStack(SettleAssignmentFragment())
+                    addFragment(SettleAssignmentFragment(), true, null)
                 }
                 closeDrawer()
             }
 
             override fun historyClicked() {
+
                 if (!Utils.checkInternetConnection(applicationContext)) {
                     Utils.setToast(applicationContext, resources.getString(R.string.network_error))
                 } else {
-                    switchContentWithStack(HistoryFragment())
+                   // switchContentWithStack(HistoryFragment())
+                    addFragment(HistoryFragment(), true, null)
                     // checkBackStackStatus();
                 }
                 closeDrawer()
@@ -218,7 +235,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
                 if (!Utils.checkInternetConnection(applicationContext)) {
                     Utils.setToast(applicationContext, resources.getString(R.string.network_error))
                 } else {
-                    switchContentWithStack(SettleAssignmentFragment())
+                    //switchContentWithStack(SettleAssignmentFragment())
+                    addFragment(SettleAssignmentFragment(), true, null)
                 }
                 closeDrawer()
             }
@@ -233,7 +251,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
                 if (!Utils.checkInternetConnection(applicationContext)) {
                     Utils.setToast(applicationContext, resources.getString(R.string.network_error))
                 } else {
-                    switchContentWithStack(AssignmentBillingFragment())
+                    //switchContentWithStack(AssignmentBillingFragment())
+                    addFragment(AssignmentBillingFragment(), true, null)
                 }
                 closeDrawer()
             }
@@ -246,7 +265,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
                 if (!Utils.checkInternetConnection(applicationContext)) {
                     Utils.setToast(applicationContext, resources.getString(R.string.network_error))
                 } else {
-                    switchContentWithStack(RejectAssginmentFragment())
+                   // switchContentWithStack(RejectAssginmentFragment())
+                    addFragment(RejectAssginmentFragment(), true, null)
                 }
                 closeDrawer()
             }
@@ -255,7 +275,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
                 if (!Utils.checkInternetConnection(applicationContext)) {
                     Utils.setToast(applicationContext, resources.getString(R.string.network_error))
                 } else {
-                    switchContentWithStack(AssginmentSettleFragment())
+                    //switchContentWithStack(AssginmentSettleFragment())
+                    addFragment(AssginmentSettleFragment(), true, null)
                 }
                 closeDrawer()
             }
@@ -305,9 +326,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
         dashBoardFragment = DashBoardFragment()
         addOrderFragment = AddOrderFragment()
         if (SharePrefs.getInstance(applicationContext).getLong(SharePrefs.ALL_TRIP_SLECTED)>0) {
-            setDefaultFragment(dashBoardFragment!!)
+            //setDefaultFragment(dashBoardFragment!!)
+            addFragment(DashBoardFragment(), true, null)
         }else{
-            setDefaultFragment(addOrderFragment!!)
+           // setDefaultFragment(addOrderFragment!!)
+            addFragment(AddOrderFragment(), true, null)
         }
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         // setView
@@ -372,6 +395,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
     }
 
     fun setDefaultFragment(fragment: Fragment) {
+        tvTripIDView!!.visibility=View.GONE
         supportFragmentManager.beginTransaction()
             .add(R.id.content, fragment)
             .addToBackStack(fragment.javaClass.simpleName)
@@ -379,6 +403,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
     }
 
     fun switchContent(fragment: Fragment?) {
+        tvTripIDView!!.visibility=View.GONE
         supportFragmentManager.beginTransaction()
             .replace(R.id.content, fragment!!).addToBackStack(null)
             .commit()
@@ -387,6 +412,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
 
       @JvmOverloads
     fun switchContentWithStack(fragment: Fragment) {
+          tvTripIDView!!.visibility=View.GONE
         supportFragmentManager.beginTransaction()
             .replace(R.id.content, fragment)
             .addToBackStack(fragment.javaClass.simpleName)
@@ -395,6 +421,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
 
 
     fun checkBackStackStatus() {
+        tvTripIDView!!.visibility=View.GONE
         if (supportFragmentManager.backStackEntryCount > 1) {
             supportFragmentManager.popBackStack(AddOrderFragment().javaClass.simpleName, 0)
         }
@@ -477,5 +504,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, NavigationView.O
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         dashBoardFragment!!.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun addFragment(mCurrentLoadedFragment: Fragment, addToStack: Boolean, args: Bundle?) {
+        tvTripIDView!!.visibility=View.GONE
+        val ft = supportFragmentManager.beginTransaction()
+        if (args != null) {
+            mCurrentLoadedFragment.arguments = args
+        }
+        ft.replace(
+            R.id.content,
+            mCurrentLoadedFragment,
+            mCurrentLoadedFragment.javaClass.simpleName
+        )
+        if (addToStack) {
+            ft.addToBackStack(mCurrentLoadedFragment.javaClass.simpleName)
+        }
+        ft.commit()
     }
 }

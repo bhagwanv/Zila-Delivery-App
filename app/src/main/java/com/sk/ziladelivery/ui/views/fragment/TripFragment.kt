@@ -244,6 +244,7 @@ class TripFragment : Fragment(), LisnerAllTrip {
         val assignmentIdTextView = requireActivity().findViewById<TextView>(com.sk.ziladelivery.R.id.assignmentid)
         val timerTextView = requireActivity().findViewById<TextView>(com.sk.ziladelivery.R.id.tv_timmer)
         val historyTextView = requireActivity().findViewById<TextView>(com.sk.ziladelivery.R.id.tv_history)
+        val tvTripIDTextView = activity?.findViewById<TextView>(R.id.tvTripID)
 
         layout.visibility = View.VISIBLE
         linearLayout.visibility = View.GONE

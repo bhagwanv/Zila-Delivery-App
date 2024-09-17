@@ -107,6 +107,7 @@ public class MyAssignmentFragment extends Fragment {
         TextView timer = getActivity().findViewById(R.id.tv_timer);
         timer.setVisibility(View.GONE);
         activity.startBreak.setVisibility(View.GONE);
+
         tittleTextView.setText(getActivity().getString(R.string.my_assignment));
         ImageView menu = getActivity().findViewById(R.id.drawer_menu);
         menu.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_menu_three_dot));

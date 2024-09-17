@@ -20,6 +20,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.adapters.TextViewBindingAdapter.setTextSize
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -56,10 +57,11 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
     private var activity: MainActivity? = null
     private var binding: AddOrderFragmentBinding? = null
     private lateinit var addOrderViewModel: AddOrderViewModel
-    private var zilaTripMasterId=0;
+    private var zilaTripMasterId = 0;
     private var customDialog: Dialog? = null
     private lateinit var scanOrderActivityLauncher: ActivityResultLauncher<Intent>
     private var allTripModelResponse: MutableList<AllTripModel> = mutableListOf()
+    private lateinit var tvTripIDTextView: TextView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -79,8 +81,12 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
         super.onResume()
         activity?.activityFlag = this.javaClass.simpleName
     }
+
     private fun initView() {
-        addOrderViewModel = ViewModelProvider(this, AddOrderFactory(ApiHelper(RestClient.getInstance().service)))[AddOrderViewModel::class.java]
+        addOrderViewModel = ViewModelProvider(
+            this,
+            AddOrderFactory(ApiHelper(RestClient.getInstance().service))
+        )[AddOrderViewModel::class.java]
 
         scanOrderActivityLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -97,7 +103,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
 
         if (Utils.checkInternetConnection(requireActivity())) {
             fetchAllTripIDs()
-           // createTrip()
+            // createTrip()
             //getZilaTrip()
         } else {
             Utils.setToast(requireActivity(), getString(R.string.network_error))
@@ -106,7 +112,8 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
         binding?.apply {
             swipeContainer.setOnRefreshListener {
                 if (Utils.checkInternetConnection(requireActivity())) {
-                    getZilaTrip()
+                    fetchAllTripIDs()
+                    //getZilaTrip()
                 } else {
                     Utils.setToast(requireActivity(), getString(R.string.network_error))
                 }
@@ -130,6 +137,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             }
         }
     }
+
     private fun createTrip() {
         val createTripModel = CreateTripModel(
             10,
@@ -143,10 +151,10 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                     Status.SUCCESS -> {
                         ProgressDialog.getInstance().dismiss()
                         it.data?.let { allTripModel ->
-                            if(it.data.Status){
+                            if (it.data.Status) {
                                 fetchAllTripIDs()
-                            }else{
-                                Utils.setToast(activity,allTripModel.Message)
+                            } else {
+                                Utils.setToast(activity, allTripModel.Message)
                             }
 
                         }
@@ -184,18 +192,23 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                     when (it.status) {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
-                            if (it.data?.Status == true){
+                            if (it.data?.Status == true) {
                                 SharePrefs.getInstance(requireActivity())
-                                    .putLong(SharePrefs.ALL_TRIP_SLECTED, zilaTripMasterId!!.toLong())
+                                    .putLong(
+                                        SharePrefs.ALL_TRIP_SLECTED,
+                                        zilaTripMasterId!!.toLong()
+                                    )
                                 Utils.setToast(activity, it.data?.Message)
                                 activity?.switchContentWithStack(DashBoardFragment())
-                            }else{
+                            } else {
                                 Utils.setToast(activity, it.data?.Message)
                             }
                         }
+
                         Status.ERROR -> {
                             ProgressDialog.getInstance().dismiss()
                         }
+
                         Status.LOADING -> {
                             ProgressDialog.getInstance().show(requireActivity())
                         }
@@ -207,7 +220,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
 
     private fun showAddOrderPopup() {
         val intent = Intent(activity, ScanOrderActivity::class.java)
-       scanOrderActivityLauncher.launch(intent)
+        scanOrderActivityLauncher.launch(intent)
     }
 
     private fun getInvoice(invoiceNUmber: String?) {
@@ -218,18 +231,20 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
                             it.data?.let { orderIDList ->
-                                if(orderIDList.Status){
+                                if (orderIDList.Status) {
                                     addOrder(orderIDList.Data)
-                                    Utils.setToast(activity,orderIDList.Message)
-                                }else{
-                                    Utils.setToast(activity,orderIDList.Message)
+                                    //Utils.setToast(activity,orderIDList.Message)
+                                } else {
+                                    // Utils.setToast(activity,orderIDList.Message)
                                 }
 
                             }
                         }
+
                         Status.ERROR -> {
                             ProgressDialog.getInstance().dismiss()
                         }
+
                         Status.LOADING -> {
                             ProgressDialog.getInstance().show(requireActivity())
                         }
@@ -241,12 +256,27 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
 
     private fun addOrder(orderId: Int) {
         zilaTripMasterId?.let {
-            addOrderViewModel.addOrder(it, orderId,SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)).observe(viewLifecycleOwner) { resource ->
+            addOrderViewModel.addOrder(
+                it,
+                orderId,
+                SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)
+            ).observe(viewLifecycleOwner) { resource ->
                 resource?.let {
                     when (it.status) {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
-                            getZilaTrip()
+                            if (it.data!!.status!!) {
+                                fetchAllTripIDs()
+                                if (it.data!!.message != null) {
+                                    Utils.setToast(activity, it.data!!.message)
+                                }
+                                //getZilaTrip()
+                            } else {
+                                if (it.data!!.message != null) {
+                                    Utils.setToast(activity, it.data!!.message)
+                                }
+                            }
+
                         }
 
                         Status.ERROR -> {
@@ -265,16 +295,23 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
 
     private fun removeOrder(orderId: Int) {
         zilaTripMasterId?.let {
-            addOrderViewModel.removeOrder(it, orderId,SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)).observe(viewLifecycleOwner) { resource ->
+            addOrderViewModel.removeOrder(
+                it,
+                orderId,
+                SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID)
+            ).observe(viewLifecycleOwner) { resource ->
                 resource?.let {
                     when (it.status) {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
-                            getZilaTrip()
+                            fetchAllTripIDs()
+                            //getZilaTrip()
                         }
+
                         Status.ERROR -> {
                             ProgressDialog.getInstance().dismiss()
                         }
+
                         Status.LOADING -> {
                             ProgressDialog.getInstance().show(requireActivity())
                         }
@@ -296,9 +333,11 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                                 handleOrdersList(orderList)
                             }
                         }
+
                         Status.ERROR -> {
                             ProgressDialog.getInstance().dismiss()
                         }
+
                         Status.LOADING -> {
                             ProgressDialog.getInstance().show(requireActivity())
                         }
@@ -307,8 +346,6 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             }
         }
     }
-
-
 
 
     private fun handleOrdersList(orderList: GetZilaTripResponse) {
@@ -324,10 +361,16 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
 
                 val adapter = rvAllTrip.adapter as? AllCustomersAdapter
                 if (adapter == null) {
-                    rvAllTrip.adapter = AllCustomersAdapter(requireActivity(), orderList.CustomerList, this@AddOrderFragment, this@AddOrderFragment)
+                    rvAllTrip.adapter = AllCustomersAdapter(
+                        requireActivity(),
+                        orderList.CustomerList,
+                        this@AddOrderFragment,
+                        this@AddOrderFragment
+                    )
                 } else {
                     adapter.updateData(orderList.CustomerList)  // Update adapter data
                 }
+
             }
             btnAddOrder.visibility = View.VISIBLE
         }
@@ -344,12 +387,15 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             val assignmentIdTextView = activity.findViewById<TextView>(R.id.assignmentid)
             val timerTextView = activity.findViewById<TextView>(R.id.tv_timmer)
             val historyTextView = activity.findViewById<TextView>(R.id.tv_history)
+            tvTripIDTextView = activity.findViewById<TextView>(R.id.tvTripID)
 
             layout.visibility = View.VISIBLE
             linearLayout.visibility = View.GONE
             assignmentIdTextView.visibility = View.GONE
             timerTextView.visibility = View.GONE
             historyTextView.visibility = View.GONE
+            tvTripIDTextView.visibility = View.VISIBLE
+
 
             startTimerButton.apply {
                 visibility = View.GONE
@@ -364,7 +410,10 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             MainActivity.myTripView?.apply {
                 setTextColor(ContextCompat.getColor(requireContext(), R.color.Black))
                 setBackgroundResource(0)
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.font_size_18))
+                setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    resources.getDimension(R.dimen.font_size_18)
+                )
             }
 
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
@@ -440,6 +489,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             }
         }
     }
+
     private fun handleUnauthorizedError() {
         val token = SharePrefs.getInstance(activity).getString(SharePrefs.TOKEN_NAME)
         if (token.isNullOrEmpty()) {
@@ -485,41 +535,45 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
     private fun handleAllTripResponse(allTripModel: JsonArray) {
         val typeToken = object : TypeToken<MutableList<AllTripModel>>() {}.type
         allTripModelResponse = Gson().fromJson(allTripModel, typeToken)
-        if(allTripModelResponse.isNullOrEmpty()){
-            binding!!.tvNoTrip.visibility = View.VISIBLE
-        }else{
-            binding!!.tvNoTrip.visibility = View.VISIBLE
+        if (allTripModelResponse.isNotEmpty()) {
             allTripModelResponse.forEach {
                 if (it.isFreezed) {
                     SharePrefs.getInstance(requireActivity())
                         .putLong(SharePrefs.ALL_TRIP_SLECTED, it.zilaTripMasterId.toLong())
-                    activity?.switchContentWithStack(DashBoardFragment())
+                    activity?.addFragment(DashBoardFragment(), false, null)
+
                 } else {
-                    println("allTripModelResponse ${allTripModelResponse[0].zilaTripMasterId}")
                     zilaTripMasterId = allTripModelResponse[0].zilaTripMasterId
+                    tvTripIDTextView.text = "TripId:${zilaTripMasterId}"
 
                 }
-
             }
             getZilaTrip()
+
+        } else {
+            zilaTripMasterId=0
+            tvTripIDTextView.text = "TripId:${zilaTripMasterId}"
+            binding!!.tvNoTrip.visibility = View.VISIBLE
+            binding!!.rvAllTrip.visibility = View.GONE
+            binding!!.btnFinalized.visibility = View.GONE
         }
 
 
-       /* if (allTripModelResponse.isNullOrEmpty()) {
-            mBinding!!.tvNoTrip.visibility = View.VISIBLE
-            mBinding!!.btnCreateTrip.visibility = View.VISIBLE
-            mBinding!!.rvAllTrip.visibility = View.GONE
-        } else {
-            mBinding!!.tvNoTrip.visibility = View.GONE
-            mBinding!!.btnCreateTrip.visibility = View.GONE
-            mBinding!!.rvAllTrip.visibility = View.INVISIBLE
+        /* if (allTripModelResponse.isNullOrEmpty()) {
+             mBinding!!.tvNoTrip.visibility = View.VISIBLE
+             mBinding!!.btnCreateTrip.visibility = View.VISIBLE
+             mBinding!!.rvAllTrip.visibility = View.GONE
+         } else {
+             mBinding!!.tvNoTrip.visibility = View.GONE
+             mBinding!!.btnCreateTrip.visibility = View.GONE
+             mBinding!!.rvAllTrip.visibility = View.INVISIBLE
 
-            if (mBinding!!.rvAllTrip.adapter == null) {
-                val adapter = AllTripAdapter(requireActivity(), allTripModelResponse, this)
-                mBinding!!.rvAllTrip.adapter = adapter
-            } else {
-                (mBinding!!.rvAllTrip.adapter as AllTripAdapter).updateData(allTripModelResponse)
-            }
-        }*/
+             if (mBinding!!.rvAllTrip.adapter == null) {
+                 val adapter = AllTripAdapter(requireActivity(), allTripModelResponse, this)
+                 mBinding!!.rvAllTrip.adapter = adapter
+             } else {
+                 (mBinding!!.rvAllTrip.adapter as AllTripAdapter).updateData(allTripModelResponse)
+             }
+         }*/
     }
 }

@@ -354,6 +354,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
             ProgressDialog.getInstance().show(getActivity())
             permissionsDialog()
         }
+
         startBreak!!.setOnClickListener {
             AlertDialog.Builder((activity)!!)
                 .setTitle("")
@@ -419,7 +420,8 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
         }
         myTripView!!.setOnClickListener {
             stop()
-            activity?.switchContent(AddOrderFragment())
+            //activity?.switchContent(AddOrderFragment())
+            activity?.addFragment(AddOrderFragment(), false, null)
         }
 
     }
@@ -1501,7 +1503,7 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                             ) {
 
 
-                                Log.e("TAG", "startTripImageUploadPopup: ", );
+                                Log.e("TAG", "startTripImageUploadPopup: ");
                                 val postModel = StartAssignmentPostModel(
                                     ZilaTripMasterId,
                                     Utils.getDoubleLat(activity),
@@ -1764,13 +1766,14 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
         val tittleTextView = requireActivity().findViewById<TextView>(R.id.toolbar_title)
         val tvHistory = requireActivity().findViewById<TextView>(R.id.tv_history)
         tvHistory.visibility = View.GONE
-        startTimerbtn.visibility = View.VISIBLE
+        startTimerbtn.visibility = View.GONE
         startTimerbtn.text = "00:00:00"
         tittleTextView.visibility = View.VISIBLE
         tittleTextView.setTextColor(ContextCompat.getColor(requireActivity(), R.color.black))
         tittleTextView.background =
             ContextCompat.getDrawable(requireActivity(), R.drawable.ic_circle_green_light)
         tittleTextView.text = "All Trips"
+        startBreak!!.visibility = View.GONE
         if (time != null && time!!.isNotEmpty()) {
             timer(time)
         }

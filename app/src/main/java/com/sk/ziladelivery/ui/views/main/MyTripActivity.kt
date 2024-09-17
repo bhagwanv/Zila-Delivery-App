@@ -133,11 +133,17 @@ class MyTripActivity : AppCompatActivity() {
     }
 
 
-    private fun setTabLayout() {
+   /* private fun setTabLayout() {
         tabLayout = mBinding!!.tabs
         val viewPager = mBinding!!.viewPager
         tabLayout!!.setupWithViewPager(viewPager)
         setupViewPager(viewPager)
+        // Set default tab (assuming ListView tab is at position 1)
+        val defaultTabPosition = 1 // Set this to the position of your ListView tab
+        viewPager.currentItem = defaultTabPosition
+        tabLayout!!.selectTab(tabLayout!!.getTabAt(defaultTabPosition))
+
+
         tabLayout!!.post {
             indicatorWidth = tabLayout!!.width / tabLayout!!.tabCount
             //Assign new width
@@ -159,7 +165,56 @@ class MyTripActivity : AppCompatActivity() {
             override fun onPageSelected(i: Int) {}
             override fun onPageScrollStateChanged(i: Int) {}
         })
-    }
+    }*/
+   private fun setTabLayout() {
+       tabLayout = mBinding!!.tabs
+       val viewPager = mBinding!!.viewPager
+       tabLayout!!.setupWithViewPager(viewPager)
+       setupViewPager(viewPager)
+       // Set the default tab to the ListView tab (assuming it's at position 1)
+       val defaultTabPosition = 1 // Position of the ListView tab
+       viewPager.currentItem = defaultTabPosition
+       tabLayout!!.selectTab(tabLayout!!.getTabAt(defaultTabPosition))
+
+       // Adjust the indicator width based on the number of tabs
+       tabLayout!!.post {
+           indicatorWidth = tabLayout!!.width / tabLayout!!.tabCount
+
+           // Set the initial width and position of the indicator
+           val indicatorParams = mBinding!!.indicator.layoutParams as FrameLayout.LayoutParams
+           indicatorParams.width = indicatorWidth
+
+           // Set the left margin of the indicator to match the selected tab (position 1)
+           indicatorParams.leftMargin = indicatorWidth * defaultTabPosition
+           mBinding!!.indicator.layoutParams = indicatorParams
+
+           // If CustomerTripStatus is 10, select the ListView tab (optional check)
+           if (CustomerTripStatus == 10) {
+               tabLayout!!.selectTab(tabLayout!!.getTabAt(1))
+           }
+       }
+
+       // Handle the custom indicator translation during tab swipes
+       mBinding!!.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+           override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPx: Int) {
+               // Calculate the translation offset for the indicator
+               val params = mBinding!!.indicator.layoutParams as FrameLayout.LayoutParams
+               val translationOffset = (positionOffset + position) * indicatorWidth
+               params.leftMargin = translationOffset.toInt()
+               mBinding!!.indicator.layoutParams = params
+           }
+
+           override fun onPageSelected(position: Int) {
+               // Handle actions when a new page is selected (if needed)
+           }
+
+           override fun onPageScrollStateChanged(state: Int) {
+               // Handle page scroll state changes (if needed)
+           }
+       })
+   }
+
+
 
     private fun callDestReachPopup() {
         val reachedPopupBinding = DataBindingUtil.inflate<ReachedPopupBinding>(
