@@ -23,6 +23,7 @@ import com.sk.ziladelivery.databinding.MyTripFragmentBinding
 import com.sk.ziladelivery.databinding.ReachedPopupBinding
 import com.sk.ziladelivery.listener.SearchMyTripInterface
 import com.sk.ziladelivery.ui.views.adapter.AssignmentTabAdapter
+import com.sk.ziladelivery.ui.views.fragment.MySingleTripMapViewFragment
 import com.sk.ziladelivery.ui.views.fragment.MyTripListViewFragment
 import com.sk.ziladelivery.utilities.Constant
 import com.sk.ziladelivery.utilities.Utils
@@ -46,6 +47,9 @@ class MyTripActivity : AppCompatActivity() {
     private var time: String? = null
     private var ORDER_ID = 0
     private var isUserRagistred = false
+    private var mySingleTripMapViewFragment: MySingleTripMapViewFragment? = null
+    private var isNotLastMileApp: Boolean = false
+    private var IsLocationEnabled: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (mBinding == null) {
@@ -63,6 +67,8 @@ class MyTripActivity : AppCompatActivity() {
             ORDER_ID = intent.getIntExtra("ORDER_ID", 0)
             time = intent.getStringExtra("time")
             isUserRagistred = intent.getBooleanExtra("isUserRagistred", false)
+            isNotLastMileApp = intent.getBooleanExtra("isNotLstMileApp", false)
+            IsLocationEnabled = intent.getBooleanExtra("IsLocationEnabled", false)
         }
     }
 
@@ -89,7 +95,7 @@ class MyTripActivity : AppCompatActivity() {
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-       // mySingleTripMapViewFragment!!.onActivityResult(requestCode, resultCode, data)
+        mySingleTripMapViewFragment!!.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun initView() {
@@ -167,12 +173,12 @@ class MyTripActivity : AppCompatActivity() {
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = AssignmentTabAdapter(supportFragmentManager, mFragmentList, mFragmentTitleList)
-        //mySingleTripMapViewFragment = MySingleTripMapViewFragment()
+        mySingleTripMapViewFragment = MySingleTripMapViewFragment()
 
-       // addFragment(mySingleTripMapViewFragment!!, "MapView")
+        addFragment(mySingleTripMapViewFragment!!, "MapView")
         addFragment(MyTripListViewFragment(), "ListView")
 
-        /*if (!isNotLastMileApp && !IsLocationEnabled) {
+       /* if (!isNotLastMileApp && !IsLocationEnabled) {
             addFragment(mySingleTripMapViewFragment!!, "MapView")
             addFragment(MyTripListViewFragment(), "ListView")
         } else {
@@ -207,6 +213,7 @@ class MyTripActivity : AppCompatActivity() {
         bundle.putInt("CustomerTripStatus", CustomerTripStatus)
         bundle.putInt("ORDER_ID", ORDER_ID)
         bundle.putString("time", time)
+        bundle.putBoolean("isNotLastMileApp", isNotLastMileApp)
         fragment.arguments = bundle
         mFragmentList.add(fragment)
         mFragmentTitleList.add(title)

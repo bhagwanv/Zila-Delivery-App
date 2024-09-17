@@ -153,6 +153,7 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
     private var isTakeShopImage = false
     private var orderPlacedModel: OrderPlacedModel? = null
     private var gpsTracker: GPSTracker? = null
+    private var isNotLastMileApp = false
     override fun onAttach(context: Context) {
         super.onAttach(context)
         activity = context as MyTripActivity
@@ -167,11 +168,12 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
         shippingaddressList = ArrayList()
         shippingaddressListForMap = ArrayList()
         val bundle = this.arguments
-        TripPlannerConfirmedMasterId = bundle!!.getInt("TripPlannerConfirmedMasterId")
+        TripPlannerConfirmedMasterId = bundle!!.getInt("ZilaTripMasterId")
         TripPlannerConfirmedDetailId = bundle.getInt(Constant.TRIP_PLANNER_CONFIRMED_DETAIL_Id)
         ORDER_ID = bundle.getInt("ORDER_ID")
         CustomerTripStatus = bundle.getInt("CustomerTripStatus")
         time = bundle.getString("time")
+        isNotLastMileApp = bundle.getBoolean("isNotLastMileApp")
         gpsTracker = GPSTracker(getActivity())
         mySingleTripMapViewModel = ViewModelProviders.of(requireActivity()).get(
             MySingleTripMapViewModel::class.java
@@ -619,7 +621,7 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
             if (orderCount != 0) {
                 if (CustomerTripStatus == Constant.PENDING && isTakeShopImage) {
                     ImageUploadPopup()
-                    /*if (!isNotLastMileApp) {
+                    if (!isNotLastMileApp) {
                         ImageUploadPopup()
                     } else {
                         if (customerLatLng != null) {
@@ -632,7 +634,7 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
                             )
                             mySingleTripMapViewModel!!.customerUnloadLocation(unloadLocationModel)
                         }
-                    }*/
+                    }
                 } else if (CustomerTripStatus == Constant.PENDING && !isTakeShopImage) {
                     mySingleTripMapViewModel!!.getCompletTripStatus(
                         TripPlannerConfirmedDetailId,
@@ -691,7 +693,7 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
             if (orderCount != 0) {
                 if (CustomerTripStatus == Constant.PENDING && isTakeShopImage) {
                     ImageUploadPopup()
-                    /*if (!isNotLastMileApp) {
+                    if (!isNotLastMileApp) {
                         ImageUploadPopup()
                     } else {
                         if (customerLatLng != null) {
@@ -704,7 +706,7 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
                             )
                             mySingleTripMapViewModel!!.customerUnloadLocation(unloadLocationModel)
                         }
-                    }*/
+                    }
                 } else if (CustomerTripStatus == Constant.PENDING && !isTakeShopImage) {
                     mySingleTripMapViewModel!!.getCompletTripStatus(
                         TripPlannerConfirmedDetailId,
@@ -815,6 +817,7 @@ class MySingleTripMapViewFragment : Fragment(), OnMapReadyCallback, DirectionsJS
             }
         }
         mBinding!!.bottomLayout.llNavigation.setOnClickListener {
+            Log.e(TAG, "initViews111111111: ${"google.navigation:q=" + orderResponseModel!!.customerOrderinfoDc}", )
             val navigation = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("google.navigation:q=" + orderResponseModel!!.customerOrderinfoDc.lat + "," + orderResponseModel!!.customerOrderinfoDc.lng)
