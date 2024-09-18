@@ -133,15 +133,15 @@ class MyTripActivity : AppCompatActivity() {
     }
 
 
-   /* private fun setTabLayout() {
+    private fun setTabLayout() {
         tabLayout = mBinding!!.tabs
         val viewPager = mBinding!!.viewPager
         tabLayout!!.setupWithViewPager(viewPager)
         setupViewPager(viewPager)
         // Set default tab (assuming ListView tab is at position 1)
-        val defaultTabPosition = 1 // Set this to the position of your ListView tab
+       /* val defaultTabPosition = 1 // Set this to the position of your ListView tab
         viewPager.currentItem = defaultTabPosition
-        tabLayout!!.selectTab(tabLayout!!.getTabAt(defaultTabPosition))
+        tabLayout!!.selectTab(tabLayout!!.getTabAt(defaultTabPosition))*/
 
 
         tabLayout!!.post {
@@ -165,8 +165,8 @@ class MyTripActivity : AppCompatActivity() {
             override fun onPageSelected(i: Int) {}
             override fun onPageScrollStateChanged(i: Int) {}
         })
-    }*/
-   private fun setTabLayout() {
+    }
+  /* private fun setTabLayout() {
        tabLayout = mBinding!!.tabs
        val viewPager = mBinding!!.viewPager
        tabLayout!!.setupWithViewPager(viewPager)
@@ -212,7 +212,7 @@ class MyTripActivity : AppCompatActivity() {
                // Handle page scroll state changes (if needed)
            }
        })
-   }
+   }*/
 
 
 
@@ -230,7 +230,7 @@ class MyTripActivity : AppCompatActivity() {
         val adapter = AssignmentTabAdapter(supportFragmentManager, mFragmentList, mFragmentTitleList)
         mySingleTripMapViewFragment = MySingleTripMapViewFragment()
 
-        addFragment(mySingleTripMapViewFragment!!, "MapView")
+        //addFragment(mySingleTripMapViewFragment!!, "MapView")
         addFragment(MyTripListViewFragment(), "ListView")
 
        /* if (!isNotLastMileApp && !IsLocationEnabled) {

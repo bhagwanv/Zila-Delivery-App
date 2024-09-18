@@ -455,6 +455,11 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
 
     private fun endTripMethod(response: JsonObject) {
         if (response.asJsonObject["Status"].asBoolean) {
+            SharePrefs.getInstance(requireActivity())
+                .putLong(
+                    SharePrefs.ALL_TRIP_SLECTED,
+                    0
+                )
             Utils.setToast(requireActivity(), response.asJsonObject["Message"].asString)
             isStop = true
             val myService = Intent(activity, YourService::class.java)

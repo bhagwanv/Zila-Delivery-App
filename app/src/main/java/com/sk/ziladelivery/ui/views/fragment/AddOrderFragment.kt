@@ -198,6 +198,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                                         SharePrefs.ALL_TRIP_SLECTED,
                                         zilaTripMasterId!!.toLong()
                                     )
+
                                 Utils.setToast(activity, it.data?.Message)
                                 activity?.switchContentWithStack(DashBoardFragment())
                             } else {
@@ -304,8 +305,20 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                     when (it.status) {
                         Status.SUCCESS -> {
                             ProgressDialog.getInstance().dismiss()
-                            fetchAllTripIDs()
+                           // fetchAllTripIDs()
                             //getZilaTrip()
+                            if (it.data!!.status!!) {
+                                fetchAllTripIDs()
+                                if (it.data!!.message != null) {
+                                    Utils.setToast(activity, it.data!!.message)
+                                }
+                                //getZilaTrip()
+                            } else {
+                                if (it.data!!.message != null) {
+                                    Utils.setToast(activity, it.data!!.message)
+                                }
+                            }
+
                         }
 
                         Status.ERROR -> {

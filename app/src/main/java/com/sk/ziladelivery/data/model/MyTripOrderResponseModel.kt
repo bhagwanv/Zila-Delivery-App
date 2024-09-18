@@ -130,6 +130,14 @@ class MyTripOrderResponseModel {
     var isReturnOrder = false
 
     @Expose
+    @SerializedName("lg")
+    var lg = 0.0
+
+    @Expose
+    @SerializedName("lat")
+    var lat = 0.0
+
+    @Expose
     @SerializedName("IsGeneralOrder")
     var isGeneralOrder = false
     inner class OrderlistEntity {

@@ -2,9 +2,12 @@ package com.sk.ziladelivery.ui.views.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -226,6 +229,15 @@ class MyListViewAdapter(
             val myTripOrderAdapter =
                 MyTripOrderAdapter(context, orderList[i]!!.orderlist)
             holder.mBinding.rvOrder.adapter = myTripOrderAdapter
+        }
+
+        holder.mBinding!!.llNavigation.setOnClickListener {
+            Log.e("TAG", "Lat ${orderList[i]!!.lat}  log ${orderList[i]!!.lg}", )
+            val navigation = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("google.navigation:q=" + orderList[i]!!.lat + "," + orderList[i]!!.lg)
+            )
+            context.startActivity(navigation)
         }
     }
 

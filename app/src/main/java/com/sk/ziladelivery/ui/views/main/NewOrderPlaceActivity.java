@@ -1567,7 +1567,7 @@ public class NewOrderPlaceActivity extends AppCompatActivity implements  Orderch
         TextView msg = mView.findViewById(R.id.tv_msg);
         msg.setText(response);
         okBtn.setOnClickListener(v -> dialog.dismiss());
-        dialog.show();
+        //dialog.show();
     }
 
 
