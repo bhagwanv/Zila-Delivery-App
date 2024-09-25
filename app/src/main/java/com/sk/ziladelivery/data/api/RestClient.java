@@ -41,7 +41,7 @@ public class RestClient {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
-                . retryOnConnectionFailure(false)
+                .retryOnConnectionFailure(false)
                 .addInterceptor(chain -> {
                     Request request = chain.request();
                     Response response = chain.proceed(request);
@@ -60,7 +60,7 @@ public class RestClient {
                                 !request.url().toString().contains("/UPI/TransactionDetail") &&
                                 !request.url().toString().contains("/UPI/CheckTransactionStatus") &&
                                 !request.url().toString().contains("/api/itemimageupload/UploadKKReturnReplaceImages") &&
-                                !request.url().toString().contains("/api/DeliveryCancelledDraft/Image")) {
+                                !request.url().toString().contains("/api/DeliveryCancelledDraft/Image") && !request.url().toString().contains("/UPI/GenerateDeliveryQRCode") && !request.url().toString().contains("/UPI/CheckDeliveryResponse") && !request.url().toString().contains("UPI/DeliveryTransactionDetail")) {
                             try {
                                 JSONObject jsonObject = new JSONObject();
                                 jsonObject.put("response", new JSONObject(response.body().string()));

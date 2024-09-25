@@ -154,6 +154,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
     private var reatteptVideoRequired: Boolean = false
 
     val reattemptReasonList = ArrayList<String>()
+    var model: OrderDetailsRequestModel? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -233,16 +234,17 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
     override fun onClick(view: View) {
         when (view.id) {
             R.id.bt_unloaditem -> {
-                val orderIDList: MutableList<Int> = ArrayList()
+                /*val orderIDList: MutableList<Int> = ArrayList()
                 var i = 0
                 while (i < tripOrderStatusUpdateModel!!.customerorderinfo!!.size) {
                     if (tripOrderStatusUpdateModel!!.customerorderinfo!![i].isBoolWorkingStatus && tripOrderStatusUpdateModel!!.customerorderinfo!![i].status == "Shipped") {
                         orderIDList.add(tripOrderStatusUpdateModel!!.customerorderinfo!![i].orderid)
                     }
                     i++
+                }*/
+                if(model != null) {
+                    getUnloadItemDataApi(model!!)
                 }
-                val model = OrderDetailsRequestModel(tripPlannerConfirmedDetailId, orderIDList)
-                getUnloadItemDataApi(model)
             }
 
             R.id.ll_skip -> skipBottomBar()
@@ -300,12 +302,9 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
 
 
     override fun checkBoxClicked(isChecked: Boolean, postion: Int) {
-        if (isChecked) {
+        /*if (isChecked) {
             tripOrderStatusUpdateModel!!.customerorderinfo!![postion].isBoolWorkingStatus = true
-            mBinding!!.btUnloaditem.background = ContextCompat.getDrawable(
-                applicationContext,
-                R.drawable.button_bg_blue
-            )
+            mBinding!!.btUnloaditem.background = ContextCompat.getDrawable(applicationContext, R.drawable.button_bg_blue)
             mBinding!!.btUnloaditem.isClickable = true
             mBinding!!.btUnloaditem.isEnabled = true
             grossAmount += tripOrderStatusUpdateModel!!.customerorderinfo!![postion].grossamount
@@ -322,8 +321,23 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                 mBinding!!.btUnloaditem.isClickable = false
                 mBinding!!.btUnloaditem.isEnabled = false
             }
-        }
+        }*/
+
+        Log.e("TAG", "checkBoxClicked: $isChecked || $postion", )
+        tripOrderStatusUpdateModel!!.customerorderinfo!![postion].isBoolWorkingStatus = true
+        mBinding!!.btUnloaditem.background = ContextCompat.getDrawable(applicationContext, R.drawable.button_bg_blue)
+        mBinding!!.btUnloaditem.isClickable = true
+        mBinding!!.btUnloaditem.isEnabled = true
+        grossAmount = tripOrderStatusUpdateModel!!.customerorderinfo!![postion].grossamount
+        remainingAmount = tripOrderStatusUpdateModel!!.customerorderinfo!![postion].remaningAmount
+
         mBinding!!.tvTotalPaybleAmount.text = remainingAmount.toString()
+
+        val orderIDList: MutableList<Int> = ArrayList()
+        if (tripOrderStatusUpdateModel!!.customerorderinfo!![postion].isBoolWorkingStatus && tripOrderStatusUpdateModel!!.customerorderinfo!![postion].status == "Shipped") {
+            orderIDList.add(tripOrderStatusUpdateModel!!.customerorderinfo!![postion].orderid)
+        }
+        model = OrderDetailsRequestModel(tripPlannerConfirmedDetailId, orderIDList)
     }
 
     override fun onButtonClick(
@@ -580,9 +594,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
             mBinding!!.tvStoreSkCode.text = tripOrderStatusUpdateModel!!.customerinfo!!.skcode
             mBinding!!.tvCRMTAg.text = tripOrderStatusUpdateModel!!.customerinfo!!.crmTags
             mBinding!!.tvStoreName.text = tripOrderStatusUpdateModel!!.customerinfo!!.shopname
-            mBinding!!.tvStoreAmount.text =
-                tripOrderStatusUpdateModel!!.customerinfo!!.grossAmount.toString()
-
+            mBinding!!.tvStoreAmount.text = tripOrderStatusUpdateModel!!.customerinfo!!.grossAmount.toString()
             if (!TextUtils.isNullOrEmpty(tripOrderStatusUpdateModel!!.customerinfo!!.billingAddress)) {
                 mBinding!!.tvStoreAddresh.text =
                     tripOrderStatusUpdateModel!!.customerinfo!!.billingAddress.toString()
@@ -598,6 +610,8 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                 }
             }
             remainingAmount = 0.0
+            var position = -1
+            val orderIDList: MutableList<Int> = ArrayList()
             for (i in tripOrderStatusUpdateModel!!.customerorderinfo!!.indices) {
                 if (tripOrderStatusUpdateModel!!.customerorderinfo!![i].status == "Shipped") {
                     shippedAmount += tripOrderStatusUpdateModel!!.customerorderinfo!![i].grossamount
@@ -614,6 +628,10 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                     mBinding!!.btUnloaditem.isClickable = true
                     mBinding!!.btUnloaditem.isEnabled = true
                 }
+                if (tripOrderStatusUpdateModel!!.customerorderinfo!![i].isBoolWorkingStatus && tripOrderStatusUpdateModel!!.customerorderinfo!![i].status == "Shipped") {
+                    orderIDList.add(tripOrderStatusUpdateModel!!.customerorderinfo!![i].orderid)
+                    position = i
+                }
             }
             deliveredAmount =
                 tripOrderStatusUpdateModel!!.customerinfo!!.grossAmount - shippedAmount
@@ -624,12 +642,16 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                     mBinding!!.llSkip.visibility = View.GONE
                 }
             }
+
             mBinding!!.tvTotalPaybleAmount.text = remainingAmount.toString()
+
+            model = OrderDetailsRequestModel(tripPlannerConfirmedDetailId, orderIDList)
             if (isShipped) {
                 val orderDetailsAdapter = OrderDetailsAdapter(
                     this,
                     tripOrderStatusUpdateModel!!.customerorderinfo!!,
-                    this
+                    position,
+                    this,
                 )
                 mBinding!!.rvItemList.adapter = orderDetailsAdapter
             } else {
@@ -2068,6 +2090,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                     tripPlannerConfirmedDetailId
                 ).putExtra("time", time)
             )
+            finish()
         }
     }
 

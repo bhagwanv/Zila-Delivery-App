@@ -4,6 +4,7 @@ import com.sk.ziladelivery.data.api.ApiHelper
 import com.sk.ziladelivery.data.model.AcceptModel
 import com.sk.ziladelivery.data.model.CancelOrderModel
 import com.sk.ziladelivery.data.model.CancelOrderSendOtpModel
+import com.sk.ziladelivery.data.model.GenerateDeliveryQRCodeReqModel
 import com.sk.ziladelivery.data.model.GenerateOTPofSalesPersonforReattemptRequestModel
 import com.sk.ziladelivery.data.model.LoginModel
 import com.sk.ziladelivery.data.model.NotifyDeliveryActionRequestModel
@@ -36,8 +37,7 @@ class AppRepository(private val apiHelper: ApiHelper) {
     suspend fun getTripID(id: Int) = apiHelper.getAllTripID(id)
     suspend fun acceptPenddingTask(acceptModel: AcceptModel?) = apiHelper.getAcceptPenddingTask(acceptModel)
 
-    suspend fun RejectAssignment(acceptModel: AcceptModel?) =
-        apiHelper.getRejectAssignment(acceptModel)
+    suspend fun RejectAssignment(acceptModel: AcceptModel?) = apiHelper.getRejectAssignment(acceptModel)
 
     suspend fun startTrip(model: StartAssignmentPostModel?) = apiHelper.getStartTrip(model)
     suspend fun postBreak(model: StartAssignmentPostModel?) = apiHelper.getBreak(model)
@@ -53,9 +53,15 @@ class AppRepository(private val apiHelper: ApiHelper) {
         apiHelper.getMiloMeterReading(body)
 
 
-    suspend fun getQR(model: QRCodeResquestModel) = apiHelper.getQRCode(model)
-    suspend fun getTransactionDetail(transction: String) = apiHelper.getQRCode(transction)
-    suspend fun getCheckTransctionSatus(orderid: Int) = apiHelper.checkTransactionStatus(orderid)
+    //suspend fun getQR(model: QRCodeResquestModel) = apiHelper.getQRCode(model)
+    //suspend fun getTransactionDetail(transction: String) = apiHelper.getQRCode(transction)
+    //suspend fun getCheckTransctionSatus(orderid: Int) = apiHelper.checkTransactionStatus(orderid)
+
+    //NewQR Zila
+    suspend fun getQR(model: GenerateDeliveryQRCodeReqModel) = apiHelper.getQRCode(model)
+    suspend fun checkDeliveryResponse(OrderId: Int,amount: Double) = apiHelper.checkDeliveryResponse(OrderId,amount)
+    suspend fun deliveryTransactionDetail(UPITxnID: String) = apiHelper.DeliveryTransactionDetail(UPITxnID)
+
 
     suspend fun getRearangeSkip(tripPlannerConfirmMasterId: Int) =
         apiHelper.getSkipRearrange(tripPlannerConfirmMasterId)

@@ -3,6 +3,7 @@ package com.sk.ziladelivery.data.api
 import com.sk.ziladelivery.data.model.AcceptModel
 import com.sk.ziladelivery.data.model.CancelOrderModel
 import com.sk.ziladelivery.data.model.CancelOrderSendOtpModel
+import com.sk.ziladelivery.data.model.GenerateDeliveryQRCodeReqModel
 import com.sk.ziladelivery.data.model.GenerateOTPofSalesPersonforReattemptRequestModel
 import com.sk.ziladelivery.data.model.LoginModel
 import com.sk.ziladelivery.data.model.NotifyDeliveryActionRequestModel
@@ -61,9 +62,14 @@ class ApiHelper(private val apiService: APIServices) {
     suspend fun getMiloMeterReading(body: MultipartBody.Part) =
         apiService.miloMeterImageUploadNew(body)
 
-    suspend fun getQRCode(model: QRCodeResquestModel) = apiService.GenerateOrderAmtQRCode(model)
-    suspend fun getQRCode(Tnx: String) = apiService.getTransactionDetail(Tnx)
-    suspend fun checkTransactionStatus(orderid: Int) = apiService.getCheckTransactionStatus(orderid)
+    //suspend fun getQRCode(model: QRCodeResquestModel) = apiService.GenerateOrderAmtQRCode(model)
+    //suspend fun getQRCode(Tnx: String) = apiService.getTransactionDetail(Tnx)
+    //suspend fun checkTransactionStatus(orderid: Int) = apiService.getCheckTransactionStatus(orderid)
+
+    //NewQR
+    suspend fun getQRCode(model: GenerateDeliveryQRCodeReqModel) = apiService.GenerateDeliveryQRCode(model)
+    suspend fun checkDeliveryResponse(OrderId: Int,amount: Double) = apiService.CheckDeliveryResponse(OrderId,amount)
+    suspend fun DeliveryTransactionDetail(UPITxnID: String) = apiService.DeliveryTransactionDetail(UPITxnID)
 
 
     suspend fun getSkipRearrange(tripPlannerConfirmMasterId: Int) =

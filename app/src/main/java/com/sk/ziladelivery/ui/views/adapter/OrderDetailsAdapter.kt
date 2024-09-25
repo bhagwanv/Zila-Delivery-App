@@ -1,27 +1,29 @@
 package com.sk.ziladelivery.ui.views.adapter
 
-import android.app.Activity
-import com.sk.ziladelivery.listener.OrderDetailInterface
-import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import com.sk.ziladelivery.R
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sk.ziladelivery.databinding.ItemOrderDetailPageBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.sk.ziladelivery.R
 import com.sk.ziladelivery.data.model.TripOrderStatusUpdateModel
-import java.util.ArrayList
+import com.sk.ziladelivery.databinding.ItemOrderDetailPageBinding
+import com.sk.ziladelivery.listener.OrderDetailInterface
+
 
 class OrderDetailsAdapter(
     private val context: Activity,
     private var customerListDcs: ArrayList<TripOrderStatusUpdateModel.CustomerorderinfoEntity>,
-    private val orderDetailInterface: OrderDetailInterface) : RecyclerView.Adapter<OrderDetailsAdapter.ViewHolder>() {
+    private var checkedPosition: Int? = -1,
+    private val orderDetailInterface: OrderDetailInterface,) : RecyclerView.Adapter<OrderDetailsAdapter.ViewHolder>() {
     private var layoutInflater: LayoutInflater? = null
     private var isShowDetailsList = true
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.context)
@@ -115,12 +117,38 @@ class OrderDetailsAdapter(
                 viewMoreItemDetails(holder)
             }
         }
-        holder.mBinding.itemCheckBox.setOnClickListener {
+
+        if (checkedPosition == -1) {
+            holder.mBinding.itemCheckBox.isChecked = false
+        } else {
+            holder.mBinding.itemCheckBox.isChecked = (checkedPosition == position)
+        }
+
+        /*if(customerOrderInfoEntity.isBoolWorkingStatus)  {
+            holder.mBinding.itemCheckBox.isChecked = true
+        }*/
+
+        holder.mBinding.itemCheckBox.setOnClickListener(View.OnClickListener {
+            holder.mBinding.itemCheckBox.isChecked = true
+            if (checkedPosition !== position) {
+                notifyItemChanged(checkedPosition!!)
+                checkedPosition = position
+            }
             orderDetailInterface.checkBoxClicked(
                 holder.mBinding.itemCheckBox.isChecked,
                 position
             )
-        }
+        })
+
+        /*holder.mBinding.itemCheckBox.setOnClickListener {
+
+            Log.e("TAG", "onBindViewHolder: click ")
+
+            *//*orderDetailInterface.checkBoxClicked(
+                holder.mBinding.itemCheckBox.isChecked,
+                position
+            )*//*
+        }*/
 
     }
 

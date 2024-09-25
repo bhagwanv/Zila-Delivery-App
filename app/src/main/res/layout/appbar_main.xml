@@ -126,15 +126,18 @@
                                 style="@style/SegoeUISemiBold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="0dp"
                                 android:layout_marginTop="@dimen/pading_bottom_10"
-                                android:gravity="center"
-                                android:layout_marginStart="200dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_toEndOf="@+id/toolbar_title"
+                                android:gravity="end"
                                 android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 android:textStyle="normal"
-                                tools:ignore="RelativeOverlap"
-                                android:visibility="visible"/>
+                                android:visibility="gone"
+                                tools:ignore="RelativeOverlap" />
 
 
                             <TextView

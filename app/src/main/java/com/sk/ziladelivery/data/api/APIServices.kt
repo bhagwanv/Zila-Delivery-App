@@ -145,6 +145,16 @@ interface APIServices {
     @GET("UPI/CheckTransactionStatus")
     suspend fun getCheckTransactionStatus(@Query("OrderId") CustomerId: Int): JsonObject
 
+    //QR New
+    @GET("UPI/CheckDeliveryResponse")
+    suspend fun CheckDeliveryResponse(@Query("OrderId") OrderId: Int,@Query("amount") amount: Double): JsonObject
+
+    @POST("UPI/GenerateDeliveryQRCode")
+    suspend fun GenerateDeliveryQRCode(@Body model: GenerateDeliveryQRCodeReqModel): JsonObject
+
+    @GET("UPI/DeliveryTransactionDetail")
+    suspend fun DeliveryTransactionDetail(@Query("UPITxnID") UPITxnID: String): JsonObject
+
     @GET("/api/DeliveryTask/AssignmentOrder/V1")
     fun getMyTaskData(
         @Query("DeliveryIssuanceId") DeliveryIssuanceId: Int,

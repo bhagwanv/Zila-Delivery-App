@@ -3,6 +3,7 @@ package com.sk.ziladelivery.ui.views.main
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -14,6 +15,8 @@ import com.google.gson.JsonObject
 import com.sk.ziladelivery.R
 import com.sk.ziladelivery.data.api.ApiHelper
 import com.sk.ziladelivery.data.api.RestClient
+import com.sk.ziladelivery.data.model.GenerateDeliveryQRCodeReqModel
+import com.sk.ziladelivery.data.model.GenerateDeliveryQRCodeResModel
 import com.sk.ziladelivery.data.model.QRCodeModel
 import com.sk.ziladelivery.data.model.QRCodeResponceModel
 import com.sk.ziladelivery.data.model.QRCodeResquestModel
@@ -52,7 +55,11 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
         qrCodeViewModel = ViewModelProviders.of(this)[QRCodeViewModel::class.java]
         val userID: Int = SharePrefs.getInstance(applicationContext).getInt(SharePrefs.PEOPLE_ID)
         mBinding!!.UserName.text=SharePrefs.getInstance(applicationContext).getString(SharePrefs.PEAOPLE_FIRST_NAME)
-        getQRCodeApi(QRCodeResquestModel(OrderIdList,userID,sCaseAmount))
+        //getQRCodeApi(QRCodeResquestModel(OrderIdList,userID,sCaseAmount))
+
+        //newQR
+        getQRCodeApi(GenerateDeliveryQRCodeReqModel(OrderIdList!!.get(0),sCaseAmount))
+
         mBinding!!.btTransctinStaus.setOnClickListener {
             checkStatusMethod()
         }
@@ -72,7 +79,7 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
                 orderId =index
                 break
             }
-            getCheckTransactionStatus(orderId)
+            checkDeliveryResponse(orderId,sCaseAmount)
         }
     }
 
@@ -87,7 +94,55 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
         finish()
     }
 
-    private fun getQRCodeApi(model: QRCodeResquestModel) {
+   /* private fun getQRCodeApi(model: QRCodeResquestModel) {
+        qrCodeViewModel!!.getQrCode(model)
+            .observe(this@QRCodeActivity) {
+                it?.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            resource.data?.let { qrCodeData ->
+                                getQRCodeData(qrCodeData)
+                            }
+                        }
+                        Status.ERROR -> {
+                            Utils.setToast(applicationContext, it.message)
+                        }
+                        Status.LOADING -> {
+
+                        }
+                    }
+                }
+            }
+
+
+    }*/
+
+   /* private fun getCheckTransactionStatus(orderId:Int) {
+        qrCodeViewModel!!.getCheckTransactionStatus(orderId)
+            .observe(this@QRCodeActivity) {
+                it?.let { resource ->
+                    when (resource.status) {
+                        Status.SUCCESS -> {
+                            resource.data?.let { CheckTransactionStatus ->
+                                getCheckTransaction(CheckTransactionStatus)
+                            }
+                        }
+                        Status.ERROR -> {
+                            Utils.setToast(applicationContext, it.message)
+                        }
+                        Status.LOADING -> {
+
+                        }
+                    }
+                }
+            }
+
+
+    }*/
+
+
+    //NewQR
+     private fun getQRCodeApi(model: GenerateDeliveryQRCodeReqModel) {
         qrCodeViewModel!!.getQrCode(model)
             .observe(this@QRCodeActivity) {
                 it?.let { resource ->
@@ -110,32 +165,34 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun getCheckTransactionStatus(orderId:Int) {
-        qrCodeViewModel!!.getCheckTransactionStatus(orderId)
-            .observe(this@QRCodeActivity) {
-                it?.let { resource ->
-                    when (resource.status) {
-                        Status.SUCCESS -> {
-                            resource.data?.let { CheckTransactionStatus ->
-                                getCheckTransaction(CheckTransactionStatus)
-                            }
-                        }
-                        Status.ERROR -> {
-                            Utils.setToast(applicationContext, it.message)
-                        }
-                        Status.LOADING -> {
+     private fun checkDeliveryResponse(OrderId: Int,amount: Double) {
+         qrCodeViewModel!!.checkDeliveryResponse(OrderId,amount)
+             .observe(this@QRCodeActivity) {
+                 it?.let { resource ->
+                     when (resource.status) {
+                         Status.SUCCESS -> {
+                             resource.data?.let { CheckTransactionStatus ->
+                                 getCheckTransaction(CheckTransactionStatus)
+                             }
+                         }
+                         Status.ERROR -> {
+                             Utils.setToast(applicationContext, it.message)
+                         }
+                         Status.LOADING -> {
 
-                        }
-                    }
-                }
-            }
+                         }
+                     }
+                 }
+             }
 
 
-    }
+     }
 
     private fun getCheckTransaction(CheckTransactionStatus: JsonObject) {
-        if (CheckTransactionStatus.asJsonObject["Status"].asBoolean) {
-            Utils.setToast(this, CheckTransactionStatus.asJsonObject["Message"].asString)
+
+        if (CheckTransactionStatus.asJsonObject["IsSuccess"].asBoolean) {
+           // Utils.setToast(this, CheckTransactionStatus.asJsonObject["Message"].asString)
+            Utils.setToast(this, "Payment Success!")
             startActivity(
                 Intent(
                     this@QRCodeActivity,
@@ -144,19 +201,22 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
             )
             finish()
         } else {
-           Utils.setToast(this, CheckTransactionStatus.asJsonObject["Message"].asString)
+
+           //Utils.setToast(this, CheckTransactionStatus.asJsonObject["Message"].asString)
+            Utils.setToast(this, "Payment is Awating!!")
         }
     }
 
     private fun getQRCodeData(qrCodeData: JsonObject) {
-        val qrCodeModel: QRCodeModel = Gson().fromJson(qrCodeData.toString(), QRCodeModel::class.java)
-        if (qrCodeModel.status!!) {
-            Picasso.get().load(qrCodeModel.qRCodeurl).into(mBinding!!.ivScanQrCode, object : Callback {
+        println(qrCodeData.toString())
+        val qrCodeModel: GenerateDeliveryQRCodeResModel = Gson().fromJson(qrCodeData.toString(), GenerateDeliveryQRCodeResModel::class.java)
+        if (qrCodeModel.Status!!) {
+            Picasso.get().load(qrCodeModel.QRCodeurl).into(mBinding!!.ivScanQrCode, object : Callback {
                     override fun onSuccess() {
                         if (mBinding!!.progressBar != null) {
                             mBinding!!.progressBar.visibility = View.GONE
                             mBinding!!.tvAmount.text = "Amount:  ₹${qrCodeModel.Amount}"
-                            mBinding!!.tvOrderId.text = "Order ID : ${qrCodeModel.OrderIds}"
+                            mBinding!!.tvOrderId.text = "Order ID : ${qrCodeModel.OrderId}"
                         }
                     }
 
@@ -184,7 +244,7 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
                         if (o is String) {
                             val TxnNo = o
                             if (!TextUtils.isNullOrEmpty(TxnNo)) {
-                                callTransactionDetail(TxnNo)
+                                deliveryTransactionDetail(TxnNo)
                             }
                         }
                     }
@@ -197,7 +257,7 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
                 })
         }
 
-    private fun callTransactionDetail(TnXNo: String) {
+   /* private fun callTransactionDetail(TnXNo: String) {
         qrCodeViewModel!!.callTransactionDetail(TnXNo)
             .observe(this@QRCodeActivity) {
                 it?.let { resource ->
@@ -217,6 +277,28 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
     }
+*/
+    //NewQR
+     private fun deliveryTransactionDetail(UPITxnID: String) {
+      qrCodeViewModel!!.deliveryTransactionDetail(UPITxnID)
+          .observe(this@QRCodeActivity) {
+              it?.let { resource ->
+                  when (resource.status) {
+                      Status.SUCCESS -> {
+                          resource.data?.let { qrCodeData ->
+                              getQRCodeDataDetail(qrCodeData)
+                          }
+                      }
+                      Status.ERROR -> {
+                          Utils.setToast(applicationContext, it.message)
+                      }
+                      Status.LOADING -> {
+
+                      }
+                  }
+              }
+          }
+  }
 
     private fun getQRCodeDataDetail(qrCodeData: JsonObject) {
         val qRCodeResponceModel: QRCodeResponceModel =

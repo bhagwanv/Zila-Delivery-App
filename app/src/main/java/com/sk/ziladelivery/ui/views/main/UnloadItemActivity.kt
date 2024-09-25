@@ -72,6 +72,7 @@ class UnloadItemActivity : AppCompatActivity(), UnloadItemInterface, View.OnClic
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
         })
+        mBinding!!.checkboxAll.isChecked=true
 
         mBinding!!.checkboxAll.setOnClickListener {
             if (mBinding!!.checkboxAll.isChecked) {
@@ -220,6 +221,19 @@ class UnloadItemActivity : AppCompatActivity(), UnloadItemInterface, View.OnClic
                         }
                     } else {
                         //Toast.makeText(this, getResources().getString(R.string.errorString), Toast.LENGTH_SHORT).show();
+                    }
+                    if(mBinding!!.checkboxAll.isChecked){
+                        myModelList.clear()
+                        if(unloadItemModel != null) {
+                            for (item in unloadItemModel!!.unloadItemList!!) {
+                                item.isUnloaded = true
+                                myModelList.add(item.itemMultiMRPId)
+                            }
+                            collectPaymentBt()
+                            unloadItemAdapter!!.notifyDataSetChanged()
+                            val model = SelectAllResponceModel(true, tripPlannerConfirmedDetailId, myModelList)
+                            unloadItemViewModel!!.getCheckUnloadItemeObserver(model)
+                        }
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()

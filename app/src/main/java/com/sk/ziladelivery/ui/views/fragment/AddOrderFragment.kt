@@ -187,6 +187,11 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                 SharePrefs.getInstance(activity).getInt(SharePrefs.PEOPLE_ID),
                 DateUtils.giveDate()
             )
+
+            /*val gson = Gson()
+            val json = gson.toJson(model)
+            println(json)
+            println("atulData---${json}");*/
             addOrderViewModel.zilaCreateTrip(model).observe(viewLifecycleOwner) { resource ->
                 resource?.let {
                     when (it.status) {
@@ -400,8 +405,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
             val assignmentIdTextView = activity.findViewById<TextView>(R.id.assignmentid)
             val timerTextView = activity.findViewById<TextView>(R.id.tv_timmer)
             val historyTextView = activity.findViewById<TextView>(R.id.tv_history)
-            tvTripIDTextView = activity.findViewById<TextView>(R.id.tvTripID)
-
+            tvTripIDTextView = activity.findViewById(R.id.tvTripID)
             layout.visibility = View.VISIBLE
             linearLayout.visibility = View.GONE
             assignmentIdTextView.visibility = View.GONE
