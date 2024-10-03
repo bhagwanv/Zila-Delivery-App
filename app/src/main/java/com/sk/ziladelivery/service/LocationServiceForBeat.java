@@ -300,7 +300,7 @@ public class LocationServiceForBeat extends Service implements LocationListener 
         latLng = new LatLng(location.getLatitude(), location.getLongitude());
         String DataSaved = SharePrefs.getMapRouteSharedPreferences(this, SharePrefs.MAP_ROUTE);
         if (DataSaved != null && !DataSaved.equals("")) {
-            savedData(DataSaved);
+           // savedData(DataSaved);
         } else {
             GetSingleMapview(SharePrefs.getInstance(this).getInt(SharePrefs.TripPlannerConfirmedMasterId),latLng.latitude,latLng.longitude);
         }

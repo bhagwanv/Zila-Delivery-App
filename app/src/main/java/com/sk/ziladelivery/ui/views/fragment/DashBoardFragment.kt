@@ -462,11 +462,11 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
                 )
             Utils.setToast(requireActivity(), response.asJsonObject["Message"].asString)
             isStop = true
-            val myService = Intent(activity, YourService::class.java)
+           /* val myService = Intent(activity, YourService::class.java)
             requireActivity().stopService(myService)
             val mLocationIntent = Intent(activity, LocationServiceForBeat::class.java)
             requireActivity().stopService(mLocationIntent)
-            locationServiceForBeat = null
+            locationServiceForBeat = null*/
             startActivity(Intent(getActivity(), MainActivity::class.java))
         } else {
             Utils.setToast(requireActivity(), response.asJsonObject["Message"].asString)
