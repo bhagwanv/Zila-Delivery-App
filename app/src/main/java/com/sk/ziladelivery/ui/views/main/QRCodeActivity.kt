@@ -58,7 +58,7 @@ class QRCodeActivity : AppCompatActivity(), View.OnClickListener {
         //getQRCodeApi(QRCodeResquestModel(OrderIdList,userID,sCaseAmount))
 
         //newQR
-        getQRCodeApi(GenerateDeliveryQRCodeReqModel(OrderIdList!!.get(0),sCaseAmount))
+        getQRCodeApi(GenerateDeliveryQRCodeReqModel(OrderIdList!!.get(0),sCaseAmount,SharePrefs.getInstance(this).getInt(SharePrefs.PEOPLE_ID)))
 
         mBinding!!.btTransctinStaus.setOnClickListener {
             checkStatusMethod()

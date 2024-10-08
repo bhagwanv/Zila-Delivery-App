@@ -533,7 +533,10 @@ interface APIServices {
         @Query("VideoUrl") videoUrl: String?
     ): Boolean
 
-    @POST("api/DeliveryApp/ReDispatReAttemptAndOrderCancelConfirmOtp")
+    /*@POST("api/DeliveryApp/ReDispatReAttemptAndOrderCancelConfirmOtp")
+    suspend fun confirmOtpRedispatchReattempt(@Body model: ReDispatchOTPModel?): JsonObject*/
+
+    @POST("api/ZilaDeliveryApp/ZilOrderCancelConfirmOtp")
     suspend fun confirmOtpRedispatchReattempt(@Body model: ReDispatchOTPModel?): JsonObject
 
     @POST("api/DeliveryApp/NotifyDeliveryCancled")
@@ -545,8 +548,13 @@ interface APIServices {
     @POST("api/DeliveryApp/SkipAll")
     suspend fun getCallSkipAll(@Query("TripplannerConfirmdetailedId") TripplannerConfirmdetailedId: Int): JsonObject
 
-    @GET("api/DeliveryApp/BackOrderUpdate")
+    /*@GET("api/DeliveryApp/BackOrderUpdate")
     suspend fun BackOrderUpdate(@Query("TripPlannerConfirmedDetailId") TripPlannerConfirmedDetailId: Int,@Query("TripPlannerConfirmedOrderId") TripPlannerConfirmedOrderId: Int): Boolean
+*/
+
+    @GET("api/ZilaDeliveryApp/ZilaBackOrderUpdate")
+    suspend fun BackOrderUpdate(@Query("TripPlannerConfirmedDetailId") TripPlannerConfirmedDetailId: Int,@Query("TripPlannerConfirmedOrderId") TripPlannerConfirmedOrderId: Int): Boolean
+
 
     @GET("api/PlanMaster/ChangePeoplePassword")
     suspend fun changePassword(@Query("peopleId") peopleId: Int, @Query("newPassword") newPassword: String?,): ChnagePasswordResponseModel

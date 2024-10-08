@@ -377,13 +377,13 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                 stringArrayList1 = stringArrayList
                 isTimed1 = true
                 customerOrderInfoEntity1 = customerorderinfoEntity
-                if (customerorderinfoEntityMaster!!.orderType == "Non-Sellable Order" || customerorderinfoEntityMaster!!.orderType == "Damage Order") {
+               /* if (customerorderinfoEntityMaster!!.orderType == "Non-Sellable Order" || customerorderinfoEntityMaster!!.orderType == "Damage Order") {
                     showCancelOrderDialog("")
                 } else {
                     showCancelOrderDialog(
                         SharePrefs.getInstance(this@OrderDetailActivity).getString(SharePrefs.VIDEO_URL)
                     )
-                }
+                }*/
 
                 /* showCancelOrderDialog(
                      "Approval Sent",
@@ -392,6 +392,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                      true,
                      customerorderinfoEntity
                  )*/
+                confirmationDialog("Cancel", customerorderinfoEntity, stringArrayList)
 
             } else if (customerorderinfoEntity.workingStatus == 6 && customerorderinfoEntity.isOTPSent) {
                 timerTime = customerorderinfoEntity.otpSentRemaningTimeInSec.toLong()
@@ -656,7 +657,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                 mBinding!!.rvItemList.adapter = orderDetailsAdapter
             } else {
                 cancelTimer()
-                if (tripOrderStatusUpdateModel!!.customerinfo!!.isReAttempt) {
+               /* if (tripOrderStatusUpdateModel!!.customerinfo!!.isReAttempt) {
                     startActivity(Intent(this, MainActivity::class.java))
                     Utils.rightTransaction(this)
                     finish()
@@ -669,7 +670,10 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                     )
                     Utils.rightTransaction(this)
                     finish()
-                }
+                }*/
+                startActivity(Intent(this, MainActivity::class.java))
+                Utils.rightTransaction(this)
+                finish()
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -1937,11 +1941,20 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
                 customerOrderInfoEntity1 = customerOrderInfoEntity
                 selectedStatus = "Delivery Canceled"
 
-                if(customerorderinfoEntityMaster!!.orderType != "Non-Sellable Order" && customerorderinfoEntityMaster!!.orderType != "Damage Order") {
+                /*if(customerorderinfoEntityMaster!!.orderType != "Non-Sellable Order" && customerorderinfoEntityMaster!!.orderType != "Damage Order") {
                     dispatchTakeVideoIntent()
                 } else {
                     showCancelOrderDialog("")
-                }
+                }*/
+               // showCancelOrderDialog("")
+
+                generateOrderOTP1(
+                    orderIdInterface,
+                    selectedStatus,
+                    customerLatLng!!.latitude,
+                    customerLatLng!!.longitude,
+                    ""
+                )
 
 
             } else if (title.equals("Re Attempt", ignoreCase = true)) {
@@ -2154,13 +2167,16 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
 
     fun timer(time: Long, timer: TextView?, btResend: Button?, isChangeColor: Boolean) {
         cancelTimer()
-        if (TextUtils.isNullOrEmpty(salesPersonName)) {
+        Log.e("TAG", "timer11111111:$salesPersonName ", )
+      /*  if (TextUtils.isNullOrEmpty(salesPersonName)) {
             timer!!.visibility = View.GONE
             btResend!!.visibility = View.VISIBLE
         } else {
             timer!!.visibility = View.VISIBLE
             btResend!!.visibility = View.GONE
-        }
+        }*/
+        timer!!.visibility = View.VISIBLE
+
         cTimer = object : CountDownTimer(time, 100) {
             override fun onTick(mills: Long) {
                 if (mills >= 60000) {
@@ -2182,7 +2198,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface, View.OnCl
             }
 
             override fun onFinish() {
-                btResend.isEnabled = true
+                btResend!!.isEnabled = true
                 if (isChangeColor) {
                     btResend.setTextColor(
                         ContextCompat.getColor(

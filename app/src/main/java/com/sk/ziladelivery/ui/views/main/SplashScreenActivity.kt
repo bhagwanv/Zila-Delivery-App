@@ -49,6 +49,7 @@ class SplashScreenActivity : AppCompatActivity() {
         if (BuildConfig.DEBUG) {
            // SharePrefs.getInstance(applicationContext).putString(SharePrefs.BASEURL, "https://das.shopkirana.in/")
            // SharePrefs.getInstance(applicationContext).putString(SharePrefs.BASEURL, "https://servicesuat.zilastore.com/")
+           // SharePrefs.getInstance(applicationContext).putString(SharePrefs.BASEURL, "https://uat.shopkirana.in/")
             //SharePrefs.getInstance(applicationContext).putString(SharePrefs.BASEURL, "https://er15.xyz:4436/")
             SharePrefs.getInstance(applicationContext).putString(SharePrefs.BASEURL, "https://internal.er15.xyz/")
             loadingData()

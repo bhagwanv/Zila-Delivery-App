@@ -1154,6 +1154,12 @@ class DashBoardFragment : Fragment(), NewAcceptRejectAssignmenClick {
             val adapter = PendingTaskAdapter((getActivity())!!, assignmentList, this)
             mBinding!!.rvAssignment.adapter = adapter
         } else {
+          /*  SharePrefs.getInstance(requireActivity())
+                .putLong(
+                    SharePrefs.ALL_TRIP_SLECTED,
+                    0
+                )*/
+            //activity?.addFragment(AddOrderFragment(), false, null)
             mBinding!!.tvNoTrip.visibility = View.VISIBLE
             mBinding!!.layout1.visibility = View.GONE
             Toast.makeText(activity, dashBoardResponseModel.message, Toast.LENGTH_SHORT).show()

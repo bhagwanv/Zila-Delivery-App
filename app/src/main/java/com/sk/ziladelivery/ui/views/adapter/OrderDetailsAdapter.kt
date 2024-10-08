@@ -85,6 +85,7 @@ class OrderDetailsAdapter(
         } else if (customerOrderInfoEntity.workingStatus == 7) { //Order Redispatch
             holder.mBinding.itemCheckBox.visibility = View.INVISIBLE
 
+
         } else if (customerOrderInfoEntity.workingStatus == 8) { //Order ReAttemp
             holder.mBinding.itemCheckBox.visibility = View.INVISIBLE
             holder.mBinding.ivDownItem.visibility = View.VISIBLE
@@ -149,6 +150,14 @@ class OrderDetailsAdapter(
                 position
             )*//*
         }*/
+
+        holder.mBinding.btnCancelOrder.visibility=View.VISIBLE
+        holder.mBinding.btnCancelOrder.setOnClickListener {
+            orderDetailInterface.onButtonClick(
+                "Cancel Order", position,
+                customerOrderInfoEntity.orderid, customerOrderInfoEntity
+            )
+        }
 
     }
 

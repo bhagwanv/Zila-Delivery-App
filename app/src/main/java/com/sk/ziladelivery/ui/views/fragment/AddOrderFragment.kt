@@ -241,7 +241,7 @@ class AddOrderFragment : Fragment(), LisnerAllOrder, LisnerCustomerAllOrder {
                                     addOrder(orderIDList.Data)
                                     //Utils.setToast(activity,orderIDList.Message)
                                 } else {
-                                    // Utils.setToast(activity,orderIDList.Message)
+                                     Utils.setToast(activity,orderIDList.Message)
                                 }
 
                             }
