@@ -7,7 +7,7 @@
 
         <variable
             name="myAssignmentlistener"
-            type="com.sk.ziladelivery.listener.MultipleAssignmentInterface" />
+            type="com.zila.storelastmile.listener.MultipleAssignmentInterface" />
     </data>
 
     <RelativeLayout

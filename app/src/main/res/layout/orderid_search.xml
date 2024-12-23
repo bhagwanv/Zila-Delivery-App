@@ -6,7 +6,7 @@
 
         <variable
             name="ordervalueModel"
-            type="com.sk.ziladelivery.data.model.OrderValueModel" />
+            type="com.zila.storelastmile.data.model.OrderValueModel" />
     </data>
 
     <RelativeLayout

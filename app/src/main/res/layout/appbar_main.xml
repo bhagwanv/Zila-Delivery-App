@@ -7,7 +7,7 @@
 
         <variable
             name="timerpresenter"
-            type="com.sk.ziladelivery.listener.StartTimerPresenter" />
+            type="com.zila.storelastmile.listener.StartTimerPresenter" />
     </data>
 
     <RelativeLayout

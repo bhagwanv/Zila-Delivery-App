@@ -5,7 +5,7 @@
 
         <variable
             name="orderListModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.OrderListModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.OrderListModel" />
     </data>
 
 

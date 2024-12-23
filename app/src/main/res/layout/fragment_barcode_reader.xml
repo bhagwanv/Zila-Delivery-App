@@ -6,17 +6,17 @@
     android:keepScreenOn="true"
     android:orientation="vertical">
 
-    <com.sk.ziladelivery.barcode.camera.CameraSourcePreview
+    <com.zila.storelastmile.barcode.camera.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.sk.ziladelivery.barcode.camera.GraphicOverlay
+        <com.zila.storelastmile.barcode.camera.GraphicOverlay
             android:id="@+id/graphicOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.sk.ziladelivery.barcode.camera.CameraSourcePreview>
+    </com.zila.storelastmile.barcode.camera.CameraSourcePreview>
 
     <View
         android:layout_width="match_parent"

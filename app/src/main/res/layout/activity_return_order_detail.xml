@@ -8,7 +8,7 @@
 
         <variable
             name="returnOrderViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.ReturnOrderDetailViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.ReturnOrderDetailViewModel" />
     </data>
 
     <RelativeLayout

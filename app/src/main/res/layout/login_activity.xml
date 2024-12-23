@@ -6,7 +6,7 @@
 
         <variable
             name="loginViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.LoginViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.LoginViewModel" />
     </data>
 
     <RelativeLayout

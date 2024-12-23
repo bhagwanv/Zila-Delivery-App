@@ -6,7 +6,7 @@
 
         <variable
             name="mainModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.MainModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.MainModel" />
     </data>
 
     <RelativeLayout

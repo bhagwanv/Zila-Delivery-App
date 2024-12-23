@@ -7,11 +7,11 @@
 
         <variable
             name="currencySubmitListener"
-            type="com.sk.ziladelivery.listener.CurrencySubmitListener" />
+            type="com.zila.storelastmile.listener.CurrencySubmitListener" />
 
         <variable
             name="currencyViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.CurrencyViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.CurrencyViewModel" />
 
     </data>
 

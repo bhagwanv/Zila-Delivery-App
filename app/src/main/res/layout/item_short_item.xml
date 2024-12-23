@@ -5,7 +5,7 @@
 
         <variable
             name="shortViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.ShortViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.ShortViewModel" />
     </data>
 
 

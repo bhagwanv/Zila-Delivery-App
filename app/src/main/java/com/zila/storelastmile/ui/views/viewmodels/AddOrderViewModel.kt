@@ -1,0 +1,90 @@
+package com.zila.storelastmile.ui.views.viewmodels
+
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import com.zila.storelastmile.data.apprepository.AppRepository
+import com.zila.storelastmile.data.model.ZilaCreateTrip
+import com.zila.storelastmile.ui.views.fragment.CreateTripModel
+import com.zila.storelastmile.utilities.Resource
+import kotlinx.coroutines.Dispatchers
+
+class AddOrderViewModel(private  val appRepository: AppRepository) : ViewModel() {
+
+    fun getOrder(zilaTripMasterId: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.getOrder(zilaTripMasterId)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun addOrder(zilaTripMasterId: Int,orderId:Int,pepopleID:Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.addOrder(zilaTripMasterId,orderId,pepopleID)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun removeOrder(zilaTripMasterId: Int,orderId:Int,pepopleID:Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.removeOrder(zilaTripMasterId,orderId,pepopleID)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun zilaCreateTrip(model: ZilaCreateTrip) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.ZilaCreateTrip(model)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun getInvoice(invoiceNumber: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.getInvoice(invoiceNumber)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+
+    fun getAllTripID(id: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.getTripID(id)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun getTokenData(password: String?, username: String?, Password: String?) =
+        liveData(Dispatchers.IO) {
+            emit(Resource.loading(data = null))
+            try {
+                emit(Resource.success(data = appRepository.getToken(password, username, Password)))
+            } catch (exception: Exception) {
+                emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
+        }
+
+    fun createTrip(model: CreateTripModel) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = appRepository.createTrip(model)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+}
+
+

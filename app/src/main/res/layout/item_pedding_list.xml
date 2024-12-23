@@ -6,7 +6,7 @@
 
         <variable
             name="pendingTaskModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.PendingTaskModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.PendingTaskModel" />
     </data>
 
     <RelativeLayout

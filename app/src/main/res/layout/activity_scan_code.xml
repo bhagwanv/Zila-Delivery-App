@@ -40,7 +40,7 @@
 
             <fragment
                 android:id="@+id/barcode_fragment"
-                android:name="com.sk.ziladelivery.barcode.BarcodeReader"
+                android:name="com.zila.storelastmile.barcode.BarcodeReader"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:auto_focus="true"

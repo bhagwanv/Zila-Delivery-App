@@ -6,7 +6,7 @@
 
         <variable
             name="orderAssignmentViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.OrderAssignmentViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.OrderAssignmentViewModel" />
     </data>
 
     <RelativeLayout

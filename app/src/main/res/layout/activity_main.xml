@@ -7,7 +7,7 @@
 
         <variable
             name="mainListener"
-            type="com.sk.ziladelivery.listener.MainListener" />
+            type="com.zila.storelastmile.listener.MainListener" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout

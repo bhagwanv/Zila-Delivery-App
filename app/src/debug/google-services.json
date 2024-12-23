@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "225758148838",
-    "project_id": "ziladelivery-d3870",
-    "storage_bucket": "ziladelivery-d3870.appspot.com"
+    "project_number": "625331970532",
+    "project_id": "storelastmile",
+    "storage_bucket": "storelastmile.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:225758148838:android:c330b1ed8bb3d5b0fca327",
+        "mobilesdk_app_id": "1:625331970532:android:706cc62bbb12b0e35027f1",
         "android_client_info": {
-          "package_name": "com.sk.ziladelivery"
+          "package_name": "com.zila.storelastmile"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCdQzQAwjmTZuoUv2AZlsxIERwYzXgGQ8A"
+          "current_key": "AIzaSyDHiOtLim159lUvnxh87AAo3ftFzj7A-Ek"
         }
       ],
       "services": {
@@ -23,35 +23,6 @@
           "other_platform_oauth_client": []
         }
       }
-    },
-    {
-      "project_info": {
-        "project_number": "752432497194",
-        "project_id": "ziladelivery-debug",
-        "storage_bucket": "ziladelivery-debug.appspot.com"
-      },
-      "client": [
-        {
-          "client_info": {
-            "mobilesdk_app_id": "1:752432497194:android:c2453f6d5db6115d213953",
-            "android_client_info": {
-              "package_name": "com.sk.ziladelivery.debug"
-            }
-          },
-          "oauth_client": [],
-          "api_key": [
-            {
-              "current_key": "AIzaSyBjmML4I3h2MCDoEe4yLKCV5eRWWxWV7B8"
-            }
-          ],
-          "services": {
-            "appinvite_service": {
-              "other_platform_oauth_client": []
-            }
-          }
-        }
-      ],
-      "configuration_version": "1"
     }
   ],
   "configuration_version": "1"

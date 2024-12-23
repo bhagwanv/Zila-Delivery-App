@@ -13,7 +13,7 @@
             android:layout_height="match_parent"
             tools:showIn="@layout/activity_welcome">
 
-            <com.sk.ziladelivery.utilities.ExtendedViewPager
+            <com.zila.storelastmile.utilities.ExtendedViewPager
                 android:id="@+id/view_pager_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

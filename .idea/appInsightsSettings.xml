@@ -23,10 +23,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.sk.ziladelivery" />
-                  <option name="mobileSdkAppId" value="1:399909982649:android:ffef8592843fa27efae668" />
-                  <option name="projectId" value="direct-last-mile" />
-                  <option name="projectNumber" value="399909982649" />
+                  <option name="appId" value="com.zila.storelastmile" />
+                  <option name="mobileSdkAppId" value="1:625331970532:android:706cc62bbb12b0e35027f1" />
+                  <option name="projectId" value="storelastmile" />
+                  <option name="projectNumber" value="625331970532" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

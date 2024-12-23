@@ -6,7 +6,7 @@
 
         <variable
             name="itemDetailsInfo"
-            type="com.sk.ziladelivery.ui.views.viewmodels.ItemDetailsInfo" />
+            type="com.zila.storelastmile.ui.views.viewmodels.ItemDetailsInfo" />
     </data>
 
     <RelativeLayout

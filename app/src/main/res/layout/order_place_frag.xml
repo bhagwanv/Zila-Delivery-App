@@ -7,15 +7,15 @@
 
         <variable
             name="orderPlacedListener"
-            type="com.sk.ziladelivery.listener.OrderPlacedListener" />
+            type="com.zila.storelastmile.listener.OrderPlacedListener" />
 
         <variable
             name="orderPlaceViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.OrderPlaceViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.OrderPlaceViewModel" />
 
         <variable
             name="orderValueSetViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.OrderValueSetViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.OrderValueSetViewModel" />
     </data>
 
     <LinearLayout

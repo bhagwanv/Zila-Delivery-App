@@ -176,7 +176,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.sk.ziladelivery.ui.views.VideoRecorderExample"
+            android:name="com.zila.storelastmile.ui.views.VideoRecorderExample"
             android:exported="true" />
 
         <service

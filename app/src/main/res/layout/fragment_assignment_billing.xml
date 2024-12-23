@@ -7,7 +7,7 @@
 
         <variable
             name="assignmentBillingViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.AssignmentBillingViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.AssignmentBillingViewModel" />
     </data>
 
     <ScrollView

@@ -6,7 +6,7 @@
 
         <variable
             name="historyDetailSetViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.HistoryAdapterViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.HistoryAdapterViewModel" />
 
     </data>
 

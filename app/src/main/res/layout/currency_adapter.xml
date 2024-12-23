@@ -6,7 +6,7 @@
 
         <variable
             name="currencyIncreaseListener"
-            type="com.sk.ziladelivery.listener.CurrencyIncreaseListener" />
+            type="com.zila.storelastmile.listener.CurrencyIncreaseListener" />
     </data>
 
     <RelativeLayout

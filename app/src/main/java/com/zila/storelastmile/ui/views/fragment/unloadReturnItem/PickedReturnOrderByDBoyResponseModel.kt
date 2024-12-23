@@ -1,0 +1,7 @@
+package com.zila.storelastmile.ui.views.fragment.unloadReturnItem
+
+data class PickedReturnOrderByDBoyResponseModel(
+    val Data: Any,
+    val Message: String,
+    val Status: Boolean
+)

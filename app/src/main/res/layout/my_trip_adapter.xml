@@ -6,11 +6,11 @@
 
         <variable
             name="myTaskListener"
-            type="com.sk.ziladelivery.listener.MyTaskListener" />
+            type="com.zila.storelastmile.listener.MyTaskListener" />
 
         <variable
             name="myTaskInfo"
-            type="com.sk.ziladelivery.ui.views.viewmodels.MyTaskInfo" />
+            type="com.zila.storelastmile.ui.views.viewmodels.MyTaskInfo" />
     </data>
 
     <RelativeLayout

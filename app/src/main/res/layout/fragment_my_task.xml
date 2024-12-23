@@ -6,11 +6,11 @@
 
         <variable
             name="presenter"
-            type="com.sk.ziladelivery.listener.Presenters" />
+            type="com.zila.storelastmile.listener.Presenters" />
 
         <variable
             name="myTaskViewModel"
-            type="com.sk.ziladelivery.ui.views.viewmodels.MyTaskViewModel" />
+            type="com.zila.storelastmile.ui.views.viewmodels.MyTaskViewModel" />
     </data>
 
 
