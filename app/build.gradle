@@ -10,7 +10,8 @@ apply plugin: 'com.google.firebase.crashlytics'
 android {
     signingConfigs {
         release {
-            storeFile file('D:\\Bhagwan Code\\Zila-Delivery-App\\keysore_last_mile.jks')
+            //storeFile file('D:\\Bhagwan Code\\Zila-Delivery-App\\keysore_last_mile.jks')
+            storeFile file('C:\\Users\\SK\\Documents\\Zila-Delivery-App\\store_last_mile.jks')
             storePassword '123456'
             keyAlias = 'android'
             keyPassword '123456'
@@ -31,13 +32,13 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            resValue "string", "app_name", "Zila-Delivery"
+            resValue "string", "app_name", "Store-LastMile"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("String", "playStoreURL", "\"https://play.google.com/store/apps/details?id=com.zila.storelastmile\"")
         }
         debug {
 //            applicationIdSuffix '.debug'
-            resValue "string", "app_name", "Zila-Delivery-App Debug"
+            resValue "string", "app_name", "Store-LastMile-App Debug"
             buildConfigField("String", "playStoreURL", "\"https://play.google.com/store/apps/details?id=com.zila.storelastmile\"")
         }
     }

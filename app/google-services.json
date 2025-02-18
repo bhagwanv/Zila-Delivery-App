@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "625331970532",
+    "project_id": "storelastmile",
+    "storage_bucket": "storelastmile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625331970532:android:706cc62bbb12b0e35027f1",
+        "android_client_info": {
+          "package_name": "com.zila.storelastmile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHiOtLim159lUvnxh87AAo3ftFzj7A-Ek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
