@@ -179,5 +179,13 @@ class MyTripOrderResponseModel {
         @Expose
         @SerializedName("OrderType")
         var orderType: String? = ""
+
+        @Expose
+        @SerializedName("DeliveryInstructions")
+        var deliveryInstructions : String? = ""
+
+        @Expose
+        @SerializedName("DeliveryInstructionsAudioUrl")
+        var deliveryInstructionsAudioUrl : String? = ""
     }
 }

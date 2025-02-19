@@ -164,6 +164,48 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:id="@+id/liDeliveryInstruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_margin="@dimen/font_size_10">
+
+                <TextView
+                    android:id="@+id/tvIntructionMessage"
+                    style="@style/SegoeUISemiBold"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:id="@+id/liInstructionAudio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/seekbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:id="@+id/playButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_media_play" />
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/liOrderType"
