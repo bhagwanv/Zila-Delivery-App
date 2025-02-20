@@ -2,12 +2,16 @@ buildscript {
     ext.kotlin_version = '1.4.32'
     repositories {
         google()
+        jcenter()
         mavenCentral()
-        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.google.com' }
+        maven { url "https://repo.grails.org/grails/core/" }
+
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
+        classpath 'com.android.tools.build:gradle:8.2.2'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21'
         classpath 'com.google.gms:google-services:4.4.1'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'
     }
@@ -16,7 +20,15 @@ buildscript {
 allprojects {
     repositories {
         google()
-        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        jcenter()
+        mavenCentral()
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url 'https://maven.google.com'
+        }
+        maven { url "https://repo.grails.org/grails/core/" }
     }
 }
 
