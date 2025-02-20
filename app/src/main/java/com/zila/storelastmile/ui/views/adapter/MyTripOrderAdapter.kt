@@ -4,11 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.content.res.AssetFileDescriptor
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +21,7 @@ import com.zila.storelastmile.ui.views.main.ProductDetailsActivity
 import com.zila.storelastmile.utilities.MyApplication
 import com.zila.storelastmile.utilities.SharePrefs
 import com.zila.storelastmile.utilities.TextUtils
+import com.zila.storelastmile.utilities.Utils
 
 
 class MyTripOrderAdapter(
@@ -51,34 +54,83 @@ class MyTripOrderAdapter(
             holder.mBinding.btReattamp.text = "RA " + orderlist[i].reAttemptCount
         }
 
-      //  orderlist[i].orderType="ReturnOrder"
+        //  orderlist[i].orderType="ReturnOrder"
 
         if (!TextUtils.isNullOrEmpty(orderlist[i].orderType)) {
             holder.mBinding.tvOrderTypeStatus.text = "  " + orderlist[i].orderType
-            if (orderlist[i].orderType=="Clearence Order"){
-                holder.mBinding.tvOrderTypeStatus.setTextColor(ContextCompat.getColor(context, R.color.white))
-                holder.mBinding.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.white))
-                holder.mBinding.tvNoItems.setTextColor(ContextCompat.getColor(context, R.color.white))
+            if (orderlist[i].orderType == "Clearence Order") {
+                holder.mBinding.tvOrderTypeStatus.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.white
+                    )
+                )
+                holder.mBinding.tvStatus.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.white
+                    )
+                )
+                holder.mBinding.tvNoItems.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.white
+                    )
+                )
                 holder.mBinding.tvtype.setTextColor(ContextCompat.getColor(context, R.color.white))
                 holder.mBinding.llMainLayout.setBackgroundResource(R.drawable.button_yellow_bottom_cl)
             }
-            if (orderlist[i].orderType=="ReturnOrder"){
-                holder.mBinding.tvOrderTypeStatus.setTextColor(ContextCompat.getColor(context, R.color.white))
-                holder.mBinding.tvStatus.setTextColor(ContextCompat.getColor(context, R.color.white))
-                holder.mBinding.tvNoItems.setTextColor(ContextCompat.getColor(context, R.color.white))
+            if (orderlist[i].orderType == "ReturnOrder") {
+                holder.mBinding.tvOrderTypeStatus.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.white
+                    )
+                )
+                holder.mBinding.tvStatus.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.white
+                    )
+                )
+                holder.mBinding.tvNoItems.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.white
+                    )
+                )
                 holder.mBinding.tvtype.setTextColor(ContextCompat.getColor(context, R.color.white))
                 holder.mBinding.llMainLayout.setBackgroundResource(R.drawable.return_card_bg)
             }
         } else {
             holder.mBinding.liOrderType.visibility = View.GONE
         }
-        if (!orderlist[i].deliveryInstructions.isNullOrEmpty()){
-            holder.mBinding.liDeliveryInstruction.visibility = View.VISIBLE
-            holder.mBinding.liInstructionMeg.visibility = View.VISIBLE
-            holder.mBinding.tvIntructionMessage.text =orderlist[i].deliveryInstructions
+
+        if (!orderlist[i].receiverName.isNullOrEmpty()) {
+            holder.mBinding.liReceiverDetails.visibility = View.VISIBLE
+            holder.mBinding.tvReceiverName.text = orderlist[i].receiverName
+            holder.mBinding.liReceiverCall.setOnClickListener {
+                if (!orderlist[i].receiverMobile.isNullOrEmpty()) {
+                    val intent = Intent(
+                        Intent.ACTION_DIAL,
+                        Uri.parse("tel:" + "+91" + orderlist[i].receiverMobile)
+                    )
+                    context.startActivity(intent)
+                } else {
+                    Utils.setToast(context, "Receiver mobile number not available");
+                }
+            }
         }
-        if (!orderlist[i].deliveryInstructionsAudioUrl.isNullOrEmpty()){
+
+        if (!orderlist[i].deliveryInstructions.isNullOrEmpty()) {
             holder.mBinding.liDeliveryInstruction.visibility = View.VISIBLE
+            holder.mBinding.ViewDIn.visibility = View.VISIBLE
+            holder.mBinding.liInstructionMeg.visibility = View.VISIBLE
+            holder.mBinding.tvIntructionMessage.text = orderlist[i].deliveryInstructions
+        }
+        if (!orderlist[i].deliveryInstructionsAudioUrl.isNullOrEmpty()) {
+            holder.mBinding.liDeliveryInstruction.visibility = View.VISIBLE
+            holder.mBinding.ViewDIn.visibility = View.VISIBLE
             holder.mBinding.liInstructionAudio.visibility = View.VISIBLE
             if (mediaPlayer == null) {
                 mediaPlayer = MediaPlayer()
@@ -86,18 +138,18 @@ class MyTripOrderAdapter(
             holder.mBinding.playButton.setImageDrawable(
                 ContextCompat.getDrawable(
                     context,
-                    android.R.drawable.ic_media_play
+                    R.drawable.play_circle
                 )
             )
-            val url = SharePrefs.getInstance(context).getString(SharePrefs.BASEURL)+ orderlist[i].deliveryInstructionsAudioUrl
-            println("AudioUrl::$url")
+            val url = SharePrefs.getInstance(context)
+                .getString(SharePrefs.BASEURL) + orderlist[i].deliveryInstructionsAudioUrl
             mediaPlayer.setDataSource(url)
             mediaPlayer.prepare()
             mediaPlayer.setVolume(0.5f, 0.5f)
             mediaPlayer.isLooping = false
             holder.mBinding.seekbar.setMax(mediaPlayer.duration)
         }
-        holder.mBinding.playButton.setOnClickListener { playSong(holder.mBinding ,i) }
+        holder.mBinding.liPlayAudio.setOnClickListener { playSong(holder.mBinding, i) }
         holder.mBinding.tvOrderDetails.setOnClickListener {
             context.startActivity(
                 Intent(
@@ -108,16 +160,15 @@ class MyTripOrderAdapter(
         }
     }
 
-    private fun playSong(mBinding: MyTripOrderAdapterBinding,position: Int) {
+    private fun playSong(mBinding: MyTripOrderAdapterBinding, position: Int) {
         try {
-            println("isPlaying::::"+mediaPlayer.isPlaying)
             if (mediaPlayer.isPlaying) {
                 mediaPlayer.pause()
                 wasPlaying = true
                 mBinding.playButton.setImageDrawable(
                     ContextCompat.getDrawable(
                         context,
-                        android.R.drawable.ic_media_play
+                        R.drawable.play_circle
                     )
                 )
             }
@@ -126,14 +177,16 @@ class MyTripOrderAdapter(
                 mBinding.playButton.setImageDrawable(
                     ContextCompat.getDrawable(
                         context,
-                        android.R.drawable.ic_media_pause
+                        R.drawable.pause_circle
                     )
                 )
                 updateSeekBar = object : Runnable {
                     override fun run() {
-                        if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
-                            mBinding.seekbar.progress = mediaPlayer!!.currentPosition
-                            handler.postDelayed(this, 500) // Update every 500ms
+                        if (mediaPlayer != null && mediaPlayer.isPlaying) {
+                            val currentPosition = mediaPlayer.currentPosition / 1000 // Convert ms to seconds
+                            mBinding.seekbar.progress = mediaPlayer.currentPosition
+                            mBinding.tvVoiceTimer.text = formatTime(currentPosition) // Update UI with time
+                            handler.postDelayed(this, 1000) // Update every 500ms
                         }
                     }
                 }
@@ -161,12 +214,13 @@ class MyTripOrderAdapter(
                 mediaPlayer.setOnCompletionListener {
                     println("STOP media")
                     handler.removeCallbacks(updateSeekBar!!) // Stop SeekBar updates
-                   // clearMediaPlayer()
+                    // clearMediaPlayer()
+                    mBinding.tvVoiceTimer.text = "00:00";
                     mBinding.seekbar.progress = 0
                     mBinding.playButton.setImageDrawable(
                         ContextCompat.getDrawable(
                             context,
-                            android.R.drawable.ic_media_play
+                            R.drawable.play_circle
                         )
                     )
                 }
@@ -176,11 +230,17 @@ class MyTripOrderAdapter(
             e.printStackTrace()
         }
     }
+    private fun formatTime(seconds: Int): String {
+        val minutes = seconds / 60
+        val secs = seconds % 60
+        return String.format("%02d:%02d", minutes, secs)
+    }
     private fun clearMediaPlayer() {
         mediaPlayer.stop()
-       // mediaPlayer.release()
-       // mediaPlayer.prepare()
+        // mediaPlayer.release()
+        // mediaPlayer.prepare()
     }
+
     override fun getItemCount(): Int {
         return orderlist?.size ?: 0
     }

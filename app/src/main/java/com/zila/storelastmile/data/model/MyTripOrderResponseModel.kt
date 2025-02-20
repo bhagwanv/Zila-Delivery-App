@@ -187,5 +187,14 @@ class MyTripOrderResponseModel {
         @Expose
         @SerializedName("DeliveryInstructionsAudioUrl")
         var deliveryInstructionsAudioUrl : String? = ""
+
+        @Expose
+        @SerializedName("ReceiverName")
+        var receiverName : String? = ""
+
+        @Expose
+        @SerializedName("ReceiverMobile")
+        var receiverMobile : String? = ""
+
     }
 }
