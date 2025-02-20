@@ -74,7 +74,7 @@ class MyTripOrderAdapter(
         }
         if (!orderlist[i].deliveryInstructions.isNullOrEmpty()){
             holder.mBinding.liDeliveryInstruction.visibility = View.VISIBLE
-            holder.mBinding.tvIntructionMessage.visibility = View.VISIBLE
+            holder.mBinding.liInstructionMeg.visibility = View.VISIBLE
             holder.mBinding.tvIntructionMessage.text =orderlist[i].deliveryInstructions
         }
         if (!orderlist[i].deliveryInstructionsAudioUrl.isNullOrEmpty()){
