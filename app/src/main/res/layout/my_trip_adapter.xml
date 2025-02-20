@@ -88,6 +88,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:gravity="center|start"
                         android:layout_weight="1.6"
                         android:orientation="vertical">
 
@@ -102,15 +103,15 @@
 
                         <TextView
                             android:id="@+id/tv_skcode"
-                            style="@style/SegoeUI"
+                            style="@style/SegoeUISemiBold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
                             android:text="@{myTaskInfo.skCode}"
-                            android:textColor="@color/grey"
-                            android:textSize="15sp" />
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
 
-                        <TextView
+                      <!--  <TextView
                             android:id="@+id/tvCrmTag"
                             style="@style/SegoeUI"
                             android:layout_width="wrap_content"
@@ -118,34 +119,9 @@
                             android:layout_marginTop="3dp"
                             android:text="@{myTaskInfo.CRMTags}"
                             android:textColor="@color/green"
-                            android:textSize="15sp" />
+                            android:textSize="15sp" />-->
 
                     </LinearLayout>
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/ll_navigation"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dp"
-                        android:layout_weight="0.4"
-                        android:gravity="right"
-                        android:orientation="horizontal">
-
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="50dp"
-                                app:srcCompat="@drawable/navigation_icon" />
-                        </RelativeLayout>
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/ll_call"
@@ -193,21 +169,21 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_centerInParent="true"
+                                android:contentDescription="@string/app_name"
                                 android:visibility="gone"
-                                app:srcCompat="@drawable/ic_baseline_play_arrow_24"
-                                android:contentDescription="@string/app_name" />
+                                app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
                         </RelativeLayout>
 
-                       <!-- <ImageView
-                            android:id="@+id/iv_popup_menu"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerInParent="true"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/font_size_10"
-                            android:visibility="gone"
-                            app:srcCompat="@drawable/ic_menu_image" />-->
+                        <!-- <ImageView
+                             android:id="@+id/iv_popup_menu"
+                             android:layout_width="30dp"
+                             android:layout_height="30dp"
+                             android:layout_alignParentRight="true"
+                             android:layout_centerInParent="true"
+                             android:layout_gravity="center"
+                             android:layout_marginLeft="@dimen/font_size_10"
+                             android:visibility="gone"
+                             app:srcCompat="@drawable/ic_menu_image" />-->
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </LinearLayout>
 
@@ -215,8 +191,6 @@
                     android:id="@+id/nav_view"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
                     android:background="@color/light_grey" />
 
                 <LinearLayout
@@ -257,104 +231,155 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginVertical="10dp"
                             android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/ware_name"
-                                style="@style/SegoeUI"
+                                style="@style/SegoeUIBold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Warehouse"
-                                android:textSize="12dp" />
+                                android:text="Zila Store"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/ware_addss"
-                                style="@style/SegoeUI"
-                                android:layout_width="100dp"
+                                style="@style/SegoeUISemiBold"
+                                android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:maxLines="2"
                                 android:text="@{myTaskInfo.warehouseAddress}"
-                                android:textColor="#2a2b45"
-                                android:textSize="10dp" />
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
 
-                            <TextView
-                                style="@style/SegoeUI"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="ShopName"
-                                android:textSize="12dp" />
+                                android:layout_marginTop="50dp"
+                                android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/shopaddress"
-                                style="@style/SegoeUI"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:maxLines="2"
-                                android:text="@{myTaskInfo.address}"
-                                android:textColor="#2a2b45"
-                                android:textSize="10dp">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:orientation="vertical">
 
-                            </TextView>
+                                    <TextView
+                                        style="@style/SegoeUIBold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Delivery Address"
+                                        android:textColor="@color/black"
+                                        android:textSize="14dp" />
+
+                                    <TextView
+                                        android:id="@+id/shopaddress"
+                                        style="@style/SegoeUISemiBold"
+                                        android:layout_width="150dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:maxLines="2"
+                                        android:text="@{myTaskInfo.address}"
+                                        android:textColor="@color/black"
+                                        android:textSize="10sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_navigation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_routing_map" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
                         </LinearLayout>
 
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="20dp"
-                            android:background="@color/light_grey" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="3dp"
+                        android:background="@color/light_grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="15dp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="50dp"
+                            android:layout_weight="0.5"
+                            android:gravity="center|start"
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/order_time"
                                 style="@style/SegoeUISemiBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Order Completion Time"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/order_time"
+                                style="@style/SegoeUIBold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@{myTaskInfo.completionTime}"
                                 android:textColor="@color/black"
-                                android:textSize="15dp" />
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center|start"
+                            android:orientation="vertical">
 
                             <TextView
-                                style="@style/SegoeUI"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="Order Completion Time"
-                                android:textColor="@color/gray"
-                                android:textSize="10dp" />
-
-                            <TextView
-                                android:id="@+id/unloading_time"
                                 style="@style/SegoeUISemiBold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@{myTaskInfo.unLoadingTime}"
+                                android:text="Unloading Time"
                                 android:textColor="@color/black"
-                                android:textSize="15dp" />
+                                android:textSize="12sp" />
 
                             <TextView
-                                style="@style/SegoeUI"
+                                android:id="@+id/unloading_time"
+                                style="@style/SegoeUIBold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="Unloading Time"
-                                android:textColor="@color/gray"
-                                android:textSize="10dp">
-
-                            </TextView>
+                                android:text="@{myTaskInfo.unLoadingTime}"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
                         </LinearLayout>
-
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="3dp"
+                        android:background="@color/light_grey" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_order"

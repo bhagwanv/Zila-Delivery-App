@@ -44,7 +44,7 @@ class MyTripOrderAdapter(
         holder.mBinding.tvOrderid.text = orderlist!![i].orderid.toString() + ""
         holder.mBinding.tvAmount.text = "₹ " + orderlist[i].amount
         holder.mBinding.tvNoItems.text = "No.Item " + orderlist[i].noofitems
-        holder.mBinding.tvStatus.text = "Status : " + orderlist[i].status
+        holder.mBinding.tvStatus.text =   orderlist[i].status
         if (orderlist[i].reDispatchCount > 0) {
             holder.mBinding.btRedespach.visibility = View.VISIBLE
             holder.mBinding.btRedespach.text = "RD " + orderlist[i].reDispatchCount
