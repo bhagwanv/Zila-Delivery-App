@@ -100,6 +100,47 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                             notificationManagerCompat.notify((int) System.currentTimeMillis(), builder.build());
                         }
                         break;
+                    case "DeliveryInstruction":
+                        if (object.has("body")) {
+                            body = object.getString("body");
+                            title = object.getString("title");
+                            int OrderId  = object.getInt("OrderId");
+                          //  RxBus.getInstance().sendEvent("CashOTPApproval");
+                            Intent intent = null;
+                            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                            intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            PendingIntent pendingIntent;
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                                pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+                            }else {
+                                pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                            }
+                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), getResources().getString(R.string.app_name))
+                                    .setSmallIcon(R.mipmap.ic_launcher)
+                                    .setContentTitle(title)
+                                    .setContentText(body)
+                                    .setAutoCancel(true)
+                                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                                    .setContentIntent(pendingIntent)
+                                    .setChannelId(getResources().getString(R.string.app_name));
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                NotificationChannel mChannel = new NotificationChannel(getResources().getString(R.string.app_name),
+                                        getResources().getString(R.string.app_name),
+                                        NotificationManager.IMPORTANCE_HIGH);
+                                mChannel.enableLights(true);
+                                mChannel.enableVibration(true);
+                                mChannel.setLightColor(Color.YELLOW);
+                                mChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                                notificationManager.createNotificationChannel(mChannel);
+                            }
+
+                            NotificationManagerCompat notificationManagerCompat =
+                                    NotificationManagerCompat.from(getApplicationContext());
+                            notificationManagerCompat.notify((int) System.currentTimeMillis(), builder.build());
+                        }
+                        break;
                     case "UPI Callback":
                         if (object.has("body")) {
                             String data = object.getString("body");
@@ -270,7 +311,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                             notificationManagerCompat.notify((int) System.currentTimeMillis(), builder.build());
                         }
                         break;
-
 
                 }
             } else {
