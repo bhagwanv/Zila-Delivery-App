@@ -3,13 +3,23 @@ package com.zila.storelastmile.ui.views.adapter
 import android.app.Activity
 import android.content.Intent
 import android.content.res.AssetFileDescriptor
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -39,8 +49,10 @@ class MyTripOrderAdapter(
             )
         )
     }
+    var isExpanded = false
 
     override fun onBindViewHolder(holder: ViewHolder, i: Int) {
+
         holder.mBinding.tvOrderid.text = orderlist!![i].orderid.toString() + ""
         holder.mBinding.tvAmount.text = "₹ " + orderlist[i].amount
         holder.mBinding.tvNoItems.text = "No.Item " + orderlist[i].noofitems
@@ -126,7 +138,14 @@ class MyTripOrderAdapter(
             holder.mBinding.liDeliveryInstruction.visibility = View.VISIBLE
             holder.mBinding.ViewDIn.visibility = View.VISIBLE
             holder.mBinding.liInstructionMeg.visibility = View.VISIBLE
-            holder.mBinding.tvIntructionMessage.text = orderlist[i].deliveryInstructions
+
+            orderlist[i].deliveryInstructions?.let {
+                setSpannableText(holder.mBinding.tvIntructionMessage,
+                    it
+                )
+            }
+
+
         }
         if (!orderlist[i].deliveryInstructionsAudioUrl.isNullOrEmpty()) {
             holder.mBinding.liDeliveryInstruction.visibility = View.VISIBLE
@@ -158,6 +177,38 @@ class MyTripOrderAdapter(
                 ).putExtra("ORDER_ID", orderlist[holder.adapterPosition].orderid)
             )
         }
+    }
+
+    private fun setSpannableText(textView: TextView, fullText: String) {
+        val showMoreText = if (isExpanded) " Show Less" else " Show More"
+
+        if(fullText.length > 100){
+            val shortText = if (fullText.length > 100) fullText.substring(0, 100) + "..." else fullText
+
+            val displayText = if (isExpanded) fullText + showMoreText else shortText + showMoreText
+
+            val spannableString = SpannableString(displayText)
+
+            val clickableSpan = object : ClickableSpan() {
+                override fun onClick(widget: View) {
+                    isExpanded = !isExpanded
+                    setSpannableText(textView, fullText)
+                }
+            }
+
+            spannableString.setSpan(
+                clickableSpan,
+                spannableString.length - showMoreText.length,
+                spannableString.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+
+            textView.text = spannableString
+            textView.movementMethod = android.text.method.LinkMovementMethod.getInstance()
+        }else{
+            textView.text = fullText
+        }
+
     }
 
     private fun playSong(mBinding: MyTripOrderAdapterBinding, position: Int) {
@@ -230,6 +281,11 @@ class MyTripOrderAdapter(
             e.printStackTrace()
         }
     }
+
+
+
+
+
     private fun formatTime(seconds: Int): String {
         val minutes = seconds / 60
         val secs = seconds % 60
